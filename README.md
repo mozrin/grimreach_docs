@@ -14,6 +14,13 @@ It is the central reference point for how the world behaves, evolves, and is bui
 - Describe the workspace layout and the Phase system  
 - Provide guidance for agents, contributors, and future maintainers  
 
+## Workspace Layout
+- `grimreach_server/`: Authoritative Dart server.
+- `grimreach_client/`: Flutter/Flame visual client.
+- `grimreach_api/`: Shared data models and logic.
+- `grimreach_census/`: CLI tool for monitoring state.
+- `grimreach_assets/`: Static branding and visual assets for the workspace.
+
 ## Architectural Role
 This repository acts as the **brain** of Grimreach.  
 It defines:

@@ -1,0 +1,139 @@
+TITLE: Grimreach Workspace – Phase 014 Supplemental: Introduce Assets Repository
+
+INTENT
+Add a new top‑level project to the Grimreach workspace named `assets`. This project
+stores non-code, non-runtime, non-generated visual and branding assets for the entire
+workspace. It begins minimal, with a single file (`grimreach_logo.png`) placed at the
+root. This phase defines the initial structure and long-term purpose of the repository
+without committing to any specific asset pipeline.
+
+This phase adds:
+- a new workspace project: assets
+- initial folder structure
+- initial asset placement
+- documentation updates to reflect the new project
+
+No build logic.
+No asset pipeline.
+No rendering integration.
+No tooling requirements.
+
+============================================================
+SECTION 1 — Create the Assets Project
+============================================================
+
+Create a new top-level repository or folder named:
+
+    assets/
+
+This project is dedicated exclusively to static, non-executable files used across the
+workspace. It must not contain:
+- code
+- scripts
+- build systems
+- generated files
+- runtime logic
+
+============================================================
+SECTION 2 — Initial File Placement
+============================================================
+
+Place the following file in the root of the assets project:
+
+    assets/grimreach_logo.png
+
+This file represents the initial branding mark for the Grimreach workspace.
+
+============================================================
+SECTION 3 — Initial Folder Structure
+============================================================
+
+Define the following structure to guide future organization:
+
+    assets/
+      branding/        (logos, marks, icons)
+      ui/              (future UI elements)
+      world/           (future world-space visual assets)
+      temp/            (scratch space for agents; not versioned long-term)
+      README.md        (project description)
+
+Place `grimreach_logo.png` in:
+
+    assets/branding/grimreach_logo.png
+
+The root may remain empty except for the README.
+
+============================================================
+SECTION 4 — Long-Term Purpose (Non-Binding)
+============================================================
+
+The assets project may eventually support:
+- workspace-wide branding
+- UI elements for grimreach_client
+- world-space glyphs or symbols
+- documentation illustrations
+- promotional or meta assets
+- future automated pipelines (if introduced in later phases)
+
+This phase does NOT require:
+- asset optimization
+- asset versioning rules
+- asset pipelines
+- integration with client or server
+
+============================================================
+SECTION 5 — grimreach_client Responsibilities
+============================================================
+
+None in this phase.
+
+The client must not:
+- load assets
+- reference assets
+- assume any asset pipeline exists
+
+============================================================
+SECTION 6 — grimreach_server Responsibilities
+============================================================
+
+None in this phase.
+
+The server must not:
+- load assets
+- reference assets
+- assume any asset pipeline exists
+
+============================================================
+SECTION 7 — grimreach_census Responsibilities
+============================================================
+
+None in this phase.
+
+============================================================
+SECTION 8 — Documentation Update Requirements
+============================================================
+
+Update `grimreach_docs/README.md` to include the new project in the workspace layout.
+
+Add a new entry under the workspace structure section:
+
+    - assets/ — static branding and visual assets for the workspace
+
+No other README sections should be modified.
+
+============================================================
+SECTION 9 — No Other Files Modified
+============================================================
+
+This phase introduces no code changes and no runtime behavior.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- assets project exists at the workspace root.
+- grimreach_logo.png is placed in assets/branding/.
+- README updated with the new project entry.
+- No code or runtime systems reference the assets project.
+- Workspace structure remains stable and consistent.
+
