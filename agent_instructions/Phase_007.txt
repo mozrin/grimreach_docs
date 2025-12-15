@@ -1,0 +1,92 @@
+TITLE: Grimreach Workspace – Phase 007: Introduce Shared Zone Model + Zone Propagation
+
+INTENT
+Define and integrate a shared Zone model across the entire Grimreach workspace.
+This phase introduces the first meaningful world data flowing through the system.
+
+This phase must:
+- Add a Zone enum to grimreach_api
+- Add a zone field to the shared Player model
+- Update WorldState to include zone information (no structural changes required)
+- Update grimreach_server to assign a zone to each connected client
+- Update grimreach_server to include zone information in every WorldState broadcast
+- Update grimreach_client to detect and print zone changes
+- Update grimreach_census to log zone distribution
+- Ensure all projects compile and run with no errors
+
+No gameplay logic.  
+No movement.  
+No combat.  
+No systems.  
+Only zone assignment and propagation.
+
+============================================================
+SECTION 1 — grimreach_api: Add Shared Zone Model
+============================================================
+
+1. Create a new file named `zone.dart` inside grimreach_api/lib.
+2. Define a Zone enum with at least two values:
+   - safe
+   - wilderness
+3. Update the shared Player model to include:
+   - a new field named `zone`
+   - default value set to `safe`
+4. Update Player serialization/deserialization to include the zone value.
+5. No other grimreach_api files require modification.
+
+============================================================
+SECTION 2 — grimreach_server: Assign Zones to Players
+============================================================
+
+1. When a new WebSocket connection is accepted:
+   - Create a new Player instance for that connection.
+   - Assign the Player a zone value.
+   - The assignment method must be deterministic and simple (e.g., alternating safe/wilderness).
+2. Store the Player instance in a server-side collection keyed by WebSocket.
+3. Ensure the tick loop includes all Player instances in the WorldState broadcast.
+4. Ensure the zone value is included in the serialized WorldState.
+
+============================================================
+SECTION 3 — grimreach_client: Detect and Print Zone Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - Identify the Player instance representing the local client.
+   - Compare the Player’s current zone to the previously known zone.
+   - If the zone has changed, print a message indicating the new zone.
+2. No rendering changes are required.
+3. No Flame components need modification.
+
+============================================================
+SECTION 4 — grimreach_census: Log Zone Distribution
+============================================================
+
+1. When receiving a WorldState message:
+   - Count how many players are in the safe zone.
+   - Count how many players are in the wilderness zone.
+   - Print the counts.
+2. No storage or analytics logic is required in this phase.
+
+============================================================
+SECTION 5 — No Other Files Modified
+============================================================
+
+- Do not modify any Flame components.
+- Do not modify any UI files.
+- Do not modify any server systems.
+- Do not introduce gameplay logic.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_api contains a shared Zone enum.
+- Player includes a zone field with serialization support.
+- grimreach_server assigns a zone to each connected client.
+- grimreach_server includes zone information in every WorldState broadcast.
+- grimreach_client prints zone changes when they occur.
+- grimreach_census logs zone distribution on each tick.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No movement, combat, or systems exist.
+
