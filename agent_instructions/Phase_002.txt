@@ -1,0 +1,119 @@
+TITLE: Grimreach Workspace – Phase 002: Minimal Structure for grimreach_api
+
+INTENT
+Populate the grimreach_api Dart package with minimal, compilable structures.
+This package defines the shared protocol, message wrappers, and basic data models
+used by both grimreach_client and grimreach_server.
+
+No game logic.  
+No dependencies.  
+No platform code.  
+All files must compile and contain only minimal class or enum definitions.
+
+TARGET
+grimreach/grimreach_api/
+
+============================================================
+STEP 1 — pubspec.yaml
+============================================================
+
+1. Ensure the grimreach_api pubspec.yaml defines:
+   - the package name
+   - a short description
+   - a version number
+   - a Dart SDK constraint
+   - no dependencies
+   - no dev_dependencies
+
+2. Confirm that the file contains only the minimal required fields.
+
+============================================================
+STEP 2 — lib/protocol.dart
+============================================================
+
+1. Create a file named protocol.dart.
+2. Define a Protocol class containing a set of string constants representing:
+   - handshake
+   - move
+   - state
+   - chat
+
+3. These constants will be used by all projects to identify message types.
+
+============================================================
+STEP 3 — lib/messages.dart
+============================================================
+
+1. Create a file named messages.dart.
+2. Define a minimal Message class that:
+   - stores a message type (string)
+   - stores a data payload (map)
+   - contains only fields and a constructor
+   - contains no logic
+
+============================================================
+STEP 4 — lib/message_codec.dart
+============================================================
+
+1. Create a file named message_codec.dart.
+2. Define a MessageCodec class that:
+   - provides a minimal encode method that converts a Message into a JSON string
+   - provides a minimal decode method that converts a JSON string into a Message
+3. Use only the Dart standard library for JSON encoding/decoding.
+
+============================================================
+STEP 5 — lib/entity.dart
+============================================================
+
+1. Create a file named entity.dart.
+2. Define a minimal Entity class that:
+   - contains an id field
+   - includes basic toJson and fromJson methods
+   - contains no additional logic
+
+============================================================
+STEP 6 — lib/player.dart
+============================================================
+
+1. Create a file named player.dart.
+2. Define a minimal Player class that:
+   - contains id, x, and y fields
+   - includes basic toJson and fromJson methods
+   - contains no additional logic
+
+============================================================
+STEP 7 — lib/world_state.dart
+============================================================
+
+1. Create a file named world_state.dart.
+2. Define a minimal WorldState class that:
+   - contains lists of Entity and Player
+   - includes basic toJson and fromJson methods
+   - contains no additional logic
+
+============================================================
+STEP 8 — lib/constants.dart
+============================================================
+
+1. Create a file named constants.dart.
+2. Define a Constants class containing at least one placeholder constant
+   (e.g., a tick rate value).
+
+============================================================
+STEP 9 — lib/types.dart
+============================================================
+
+1. Create a file named types.dart.
+2. Define placeholder typedefs for:
+   - EntityId
+   - PlayerId
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_api compiles with no errors.
+- All files listed above exist and contain minimal definitions.
+- No additional files, logic, or dependencies are introduced.
+- grimreach_client and grimreach_server can import grimreach_api without modification.
+
