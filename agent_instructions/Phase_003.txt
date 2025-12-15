@@ -1,0 +1,105 @@
+TITLE: Grimreach Workspace – Phase 003: Minimal Integration of grimreach_api
+
+INTENT
+Update grimreach_client, grimreach_server, and grimreach_census so they all import
+and minimally use the grimreach_api package.  
+All projects must compile and run without performing any meaningful actions.
+
+No logic.  
+No networking.  
+No behavior.  
+Only the minimal usage required to confirm that grimreach_api is linked correctly.
+
+TARGET PROJECTS
+- grimreach_client (Flutter)
+- grimreach_server (Dart)
+- grimreach_census (Dart)
+- grimreach_api (already completed in Phase 002)
+
+============================================================
+SECTION 1 — Update Dependencies
+============================================================
+
+1. In each project (client, server, census), update pubspec.yaml to include a
+   dependency on grimreach_api using a local path reference.
+
+2. Ensure the dependency block points to:
+   ../grimreach_api
+
+3. Do not add any other dependencies in this phase.
+
+============================================================
+SECTION 2 — grimreach_client Minimal Integration
+============================================================
+
+1. Update the client entrypoint so that it:
+   - imports grimreach_api
+   - instantiates at least one class from grimreach_api (e.g., Player)
+   - prints a simple confirmation message
+   - launches a minimal Flutter root widget (no UI required)
+
+2. Remove or empty the following files, since grimreach_api now provides these models:
+   - grimreach_client/lib/core/models/player.dart
+   - grimreach_client/lib/core/models/entity.dart
+   - grimreach_client/lib/core/models/world_state.dart
+
+3. Do not remove the directories containing these files.
+
+4. No other client files should be modified in this phase.
+
+============================================================
+SECTION 3 — grimreach_server Minimal Integration
+============================================================
+
+1. Update the server entrypoint so that it:
+   - imports grimreach_api
+   - instantiates at least one shared model (e.g., WorldState)
+   - prints a simple confirmation message
+   - performs no networking or logic
+
+2. Remove or empty the following files:
+   - grimreach_server/lib/core/player.dart
+   - grimreach_server/lib/core/entity.dart
+   - grimreach_server/lib/core/world_state.dart
+
+3. Do not remove the directories containing these files.
+
+4. No other server files should be modified in this phase.
+
+============================================================
+SECTION 4 — grimreach_census Minimal Integration
+============================================================
+
+1. Update the census entrypoint so that it:
+   - imports grimreach_api
+   - instantiates at least one shared model (e.g., WorldState)
+   - prints a simple confirmation message
+
+2. Update the census_models file so that it:
+   - imports grimreach_api
+   - defines a simple wrapper class referencing WorldState
+
+3. No other census files should be modified in this phase.
+
+============================================================
+SECTION 5 — Cleanup of Redundant Files
+============================================================
+
+1. Delete or empty all redundant model files that duplicate grimreach_api types:
+   - client: player.dart, entity.dart, world_state.dart
+   - server: player.dart, entity.dart, world_state.dart
+
+2. Do not remove any directories.
+
+3. Do not modify any other files.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- All three projects compile with no errors.
+- All three projects successfully import grimreach_api.
+- All redundant model files are removed or emptied.
+- No project performs any logic or networking.
+- Running each project prints a minimal confirmation message and exits cleanly.
+
