@@ -1,0 +1,126 @@
+TITLE: Grimreach Workspace – Phase 024: Morale-Driven Influence Modifiers
+
+INTENT
+Connect faction morale (Phase 023) back into the influence system (Phase 021).
+This phase adds:
+- morale-based influence multipliers
+- deterministic feedback loops
+- server-side evaluation of morale effects
+- world updates reflecting modified influence values
+- client acknowledgement of influence shifts
+- census tracking of morale-influence dynamics
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic morale-driven influence propagation.
+
+============================================================
+SECTION 1 — Define Morale Influence Modifier Rules
+============================================================
+
+1. Introduce a minimal modifier rule structure that defines:
+   - how morale affects influence gain
+   - how morale affects influence decay
+   - deterministic multiplier values (e.g., morale 0–100 → 0.5× to 1.5×)
+   - no randomness
+
+2. Modifier rules must:
+   - be static
+   - be deterministic
+   - not involve combat or diplomacy
+
+3. Modifiers must:
+   - be applied every tick
+   - be clamped to prevent runaway values
+
+============================================================
+SECTION 2 — Implement Server Morale-Based Influence Adjustment
+============================================================
+
+1. Integrate morale modifiers into the influence update cycle.
+2. On each tick:
+   - read morale values per faction
+   - compute influence gain multipliers
+   - compute influence decay multipliers
+   - apply modified influence updates
+   - clamp influence values to valid bounds
+
+3. Influence adjustments must:
+   - not modify entity or player behavior
+   - not directly trigger territory changes (handled in Phase 022)
+   - not introduce randomness
+
+============================================================
+SECTION 3 — Maintain Feedback Loop Stability
+============================================================
+
+1. Introduce minimal stability rules to prevent runaway feedback:
+   - optional soft caps (e.g., diminishing returns)
+   - optional minimum/maximum multipliers
+   - optional smoothing (e.g., linear interpolation)
+
+2. Stability rules must:
+   - be deterministic
+   - be simple
+   - not introduce timers or complex state
+
+============================================================
+SECTION 4 — Include Modified Influence Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - updated influence values after morale modifiers
+   - optional “boosted” or “suppressed” flags
+
+2. Influence summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Modified Influence
+============================================================
+
+1. When receiving a WorldState message:
+   - read updated influence summaries
+   - detect changes caused by morale modifiers
+   - print simple information (e.g., “Order influence boosted by morale”)
+
+2. Do not render influence.
+3. Do not store influence data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Morale-Influence Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read updated influence summaries
+   - print aggregated information (e.g., “Chaos morale suppression reducing influence gain”)
+   - optionally print zone-based influence deltas
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic morale-based influence modifiers.
+- Influence updates incorporate morale effects every tick.
+- WorldState includes modified influence summaries.
+- grimreach_client prints morale-influence shift information.
+- grimreach_census prints morale-influence dynamics.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with morale-driven influence propagation.
+

@@ -1,0 +1,135 @@
+TITLE: Grimreach Workspace – Phase 026: Deterministic Population Saturation + Pressure-Based Zone Crowding
+
+INTENT
+Introduce deterministic population saturation rules that limit or modify spawning based on:
+- zone crowding
+- faction pressure (Phase 025)
+- deterministic population caps
+
+This phase adds:
+- zone-level population caps
+- pressure-influenced saturation thresholds
+- spawn suppression or slowdown under crowding
+- world updates reflecting saturation
+- client acknowledgement of saturation states
+- census tracking of saturation and crowding dynamics
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic saturation propagation.
+
+============================================================
+SECTION 1 — Define Population Saturation Rules
+============================================================
+
+1. Introduce a minimal saturation rule structure that defines:
+   - a maximum population per zone
+   - a maximum population per faction per zone (optional)
+   - deterministic thresholds for “crowded” and “overcrowded” states
+   - no randomness
+
+2. Saturation rules must:
+   - be static
+   - be deterministic
+   - not involve combat or diplomacy
+
+3. Saturation states must be:
+   - updated every tick
+   - based solely on entity counts
+
+============================================================
+SECTION 2 — Implement Server Saturation Evaluation
+============================================================
+
+1. Integrate saturation evaluation into the server tick loop.
+2. On each tick:
+   - count total entities per zone
+   - compare counts to saturation thresholds
+   - assign each zone a saturation state:
+     - normal
+     - crowded
+     - overcrowded
+
+3. Saturation evaluation must:
+   - not modify entity or player behavior directly
+   - not trigger territory changes
+   - not introduce randomness
+
+============================================================
+SECTION 3 — Apply Saturation to Spawn Rates
+============================================================
+
+1. Modify spawn rules (Phase 011/013/025) so that:
+   - normal zones spawn normally
+   - crowded zones reduce spawn rates deterministically
+   - overcrowded zones suppress spawning entirely
+
+2. Pressure (Phase 025) must:
+   - increase or decrease saturation thresholds deterministically
+   - never override absolute maximum caps
+
+3. Spawn rate adjustments must:
+   - be clamped
+   - remain deterministic
+   - not introduce new entity types
+
+============================================================
+SECTION 4 — Include Saturation Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - saturation state per zone
+   - optional “spawn suppressed” flags
+
+2. Saturation summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Saturation States
+============================================================
+
+1. When receiving a WorldState message:
+   - read saturation summaries
+   - print simple information (e.g., “Wilderness overcrowded — spawning suppressed”)
+
+2. Do not render saturation.
+3. Do not store saturation data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Crowding Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read saturation summaries
+   - correlate saturation with spawn counts and pressure
+   - print aggregated information (e.g., “Safe zone crowded for 4 ticks”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic saturation rules.
+- Saturation states update every tick.
+- Spawn rates adjust based on saturation and pressure.
+- WorldState includes saturation summaries.
+- grimreach_client prints saturation information.
+- grimreach_census prints crowding dynamics.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with saturation-driven spawn behavior.
+

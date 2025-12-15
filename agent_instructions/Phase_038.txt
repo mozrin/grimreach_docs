@@ -1,0 +1,132 @@
+TITLE: Grimreach Workspace – Phase 038: Deterministic World Equilibrium + Systemic Balance Layer
+
+INTENT
+Introduce deterministic “world equilibrium,” a global balancing force derived from the
+interaction of world inertia (Phase 036) and world entropy (Phase 037).
+This phase adds:
+- a global equilibrium value
+- deterministic equilibrium computation rules
+- equilibrium-based stabilizing/destabilizing modifiers
+- world updates reflecting equilibrium state
+- client acknowledgement of equilibrium shifts
+- census tracking of equilibrium stability
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic balance propagation.
+
+============================================================
+SECTION 1 — Define World Equilibrium Rules
+============================================================
+
+1. Introduce a minimal equilibrium structure that defines:
+   - a global equilibrium value
+   - deterministic computation rules
+   - no randomness
+
+2. Equilibrium is computed from:
+   - inertia (stabilizing force)
+   - entropy (destabilizing force)
+
+3. Equilibrium rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Equilibrium Evaluation
+============================================================
+
+1. Integrate equilibrium updates into the server tick loop.
+2. On each tick:
+   - read inertia (Phase 036)
+   - read entropy (Phase 037)
+   - compute equilibrium deterministically (e.g., inertia − entropy)
+   - clamp equilibrium to valid bounds
+
+3. Equilibrium evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Equilibrium-Based Modifiers
+============================================================
+
+1. Introduce minimal equilibrium modifiers that:
+   - stabilize mood transitions when equilibrium is positive
+   - stabilize harmonic transitions when equilibrium is positive
+   - reduce hazard intensity when equilibrium is positive
+   - amplify volatility when equilibrium is negative
+   - amplify migration pressure when equilibrium is negative
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Equilibrium modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Equilibrium Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current equilibrium value
+   - optional “equilibrium stabilizing” or “equilibrium destabilizing” flags
+
+2. Equilibrium summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Equilibrium Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read equilibrium summaries
+   - detect equilibrium drift
+   - print simple information (e.g., “World equilibrium shifting toward stability”)
+
+2. Do not render equilibrium.
+3. Do not store equilibrium data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Equilibrium Stability
+============================================================
+
+1. When receiving a WorldState message:
+   - read equilibrium summaries
+   - correlate equilibrium with inertia, entropy, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Negative equilibrium increasing systemic volatility”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic equilibrium rules.
+- Equilibrium updates every tick.
+- Equilibrium stabilizes or destabilizes global systems deterministically.
+- WorldState includes equilibrium summaries.
+- grimreach_client prints equilibrium change information.
+- grimreach_census prints equilibrium stability summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with equilibrium-driven systemic behavior.
+

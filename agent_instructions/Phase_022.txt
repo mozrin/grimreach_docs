@@ -1,0 +1,114 @@
+TITLE: Grimreach Workspace – Phase 022: Influence-Based Territory Shifts
+
+INTENT
+Connect faction influence (Phase 021) to territory ownership (Phase 020).
+This phase adds:
+- deterministic influence thresholds
+- deterministic territory shift rules
+- server-side evaluation of influence dominance
+- world updates reflecting territory changes
+- client acknowledgement of territory shifts
+- census tracking of territory volatility
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic influence-driven territory changes.
+
+============================================================
+SECTION 1 — Define Influence Threshold Rules
+============================================================
+
+1. Introduce a minimal threshold rule structure that defines:
+   - a required influence value for a faction to claim a zone
+   - a required lead over other factions (e.g., +20 influence)
+   - deterministic evaluation (no randomness)
+
+2. Threshold rules must:
+   - be static
+   - be deterministic
+   - not involve combat or diplomacy
+
+3. Influence thresholds must:
+   - be evaluated every tick
+   - not fluctuate randomly
+
+============================================================
+SECTION 2 — Implement Server Territory Shift Evaluation
+============================================================
+
+1. Integrate territory shift evaluation into the server tick loop.
+2. On each tick:
+   - read influence values per faction per zone
+   - determine if any faction meets the threshold to claim the zone
+   - determine if the current owner loses control
+   - update zone ownership if conditions are met
+
+3. Territory shifts must:
+   - be deterministic
+   - not modify entity or player behavior
+   - not trigger combat or interactions
+
+============================================================
+SECTION 3 — Maintain Territory Stability Rules
+============================================================
+
+1. Introduce minimal stability rules to prevent rapid oscillation:
+   - optional cooldown (e.g., zone cannot change ownership for N ticks after a shift)
+   - optional minimum influence duration (e.g., must hold threshold for M ticks)
+
+2. Stability rules must:
+   - be deterministic
+   - be simple
+   - not introduce timers beyond basic counters
+
+============================================================
+SECTION 4 — Include Territory Shift Information in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - updated zone ownership
+   - optional “recent shift” flags (boolean)
+   - no detailed influence history
+
+2. Territory shift summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Territory Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - detect changes in zone ownership
+   - print simple shift information (e.g., “Chaos has taken the wilderness”)
+
+2. Do not render territories.
+3. Do not store territory data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Territory Volatility
+============================================================
+
+1. When receiving a WorldState message:
+   - detect territory shifts
+   - print aggregated shift information (e.g., “2 shifts occurred this tick”)
+   - optionally print faction control summaries
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server

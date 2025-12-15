@@ -1,0 +1,139 @@
+TITLE: Grimreach Workspace – Phase 039: Deterministic World Resonance + Multi-Cycle Synchronization Events
+
+INTENT
+Introduce deterministic “world resonance,” a global synchronization effect triggered when
+multiple long-cycle systems align in specific deterministic patterns.
+This phase adds:
+- a global resonance state
+- deterministic resonance detection rules
+- resonance-based global modifiers
+- world updates reflecting resonance events
+- client acknowledgement of resonance peaks
+- census tracking of resonance patterns
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic synchronization propagation.
+
+============================================================
+SECTION 1 — Define World Resonance Rules
+============================================================
+
+1. Introduce a minimal resonance structure that defines:
+   - a global resonance value or state
+   - deterministic conditions for resonance activation
+   - deterministic conditions for resonance decay
+   - no randomness
+
+2. Resonance may be triggered by:
+   - season alignment (Phase 030)
+   - lunar alignment (Phase 031)
+   - constellation alignment (Phase 032)
+   - harmonic alignment (Phase 033)
+   - mood stability (Phase 034)
+   - memory thresholds (Phase 035)
+   - inertia dominance (Phase 036)
+   - entropy suppression (Phase 037)
+   - equilibrium positivity (Phase 038)
+
+3. Resonance rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Resonance Evaluation
+============================================================
+
+1. Integrate resonance updates into the server tick loop.
+2. On each tick:
+   - read all global cycle states
+   - evaluate deterministic resonance conditions
+   - update resonance state or value
+   - clamp resonance to valid bounds
+
+3. Resonance evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Resonance-Based Modifiers
+============================================================
+
+1. Introduce minimal resonance modifiers that:
+   - amplify influence gain during resonance peaks
+   - reduce global pressure during resonance stability
+   - increase environmental intensity during resonance surges
+   - accelerate or decelerate migration pressure depending on resonance polarity
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Resonance modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Resonance Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current resonance value or state
+   - optional “resonance peak” or “resonance trough” flags
+
+2. Resonance summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Resonance Peaks
+============================================================
+
+1. When receiving a WorldState message:
+   - read resonance summaries
+   - detect resonance peaks or troughs
+   - print simple information (e.g., “World resonance peak detected”)
+
+2. Do not render resonance.
+3. Do not store resonance data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Resonance Patterns
+============================================================
+
+1. When receiving a WorldState message:
+   - read resonance summaries
+   - correlate resonance with all global cycles and modifiers
+   - print aggregated information (e.g., “Resonance peak aligning with harmonic amplification”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic resonance rules.
+- Resonance updates every tick.
+- Resonance synchronizes global systems deterministically.
+- WorldState includes resonance summaries.
+- grimreach_client prints resonance change information.
+- grimreach_census prints resonance pattern summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with resonance-driven systemic behavior.
+

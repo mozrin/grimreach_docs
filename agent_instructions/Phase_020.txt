@@ -1,0 +1,111 @@
+TITLE: Grimreach Workspace – Phase 020: Deterministic Faction Territories + Zone Control
+
+INTENT
+Introduce deterministic faction territories across zones.
+This phase adds:
+- faction ownership of zones
+- deterministic rules for zone control
+- server-side evaluation of faction presence
+- world updates reflecting zone ownership
+- client acknowledgement of territory changes
+- census tracking of faction territory balance
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic faction territory assignment and propagation.
+
+============================================================
+SECTION 1 — Define Faction Territory Rules
+============================================================
+
+1. Introduce a minimal territory rule structure that defines:
+   - which faction initially controls each zone
+   - deterministic criteria for zone ownership
+   - no randomness
+   - no combat or conflict resolution
+
+2. Territory rules may be based on:
+   - static assignment (e.g., safe = order, wilderness = chaos)
+   - population majority (deterministic)
+   - entity-type majority (deterministic)
+
+3. Territory rules must:
+   - be simple
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Server Territory Evaluation
+============================================================
+
+1. Integrate territory evaluation into the server tick loop.
+2. On each tick:
+   - count faction presence in each zone
+   - apply deterministic rules to determine zone ownership
+   - update zone ownership if it changes
+
+3. Territory evaluation must:
+   - not trigger combat
+   - not modify entity or player behavior
+   - not introduce diplomacy or interactions
+
+============================================================
+SECTION 3 — Include Zone Ownership in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - minimal zone ownership summaries (e.g., safe = order, wilderness = chaos)
+   - no detailed breakdowns
+
+2. Zone ownership summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 4 — grimreach_client: Acknowledge Territory Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - read zone ownership summaries
+   - detect changes in zone control
+   - print simple territory information (e.g., “Wilderness now controlled by Chaos”)
+
+2. Do not render territories.
+3. Do not store territory data beyond printing summary information.
+
+============================================================
+SECTION 5 — grimreach_census: Track Territory Balance
+============================================================
+
+1. When receiving a WorldState message:
+   - read zone ownership summaries
+   - print aggregated territory information (e.g., “Order controls 2 zones, Chaos controls 1”)
+   - optionally print faction presence per zone
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic faction territory rules.
+- Server evaluates zone ownership every tick.
+- WorldState includes minimal zone ownership summaries.
+- grimreach_client prints territory change information.
+- grimreach_census prints territory balance summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic faction territories.
+

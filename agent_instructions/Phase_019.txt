@@ -1,0 +1,123 @@
+TITLE: Grimreach Workspace – Phase 019: Deterministic Faction Assignment + Faction Distribution
+
+INTENT
+Introduce deterministic faction assignment for entities and players.
+This phase adds:
+- a shared Faction enum
+- deterministic faction assignment rules
+- zone-aware faction distribution
+- world updates reflecting faction membership
+- client acknowledgement of faction changes
+- census tracking of faction balance
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic faction tagging and propagation.
+
+============================================================
+SECTION 1 — grimreach_api: Add Shared Faction Enum
+============================================================
+
+1. Create a new file named `faction.dart` inside grimreach_api/lib.
+2. Define a Faction enum with at least three values, such as:
+   - neutral
+   - order
+   - chaos
+
+3. Update the Entity and Player models so that:
+   - each has a `faction` field
+   - the field defaults to Faction.neutral
+   - serialization and deserialization include the faction field
+
+4. No other grimreach_api files require modification.
+
+============================================================
+SECTION 2 — grimreach_server: Deterministic Faction Assignment
+============================================================
+
+1. Update entity creation logic so that:
+   - each entity is assigned a faction deterministically
+   - assignment may be based on:
+     - entity type
+     - zone
+     - round-robin
+     - or any other deterministic rule
+
+2. Update player initialization so that:
+   - each player is assigned a faction deterministically
+   - no player input is involved
+
+3. Faction assignment must:
+   - be static
+   - be deterministic
+   - not involve randomness
+
+============================================================
+SECTION 3 — grimreach_server: Maintain Faction Distribution
+============================================================
+
+1. On each tick:
+   - evaluate faction distribution per zone
+   - ensure distribution remains within deterministic rules
+   - do not rebalance or reassign factions in this phase
+
+2. Faction membership must remain stable unless:
+   - the entity despawns (Phase 012)
+   - the entity respawns (Phase 013)
+
+============================================================
+SECTION 4 — Include Faction Information in WorldState
+============================================================
+
+1. Ensure all entities and players include faction data in every WorldState broadcast.
+2. Ensure no additional structures are added in this phase.
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Faction Distribution
+============================================================
+
+1. When receiving a WorldState message:
+   - count entities per faction
+   - count players per faction
+   - print summary information (e.g., “Order: 12, Chaos: 9, Neutral: 4”)
+
+2. Do not render factions.
+3. Do not store faction data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Faction Balance
+============================================================
+
+1. When receiving a WorldState message:
+   - compute faction distribution per zone
+   - compute global faction distribution
+   - print summaries (e.g., “Wilderness: Chaos majority”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_api contains a shared Faction enum.
+- Entity and Player models include faction fields.
+- grimreach_server assigns factions deterministically.
+- WorldState includes faction information for all entities and players.
+- grimreach_client prints faction distribution summaries.
+- grimreach_census prints faction balance summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic faction assignment.
+

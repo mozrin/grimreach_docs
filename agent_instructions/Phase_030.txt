@@ -1,0 +1,131 @@
+TITLE: Grimreach Workspace – Phase 030: Deterministic World Seasons + Seasonal Global Modifiers
+
+INTENT
+Introduce deterministic seasonal cycles that affect the entire world.
+This phase adds:
+- global seasons
+- deterministic season transitions
+- season-based global modifiers
+- server-side seasonal evaluation
+- world updates reflecting seasonal state
+- client acknowledgement of seasonal changes
+- census tracking of seasonal cycles
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic seasonal propagation.
+
+============================================================
+SECTION 1 — Define Seasonal Rules
+============================================================
+
+1. Introduce a minimal season rule structure that defines:
+   - a global season state
+   - deterministic transitions between seasons
+   - no randomness
+
+2. Seasons may include:
+   - spring
+   - summer
+   - autumn
+   - winter
+
+3. Seasonal rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Seasonal Cycles
+============================================================
+
+1. Integrate seasonal updates into the server tick loop.
+2. On each tick:
+   - update the global season deterministically
+   - apply simple cycle logic (e.g., spring → summer → autumn → winter → spring)
+
+3. Seasonal cycles must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Seasonal Global Modifiers
+============================================================
+
+1. Introduce minimal seasonal modifiers that affect:
+   - spawn rates (e.g., spring increases spawns)
+   - movement speed (e.g., winter slows movement)
+   - influence gain (e.g., summer boosts influence)
+   - pressure (e.g., autumn reduces pressure)
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Seasonal modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Seasonal Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current global season
+   - optional “seasonal modifier active” flags
+
+2. Seasonal summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Seasonal Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - read seasonal summaries
+   - detect season transitions
+   - print simple information (e.g., “Season changed to winter”)
+
+2. Do not render seasons.
+3. Do not store seasonal data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Seasonal Cycles
+============================================================
+
+1. When receiving a WorldState message:
+   - read seasonal summaries
+   - correlate seasons with spawn, movement, influence, pressure, and hazards
+   - print aggregated information (e.g., “Winter reducing global movement speed”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic seasonal rules.
+- Seasons update every tick.
+- Seasonal modifiers affect global systems deterministically.
+- WorldState includes seasonal summaries.
+- grimreach_client prints seasonal change information.
+- grimreach_census prints seasonal cycle summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with season-driven systemic behavior.
+

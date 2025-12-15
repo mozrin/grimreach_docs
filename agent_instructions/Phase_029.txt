@@ -1,0 +1,134 @@
+TITLE: Grimreach Workspace – Phase 029: Deterministic Environmental Hazards + Hazard Cycles
+
+INTENT
+Introduce deterministic environmental hazards that affect zones systemically.
+This phase adds:
+- hazard states (non-damage, non-combat)
+- deterministic hazard cycles
+- zone-level hazard flags
+- server-side hazard evaluation
+- world updates reflecting hazard states
+- client acknowledgement of hazards
+- census tracking of hazard cycles
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic hazard propagation.
+
+============================================================
+SECTION 1 — Define Environmental Hazard Rules
+============================================================
+
+1. Introduce a minimal hazard rule structure that defines:
+   - a hazard state per zone
+   - deterministic hazard transitions
+   - no randomness
+
+2. Hazard states may include:
+   - none
+   - storm_surge
+   - wildfire
+   - toxic_fog
+   - quake
+   (or any simple deterministic set)
+
+3. Hazard rules must:
+   - be static
+   - be deterministic
+   - not involve damage, combat, or AI
+
+============================================================
+SECTION 2 — Implement Hazard Cycles
+============================================================
+
+1. Integrate hazard updates into the server tick loop.
+2. On each tick:
+   - update hazard states per zone deterministically
+   - apply simple cycle logic (e.g., none → hazard → none)
+
+3. Hazard cycles must:
+   - not modify entity or player health
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Hazard Modifiers
+============================================================
+
+1. Introduce minimal hazard modifiers that affect:
+   - spawn rates (e.g., wildfire suppresses spawns)
+   - movement speed (e.g., toxic_fog slows movement)
+   - influence gain (e.g., quake reduces influence)
+   - migration pressure (e.g., storm_surge increases outward flow)
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Hazards must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Hazard Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - hazard state per zone
+   - optional “hazard active” flags
+   - optional modifier flags
+
+2. Hazard summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Hazard States
+============================================================
+
+1. When receiving a WorldState message:
+   - read hazard summaries
+   - detect hazard activation or clearing
+   - print simple information (e.g., “Wilderness under toxic fog”)
+
+2. Do not render hazards.
+3. Do not store hazard data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Hazard Cycles
+============================================================
+
+1. When receiving a WorldState message:
+   - read hazard summaries
+   - correlate hazards with spawn, movement, influence, and migration
+   - print aggregated information (e.g., “Storm surge increasing migration pressure”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic hazard rules.
+- Hazard states update every tick.
+- Hazard modifiers affect spawn, movement, influence, and migration deterministically.
+- WorldState includes hazard summaries.
+- grimreach_client prints hazard information.
+- grimreach_census prints hazard cycle summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with hazard-driven systemic behavior.
+

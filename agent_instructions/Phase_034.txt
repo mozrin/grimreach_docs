@@ -1,0 +1,131 @@
+TITLE: Grimreach Workspace – Phase 034: Deterministic World Mood + Macro-Systemic Drift
+
+INTENT
+Introduce a deterministic “world mood” representing ultra-long-cycle global drift.
+This phase adds:
+- a global mood state
+- deterministic mood transitions
+- mood-based macro modifiers
+- world updates reflecting mood state
+- client acknowledgement of mood shifts
+- census tracking of macro-systemic drift
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic macro-state propagation.
+
+============================================================
+SECTION 1 — Define World Mood Rules
+============================================================
+
+1. Introduce a minimal world mood structure that defines:
+   - a global mood state
+   - deterministic transitions between moods
+   - no randomness
+
+2. Mood states may include:
+   - stable
+   - tense
+   - volatile
+   - dormant
+
+3. Mood rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Mood Drift
+============================================================
+
+1. Integrate mood updates into the server tick loop.
+2. On each tick:
+   - evaluate long-cycle counters
+   - update mood state deterministically
+   - apply simple drift logic (e.g., stable → tense → volatile → dormant → stable)
+
+3. Mood drift must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Mood-Based Macro Modifiers
+============================================================
+
+1. Introduce minimal mood modifiers that affect:
+   - global influence gain (e.g., volatile increases all influence deltas)
+   - global pressure (e.g., tense increases baseline pressure)
+   - environmental intensity (e.g., dormant reduces hazard strength)
+   - migration pressure (e.g., volatile increases outward flow)
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Mood modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Mood Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current world mood
+   - optional “mood modifier active” flags
+
+2. Mood summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Mood Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read mood summaries
+   - detect mood transitions
+   - print simple information (e.g., “World mood shift: volatile”)
+
+2. Do not render mood.
+3. Do not store mood data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Macro-Systemic Drift
+============================================================
+
+1. When receiving a WorldState message:
+   - read mood summaries
+   - correlate mood with harmonics, seasons, lunar phases, constellations, hazards, influence, and pressure
+   - print aggregated information (e.g., “Tense mood increasing global pressure baseline”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic world mood rules.
+- Mood state updates every tick.
+- Mood modifiers affect global systems deterministically.
+- WorldState includes mood summaries.
+- grimreach_client prints mood change information.
+- grimreach_census prints macro-systemic drift summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with mood-driven systemic behavior.
+

@@ -1,0 +1,94 @@
+TITLE: Grimreach Workspace – Phase 010: Introduce Entity Types + Typed Entity Propagation
+
+INTENT
+Extend the entity system by introducing entity types.
+This phase adds:
+- a shared EntityType enum in grimreach_api
+- a type field on each Entity
+- server-side assignment of entity types
+- inclusion of entity type information in every WorldState broadcast
+- client acknowledgement of entity type distribution
+- census tracking of entity type distribution
+
+No movement.  
+No AI.  
+No rendering.  
+Only typed entity presence and propagation.
+
+============================================================
+SECTION 1 — grimreach_api: Add Shared EntityType
+============================================================
+
+1. Create a new file named `entity_type.dart` inside grimreach_api/lib.
+2. Define an EntityType enum with at least three values, such as:
+   - npc
+   - resource
+   - structure
+3. Update the Entity model so that:
+   - it includes a new field named `type`
+   - the field defaults to a valid EntityType value
+   - serialization and deserialization include the type field
+4. No other grimreach_api files require modification.
+
+============================================================
+SECTION 2 — grimreach_server: Assign Types to Entities
+============================================================
+
+1. Update the server’s entity creation logic so that:
+   - each entity is assigned an EntityType
+   - assignment is deterministic and simple (e.g., round-robin across types)
+2. Ensure that:
+   - entities retain their assigned type across ticks
+   - entity type information is included in every WorldState broadcast
+3. Do not introduce:
+   - movement
+   - AI
+   - behavior
+   - spawning logic beyond static placeholder entities
+
+============================================================
+SECTION 3 — grimreach_client: Acknowledge Entity Types
+============================================================
+
+1. When receiving a WorldState message:
+   - extract the list of entities
+   - count how many entities belong to each EntityType
+   - print the distribution
+2. Do not render entities.
+3. Do not store entities beyond printing summary information.
+
+============================================================
+SECTION 4 — grimreach_census: Track Entity Type Distribution
+============================================================
+
+1. When receiving a WorldState message:
+   - extract the list of entities
+   - count how many entities belong to each EntityType
+   - print the distribution
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 5 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce gameplay logic.
+- Do not introduce movement or AI.
+- Do not introduce rendering.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_api contains a shared EntityType enum.
+- Entity includes a type field with serialization support.
+- grimreach_server assigns a type to each entity.
+- grimreach_server includes entity type information in every WorldState broadcast.
+- grimreach_client prints entity type distribution on each update.
+- grimreach_census prints entity type distribution on each update.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or movement is introduced.
+- The entire workspace runs cleanly with typed entity propagation.
+

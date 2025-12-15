@@ -1,0 +1,133 @@
+TITLE: Grimreach Workspace – Phase 025: Deterministic Faction Pressure + Pressure-Driven Spawn Rates
+
+INTENT
+Introduce deterministic faction pressure values that influence spawn behavior.
+This phase adds:
+- faction pressure scores
+- deterministic pressure gain/decay rules
+- pressure effects on spawn rates
+- world updates reflecting pressure levels
+- client acknowledgement of pressure changes
+- census tracking of pressure-population dynamics
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic pressure propagation.
+
+============================================================
+SECTION 1 — Define Faction Pressure Rules
+============================================================
+
+1. Introduce a minimal pressure rule structure that defines:
+   - a pressure score per faction (global or per zone)
+   - deterministic pressure gain (e.g., from morale or influence)
+   - deterministic pressure decay (e.g., fixed decay per tick)
+   - no randomness
+
+2. Pressure rules must:
+   - be simple
+   - be deterministic
+   - not involve combat or diplomacy
+
+3. Pressure values must:
+   - be numeric
+   - be bounded (e.g., 0–100)
+   - be updated every tick
+
+============================================================
+SECTION 2 — Implement Server Pressure Evaluation
+============================================================
+
+1. Integrate pressure evaluation into the server tick loop.
+2. On each tick:
+   - read morale values (Phase 023)
+   - read influence values (Phase 021/024)
+   - apply deterministic pressure gain rules
+   - apply deterministic pressure decay rules
+   - clamp pressure values to valid bounds
+
+3. Pressure evaluation must:
+   - not modify entity or player behavior directly
+   - not trigger territory changes
+   - not introduce randomness
+
+============================================================
+SECTION 3 — Apply Pressure to Spawn Rates
+============================================================
+
+1. Modify spawn rules (Phase 011) so that:
+   - spawn intervals or spawn counts are multiplied by pressure-based modifiers
+   - higher pressure increases spawn rates
+   - lower pressure decreases spawn rates
+   - all modifiers are deterministic
+
+2. Spawn rate adjustments must:
+   - be clamped to prevent runaway spawning
+   - not exceed per-zone or per-type maximums
+   - not introduce new entity types
+
+3. Pressure must influence:
+   - respawn cycles (Phase 013)
+   - but not despawn cycles (Phase 012)
+
+============================================================
+SECTION 4 — Include Pressure Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - pressure values per faction
+   - optional “boosted” or “suppressed” flags
+
+2. Pressure summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Pressure Effects
+============================================================
+
+1. When receiving a WorldState message:
+   - read pressure summaries
+   - detect changes in pressure
+   - print simple information (e.g., “Order pressure rising: 41 → 55”)
+
+2. Do not render pressure.
+3. Do not store pressure data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Pressure-Population Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read pressure summaries
+   - correlate pressure with spawn counts
+   - print aggregated information (e.g., “Chaos pressure surge increasing wilderness spawns”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic pressure rules.
+- Pressure values update every tick.
+- Spawn rates are modified by pressure.
+- WorldState includes pressure summaries.
+- grimreach_client prints pressure change information.
+- grimreach_census prints pressure-population dynamics.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with pressure-driven spawn behavior.
+

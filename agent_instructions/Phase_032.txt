@@ -1,0 +1,130 @@
+TITLE: Grimreach Workspace – Phase 032: Deterministic Constellation Cycles + Astral Modifiers
+
+INTENT
+Introduce deterministic constellation cycles that operate on a slower cadence than lunar cycles.
+This phase adds:
+- global constellation alignments
+- deterministic constellation transitions
+- constellation-based systemic modifiers
+- world updates reflecting constellation state
+- client acknowledgement of constellation changes
+- census tracking of constellation–lunar–seasonal interactions
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic astral propagation.
+
+============================================================
+SECTION 1 — Define Constellation Rules
+============================================================
+
+1. Introduce a minimal constellation rule structure that defines:
+   - a global constellation alignment
+   - deterministic transitions between alignments
+   - no randomness
+
+2. Constellations may include:
+   - the Wanderer
+   - the Crown
+   - the Serpent
+   - the Forge
+
+3. Constellation rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Constellation Cycles
+============================================================
+
+1. Integrate constellation updates into the server tick loop.
+2. On each tick:
+   - update the global constellation alignment deterministically
+   - apply simple cycle logic (e.g., Wanderer → Crown → Serpent → Forge → Wanderer)
+
+3. Constellation cycles must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Constellation Modifiers
+============================================================
+
+1. Introduce minimal constellation modifiers that affect:
+   - influence gain (e.g., Crown boosts Order)
+   - pressure (e.g., Serpent increases Chaos pressure)
+   - environmental intensity (e.g., Forge amplifies hazards)
+   - migration pressure (e.g., Wanderer increases outward flow)
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Constellation modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Constellation Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current constellation alignment
+   - optional “astral modifier active” flags
+
+2. Constellation summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Constellation Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - read constellation summaries
+   - detect constellation transitions
+   - print simple information (e.g., “Constellation shift: The Serpent ascendant”)
+
+2. Do not render constellations.
+3. Do not store constellation data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Astral Interactions
+============================================================
+
+1. When receiving a WorldState message:
+   - read constellation summaries
+   - correlate constellations with lunar phases, seasons, hazards, influence, and pressure
+   - print aggregated information (e.g., “Forge amplifying wildfire hazards”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic constellation rules.
+- Constellation alignment updates every tick.
+- Constellation modifiers affect global systems deterministically.
+- WorldState includes constellation summaries.
+- grimreach_client prints constellation change information.
+- grimreach_census prints astral cycle summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with constellation-driven systemic behavior.
+

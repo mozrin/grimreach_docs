@@ -1,0 +1,114 @@
+TITLE: Grimreach Workspace – Phase 013: Deterministic Entity Respawn Cycle
+
+INTENT
+Extend the entity lifecycle by introducing deterministic respawn rules.
+This phase adds:
+- respawn conditions
+- zone-based population balancing
+- server-side respawn cycle
+- world updates reflecting new spawns
+- client acknowledgement of respawn activity
+- census tracking of population stability
+
+No movement.  
+No AI.  
+No combat.  
+No rendering.  
+Only deterministic respawning and propagation.
+
+============================================================
+SECTION 1 — Define Respawn Rules
+============================================================
+
+1. Introduce a minimal respawn rule structure on the server that defines:
+   - a target population per zone
+   - a target population per entity type
+   - deterministic respawn intervals (e.g., every N ticks)
+   - deterministic selection of which entity types respawn
+
+2. Respawn rules must:
+   - be static
+   - be deterministic
+   - not use randomness
+
+3. Respawn rules must not exceed:
+   - per-zone maximums
+   - per-type maximums
+
+============================================================
+SECTION 2 — Implement Server Respawn Cycle
+============================================================
+
+1. Integrate a respawn evaluation step into the server tick loop.
+2. On each respawn interval:
+   - evaluate current population per zone and per type
+   - identify deficits relative to target population
+   - create new entities to fill deficits
+   - assign each new entity:
+     - a unique id
+     - a zone
+     - a type
+     - a full lifetime (from Phase 012)
+
+3. Ensure:
+   - respawned entities behave exactly like initially spawned entities
+   - respawn does not conflict with despawn logic
+   - respawn does not exceed population caps
+
+============================================================
+SECTION 3 — Include Respawned Entities in WorldState
+============================================================
+
+1. Ensure all respawned entities appear in the next WorldState broadcast.
+2. Ensure entity zone, type, and lifetime information is preserved.
+3. Ensure the entity list reflects:
+   - despawn removals
+   - respawn additions
+
+============================================================
+SECTION 4 — grimreach_client: Acknowledge Respawn Activity
+============================================================
+
+1. When receiving a WorldState message:
+   - detect increases in entity count
+   - detect changes in zone/type distribution
+   - print summary information (e.g., “2 entities respawned in wilderness”)
+
+2. Do not render entities.
+3. Do not store entities beyond what is needed to detect count changes.
+
+============================================================
+SECTION 5 — grimreach_census: Track Population Stability
+============================================================
+
+1. When receiving a WorldState message:
+   - detect respawn events
+   - print respawn counts
+   - print updated zone/type distributions
+   - optionally print whether each zone is above/below target population
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce movement, AI, or combat.
+- Do not introduce rendering.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic respawn rules.
+- Server respawns entities according to those rules.
+- Respawned entities appear in WorldState broadcasts.
+- grimreach_client prints respawn-related summary information.
+- grimreach_census prints respawn counts and population stability.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or movement is introduced.
+- The entire workspace runs cleanly with deterministic respawning.
+

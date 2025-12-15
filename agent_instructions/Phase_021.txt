@@ -1,0 +1,126 @@
+TITLE: Grimreach Workspace – Phase 021: Deterministic Faction Influence + Influence Maps
+
+INTENT
+Introduce deterministic faction influence across zones.
+This phase adds:
+- faction influence values
+- deterministic influence gain/decay rules
+- zone-level influence maps
+- server-side influence evaluation
+- world updates reflecting influence levels
+- client acknowledgement of influence changes
+- census tracking of influence balance
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic influence propagation.
+
+============================================================
+SECTION 1 — Define Faction Influence Rules
+============================================================
+
+1. Introduce a minimal influence rule structure that defines:
+   - an influence score per faction per zone
+   - deterministic influence gain (e.g., based on faction presence)
+   - deterministic influence decay (e.g., fixed decay per tick)
+   - no randomness
+
+2. Influence rules must:
+   - be simple
+   - be deterministic
+   - not involve combat, diplomacy, or AI
+
+3. Influence values must:
+   - be numeric
+   - be bounded (e.g., 0–100)
+   - be updated every tick
+
+============================================================
+SECTION 2 — Implement Server Influence Evaluation
+============================================================
+
+1. Integrate influence evaluation into the server tick loop.
+2. On each tick:
+   - count faction presence in each zone
+   - apply deterministic influence gain rules
+   - apply deterministic influence decay rules
+   - clamp influence values to valid bounds
+
+3. Influence evaluation must:
+   - not modify entity or player behavior
+   - not trigger territory changes (handled in Phase 020)
+   - not introduce diplomacy or interactions
+
+============================================================
+SECTION 3 — Maintain Influence Maps
+============================================================
+
+1. Maintain a simple influence map structure:
+   - zone → { faction → influence_value }
+
+2. Influence maps must:
+   - be updated every tick
+   - be deterministic
+   - not require spatial partitioning or complex data structures
+
+============================================================
+SECTION 4 — Include Influence Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - minimal influence summaries (e.g., influence per faction per zone)
+   - no detailed breakdowns or historical data
+
+2. Influence summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Influence Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - read influence summaries
+   - print simple influence information (e.g., “Order influence in safe zone: 72”)
+   - detect increases or decreases in influence
+
+2. Do not render influence maps.
+3. Do not store influence data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Influence Balance
+============================================================
+
+1. When receiving a WorldState message:
+   - read influence summaries
+   - print aggregated influence information (e.g., “Chaos gaining influence in wilderness”)
+   - optionally print zone-based influence deltas
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic influence rules.
+- Server updates influence values every tick.
+- Influence maps are maintained per zone.
+- WorldState includes minimal influence summaries.
+- grimreach_client prints influence change information.
+- grimreach_census prints influence balance summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic influence propagation.
+

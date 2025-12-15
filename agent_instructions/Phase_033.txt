@@ -1,0 +1,134 @@
+TITLE: Grimreach Workspace – Phase 033: Deterministic Astral Harmonics + Multi-Cycle Interaction Layer
+
+INTENT
+Introduce deterministic astral harmonics, a systemic layer that evaluates the combined
+alignment of seasons, lunar phases, and constellations.
+This phase adds:
+- harmonic states
+- deterministic harmonic evaluation rules
+- harmonic-based global modifiers
+- world updates reflecting harmonic state
+- client acknowledgement of harmonic shifts
+- census tracking of harmonic interactions
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic harmonic propagation.
+
+============================================================
+SECTION 1 — Define Astral Harmonic Rules
+============================================================
+
+1. Introduce a minimal harmonic rule structure that defines:
+   - a global harmonic state
+   - deterministic mapping from:
+       season × lunar_phase × constellation → harmonic_state
+   - no randomness
+
+2. Harmonic states may include:
+   - resonance
+   - discordance
+   - amplification
+   - null_state
+
+3. Harmonic rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Harmonic Evaluation
+============================================================
+
+1. Integrate harmonic evaluation into the server tick loop.
+2. On each tick:
+   - read current season (Phase 030)
+   - read current lunar phase (Phase 031)
+   - read current constellation (Phase 032)
+   - compute harmonic_state deterministically
+
+3. Harmonic evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Harmonic Modifiers
+============================================================
+
+1. Introduce minimal harmonic modifiers that affect:
+   - influence gain (e.g., resonance boosts all factions)
+   - pressure (e.g., discordance increases global pressure)
+   - environmental intensity (e.g., amplification strengthens hazards)
+   - migration pressure (e.g., null_state reduces outward flow)
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Harmonic modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Harmonic Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current harmonic_state
+   - optional “harmonic modifier active” flags
+
+2. Harmonic summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Harmonic Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read harmonic summaries
+   - detect harmonic transitions
+   - print simple information (e.g., “Astral harmonic shift: resonance active”)
+
+2. Do not render harmonics.
+3. Do not store harmonic data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Harmonic Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read harmonic summaries
+   - correlate harmonics with seasons, lunar phases, constellations, hazards, influence, and pressure
+   - print aggregated information (e.g., “Amplification increasing hazard intensity”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic harmonic rules.
+- Harmonic state updates every tick.
+- Harmonic modifiers affect global systems deterministically.
+- WorldState includes harmonic summaries.
+- grimreach_client prints harmonic change information.
+- grimreach_census prints harmonic cycle summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with harmonic-driven systemic behavior.
+

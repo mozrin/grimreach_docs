@@ -1,0 +1,89 @@
+TITLE: Grimreach Workspace – Phase 008: Introduce Shared Entities + Server Entity Population
+
+INTENT
+Extend the Grimreach world model to include basic entities.
+This phase introduces:
+- a minimal shared Entity model (already present in grimreach_api)
+- server-side creation of placeholder entities
+- inclusion of entities in every WorldState broadcast
+- client acknowledgement of entity presence
+- census tracking of entity counts
+
+No gameplay logic.  
+No movement.  
+No rendering.  
+Only entity presence and propagation.
+
+============================================================
+SECTION 1 — grimreach_api (No Changes Required)
+============================================================
+
+1. Confirm that grimreach_api already contains:
+   - Entity model
+   - Player model
+   - WorldState model
+   - Message and MessageCodec
+
+2. No modifications to grimreach_api are required in this phase.
+
+============================================================
+SECTION 2 — grimreach_server: Populate Entities
+============================================================
+
+1. Update the server’s world tick logic so that:
+   - a fixed set of placeholder entities is created or maintained
+   - these entities are included in the WorldState sent to clients
+
+2. Entity requirements:
+   - each entity must have a unique id
+   - no position, behavior, or logic is required
+   - entities may be static and identical across ticks
+
+3. Ensure the server includes the entity list in every WorldState broadcast.
+
+4. Ensure the server logs entity count during development (optional).
+
+============================================================
+SECTION 3 — grimreach_client: Acknowledge Entities
+============================================================
+
+1. When receiving a WorldState message:
+   - extract the list of entities
+   - print the number of entities received
+   - do not render entities
+   - do not store or track entities beyond printing
+
+2. No Flame components should be modified in this phase.
+
+============================================================
+SECTION 4 — grimreach_census: Track Entity Counts
+============================================================
+
+1. When receiving a WorldState message:
+   - extract the list of entities
+   - print the total number of entities
+   - no storage, indexing, or analytics logic is required
+
+2. No additional census models or files should be created.
+
+============================================================
+SECTION 5 — No Other Files Modified
+============================================================
+
+- Do not modify any Flame components.
+- Do not modify any UI files.
+- Do not modify any server systems beyond adding static entities.
+- Do not introduce gameplay logic.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_server includes a list of placeholder entities in every WorldState.
+- grimreach_client prints the number of entities received.
+- grimreach_census prints the number of entities received.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or movement is introduced.
+- The entire workspace runs cleanly with entity propagation.
+

@@ -1,0 +1,93 @@
+TITLE: Grimreach Workspace – Phase 009: Zone-Based Entity Assignment + Propagation
+
+INTENT
+Extend the entity system by assigning each entity to a zone.
+This phase introduces:
+- zone-tagged entities
+- server-side assignment of entity zones
+- inclusion of entity zone information in every WorldState broadcast
+- client acknowledgement of entity zone distribution
+- census tracking of entity zone distribution
+
+No movement.  
+No AI.  
+No rendering.  
+Only zone-tagged entity presence and propagation.
+
+============================================================
+SECTION 1 — grimreach_api: Confirm Zone Compatibility
+============================================================
+
+1. Confirm that grimreach_api already contains:
+   - Zone enum
+   - Entity model
+   - Player model
+   - WorldState model
+
+2. No structural changes are required in grimreach_api for this phase.
+
+3. If the Entity model does not yet contain a zone field:
+   - add a zone field
+   - ensure it serializes and deserializes correctly
+   - default zone should be `Zone.safe`
+
+============================================================
+SECTION 2 — grimreach_server: Assign Zones to Entities
+============================================================
+
+1. Update the server’s entity creation logic so that:
+   - each entity is assigned a zone
+   - zone assignment is deterministic and simple (e.g., alternating safe/wilderness)
+
+2. Ensure that:
+   - entities retain their assigned zone across ticks
+   - entities are included in every WorldState broadcast
+   - entity zone information is serialized and transmitted
+
+3. No movement or behavior should be added to entities.
+
+============================================================
+SECTION 3 — grimreach_client: Acknowledge Entity Zones
+============================================================
+
+1. When receiving a WorldState message:
+   - extract the list of entities
+   - count how many entities belong to each zone
+   - print the counts (e.g., safe vs wilderness)
+
+2. Do not render entities.
+3. Do not store entities beyond printing summary information.
+
+============================================================
+SECTION 4 — grimreach_census: Track Entity Zone Distribution
+============================================================
+
+1. When receiving a WorldState message:
+   - extract the list of entities
+   - count how many entities belong to each zone
+   - print the distribution
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 5 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce gameplay logic.
+- Do not introduce movement or AI.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_server assigns a zone to each entity.
+- grimreach_server includes entity zone information in every WorldState broadcast.
+- grimreach_client prints entity zone distribution on each update.
+- grimreach_census prints entity zone distribution on each update.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or movement is introduced.
+- The entire workspace runs cleanly with zone-tagged entity propagation.
+

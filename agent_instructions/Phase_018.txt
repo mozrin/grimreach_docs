@@ -1,0 +1,132 @@
+TITLE: Grimreach Workspace – Phase 018: Deterministic Entity Grouping + Group Migration
+
+INTENT
+Introduce deterministic grouping behavior for entities.
+This phase adds:
+- entity grouping rules (non-AI, non-behavioral)
+- deterministic group formation based on type and proximity
+- deterministic group migration patterns
+- world updates reflecting group membership
+- client acknowledgement of group changes
+- census tracking of group migration patterns
+
+No AI.  
+No combat.  
+No interactions.  
+No rendering.  
+Only deterministic grouping and propagation.
+
+============================================================
+SECTION 1 — Define Entity Grouping Rules
+============================================================
+
+1. Introduce a minimal grouping rule structure that defines:
+   - which entity types may group together
+   - a proximity threshold for group formation
+   - a minimum group size (e.g., 2)
+   - a maximum group size (optional)
+   - deterministic grouping (no randomness)
+
+2. Grouping rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+3. Group membership must be:
+   - recomputed every tick
+   - based solely on type and proximity
+
+============================================================
+SECTION 2 — Implement Server Group Formation
+============================================================
+
+1. Integrate group formation into the server tick loop.
+2. On each tick:
+   - evaluate proximity between entities of compatible types
+   - form groups according to grouping rules
+   - assign each entity a group identifier (deterministic)
+   - ensure group identifiers are stable within a tick
+
+3. Group formation must:
+   - not modify entity movement
+   - not modify entity behavior
+   - not introduce new entity types or structures
+
+============================================================
+SECTION 3 — Implement Deterministic Group Migration
+============================================================
+
+1. Define a minimal migration rule for groups:
+   - groups move according to a deterministic pattern
+   - movement is applied to the group as a whole
+   - individual entities inherit the group’s movement offset
+
+2. Migration rules must:
+   - be simple (e.g., linear drift, oscillation)
+   - be deterministic
+   - not depend on external factors
+
+3. Migration must not:
+   - introduce AI
+   - introduce physics
+   - introduce interactions
+
+============================================================
+SECTION 4 — Include Group Information in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - minimal group summaries (e.g., group count, group sizes)
+   - no detailed membership lists unless already present
+
+2. Group summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Group Activity
+============================================================
+
+1. When receiving a WorldState message:
+   - read group summaries
+   - print simple group information (e.g., “4 groups detected, largest size 6”)
+   - detect changes in group count or size
+
+2. Do not render groups.
+3. Do not store group data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Group Migration Patterns
+============================================================
+
+1. When receiving a WorldState message:
+   - read group summaries
+   - print aggregated group information (e.g., “2 groups migrated from safe → wilderness”)
+   - optionally print group size distributions
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce interactions or physics.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic grouping rules.
+- Server forms groups every tick based on type and proximity.
+- Server applies deterministic group migration.
+- WorldState includes minimal group summaries.
+- grimreach_client prints group information.
+- grimreach_census prints group migration patterns.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic grouping.
+

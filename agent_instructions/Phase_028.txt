@@ -1,0 +1,135 @@
+TITLE: Grimreach Workspace – Phase 028: Deterministic Environmental Conditions + Zone Environmental Modifiers
+
+INTENT
+Introduce deterministic environmental conditions that affect zones globally.
+This phase adds:
+- environmental states (e.g., calm, storm, drought)
+- deterministic environmental cycles
+- zone-level environmental modifiers
+- server-side evaluation of environmental conditions
+- world updates reflecting environmental states
+- client acknowledgement of environmental changes
+- census tracking of environmental cycles
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic environmental propagation.
+
+============================================================
+SECTION 1 — Define Environmental Condition Rules
+============================================================
+
+1. Introduce a minimal environment rule structure that defines:
+   - a global environmental state
+   - a per-zone environmental state
+   - deterministic transitions between states
+   - no randomness
+
+2. Environmental states may include:
+   - calm
+   - storm
+   - drought
+   - fog
+   - heatwave
+   (or any simple deterministic set)
+
+3. Environmental rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Environmental Cycles
+============================================================
+
+1. Integrate environmental updates into the server tick loop.
+2. On each tick:
+   - update global environmental state deterministically
+   - update zone environmental states deterministically
+   - apply simple cycle logic (e.g., calm → storm → calm)
+
+3. Environmental cycles must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Environmental Modifiers
+============================================================
+
+1. Introduce minimal modifiers that affect:
+   - spawn rates (e.g., storm reduces spawns)
+   - movement speed (e.g., fog slows movement)
+   - influence gain (e.g., drought reduces influence)
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Environmental modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Environmental Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - global environmental state
+   - zone environmental states
+   - optional “modifier active” flags
+
+2. Environmental summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Environmental Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - read environmental summaries
+   - detect changes in global or zone conditions
+   - print simple information (e.g., “Wilderness now in storm state”)
+
+2. Do not render environmental effects.
+3. Do not store environmental data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Environmental Cycles
+============================================================
+
+1. When receiving a WorldState message:
+   - read environmental summaries
+   - correlate environmental states with spawn, movement, and influence
+   - print aggregated information (e.g., “Storm suppressing wilderness spawns for 2 ticks”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic environmental rules.
+- Environmental states update every tick.
+- Environmental modifiers affect spawn, movement, and influence deterministically.
+- WorldState includes environmental summaries.
+- grimreach_client prints environmental change information.
+- grimreach_census prints environmental cycle summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with environment-driven systemic behavior.
+

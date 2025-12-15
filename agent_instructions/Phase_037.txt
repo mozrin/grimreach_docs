@@ -1,0 +1,135 @@
+TITLE: Grimreach Workspace – Phase 037: Deterministic World Entropy + Long-Term Disorder Accumulation
+
+INTENT
+Introduce deterministic “world entropy,” a global disorder force that accumulates over
+time and counterbalances world inertia (Phase 036).
+This phase adds:
+- a global entropy value
+- deterministic entropy accumulation rules
+- entropy-based destabilizing modifiers
+- world updates reflecting entropy state
+- client acknowledgement of entropy drift
+- census tracking of entropy vs. inertia
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic disorder propagation.
+
+============================================================
+SECTION 1 — Define World Entropy Rules
+============================================================
+
+1. Introduce a minimal entropy structure that defines:
+   - a global entropy value
+   - deterministic accumulation rules
+   - deterministic decay rules
+   - no randomness
+
+2. Entropy may:
+   - increase when systems change frequently
+   - decrease when systems remain stable
+
+3. Entropy rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Entropy Evaluation
+============================================================
+
+1. Integrate entropy updates into the server tick loop.
+2. On each tick:
+   - read world mood (Phase 034)
+   - read harmonics (Phase 033)
+   - read world memory (Phase 035)
+   - read world inertia (Phase 036)
+   - detect systemic volatility
+   - apply deterministic entropy gain/decay rules
+   - clamp entropy to valid bounds
+
+3. Entropy evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Entropy-Based Destabilizing Modifiers
+============================================================
+
+1. Introduce minimal entropy modifiers that:
+   - accelerate mood transitions when entropy is high
+   - accelerate harmonic transitions when entropy is high
+   - increase memory accumulation when entropy is high
+   - weaken inertia when entropy is high
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Entropy modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Entropy Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current entropy value
+   - optional “entropy destabilization active” flags
+
+2. Entropy summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Entropy Drift
+============================================================
+
+1. When receiving a WorldState message:
+   - read entropy summaries
+   - detect entropy drift
+   - print simple information (e.g., “World entropy rising: 0.33 → 0.41”)
+
+2. Do not render entropy.
+3. Do not store entropy data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Entropy vs. Inertia
+============================================================
+
+1. When receiving a WorldState message:
+   - read entropy summaries
+   - correlate entropy with inertia, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “High entropy accelerating harmonic transitions”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic entropy rules.
+- Entropy updates every tick.
+- Entropy destabilizes global systems deterministically.
+- WorldState includes entropy summaries.
+- grimreach_client prints entropy change information.
+- grimreach_census prints entropy–inertia summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with entropy-driven systemic behavior.
+

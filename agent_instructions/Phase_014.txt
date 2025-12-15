@@ -1,0 +1,119 @@
+TITLE: Grimreach Workspace – Phase 014: Deterministic Player Movement Simulation + Zone Transitions
+
+INTENT
+Introduce deterministic, server-controlled player movement.
+This phase adds:
+- a minimal movement simulation for players
+- deterministic movement patterns (no randomness)
+- automatic zone transitions based on position
+- world updates reflecting player movement
+- client acknowledgement of movement and zone changes
+- census tracking of player flow between zones
+
+No input.  
+No AI.  
+No combat.  
+No rendering.  
+Only deterministic movement and propagation.
+
+============================================================
+SECTION 1 — Define Server-Side Movement Rules
+============================================================
+
+1. Introduce a minimal movement rule structure that defines:
+   - a fixed movement speed
+   - a deterministic movement pattern (e.g., oscillation, loop, or linear path)
+   - no randomness
+   - no acceleration or physics
+
+2. Movement rules must:
+   - apply equally to all players
+   - be simple and predictable
+   - update every tick
+
+3. Movement must modify:
+   - player x coordinate
+   - player y coordinate (optional)
+
+============================================================
+SECTION 2 — Implement Server Movement Simulation
+============================================================
+
+1. Integrate movement updates into the server tick loop.
+2. On each tick:
+   - update each player’s position according to the movement rules
+   - ensure movement is deterministic and consistent across runs
+
+3. Movement must not:
+   - depend on client input
+   - depend on entity positions
+   - involve collisions or physics
+
+============================================================
+SECTION 3 — Implement Zone Transitions
+============================================================
+
+1. Define simple zone boundaries (e.g., x < 0 = safe, x ≥ 0 = wilderness).
+2. On each tick:
+   - evaluate each player’s position
+   - determine which zone they belong to
+   - update the player’s zone if it has changed
+
+3. Zone transitions must:
+   - be deterministic
+   - be based solely on position
+   - require no additional logic
+
+============================================================
+SECTION 4 — Include Movement + Zone Updates in WorldState
+============================================================
+
+1. Ensure updated player positions and zones are included in every WorldState broadcast.
+2. Ensure no additional fields or structures are added in this phase.
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Movement + Zone Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - detect changes in the local player’s position
+   - detect changes in the local player’s zone
+   - print summary information (e.g., “Player moved to x=12.0”, “Zone changed to wilderness”)
+
+2. Do not render movement.
+3. Do not store full player lists beyond what is needed to detect changes.
+
+============================================================
+SECTION 6 — grimreach_census: Track Player Flow
+============================================================
+
+1. When receiving a WorldState message:
+   - count players in each zone
+   - detect zone transitions since the last update
+   - print summary information (e.g., “2 players moved from safe → wilderness”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce input handling.
+- Do not introduce AI, combat, or rendering.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic movement rules.
+- Server updates player positions every tick.
+- Server updates player zones based on position.
+- grimreach_client prints movement and zone change information.
+- grimreach_census prints player flow information.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic movement and zone transitions.
+

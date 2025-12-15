@@ -1,0 +1,119 @@
+TITLE: Grimreach Workspace – Phase 015: Deterministic Entity Movement Simulation
+
+INTENT
+Introduce deterministic, server-controlled movement for entities.
+This phase adds:
+- minimal movement rules for entities
+- deterministic roaming patterns (no randomness)
+- zone transitions based on position
+- world updates reflecting entity movement
+- client acknowledgement of entity movement
+- census tracking of roaming patterns
+
+No AI.  
+No combat.  
+No rendering.  
+Only deterministic entity movement and propagation.
+
+============================================================
+SECTION 1 — Define Server-Side Entity Movement Rules
+============================================================
+
+1. Introduce a minimal movement rule structure for entities that defines:
+   - a fixed movement speed
+   - a deterministic movement pattern (e.g., oscillation, loop, linear path)
+   - no randomness
+   - no acceleration or physics
+
+2. Movement rules must:
+   - apply equally to all entities
+   - be simple and predictable
+   - update every tick
+
+3. Movement must modify:
+   - entity x coordinate
+   - entity y coordinate (optional)
+
+============================================================
+SECTION 2 — Implement Server Entity Movement Simulation
+============================================================
+
+1. Integrate entity movement updates into the server tick loop.
+2. On each tick:
+   - update each entity’s position according to the movement rules
+   - ensure movement is deterministic and consistent across runs
+
+3. Movement must not:
+   - depend on player positions
+   - depend on other entities
+   - involve collisions or physics
+   - involve AI or decision-making
+
+============================================================
+SECTION 3 — Implement Entity Zone Transitions
+============================================================
+
+1. Use the same zone boundary rules defined in Phase 014.
+2. On each tick:
+   - evaluate each entity’s position
+   - determine which zone it belongs to
+   - update the entity’s zone if it has changed
+
+3. Zone transitions must:
+   - be deterministic
+   - be based solely on position
+   - require no additional logic
+
+============================================================
+SECTION 4 — Include Movement + Zone Updates in WorldState
+============================================================
+
+1. Ensure updated entity positions and zones are included in every WorldState broadcast.
+2. Ensure no additional fields or structures are added in this phase.
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Entity Movement
+============================================================
+
+1. When receiving a WorldState message:
+   - detect changes in entity counts per zone
+   - detect changes in entity type distribution per zone
+   - print summary information (e.g., “3 entities moved into wilderness”)
+
+2. Do not render entities.
+3. Do not store full entity lists beyond what is needed to detect changes.
+
+============================================================
+SECTION 6 — grimreach_census: Track Roaming Patterns
+============================================================
+
+1. When receiving a WorldState message:
+   - detect zone transitions for entities
+   - print roaming summaries (e.g., “5 resources moved from safe → wilderness”)
+   - print updated zone/type distributions
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce interactions or physics.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic entity movement rules.
+- Server updates entity positions every tick.
+- Server updates entity zones based on position.
+- grimreach_client prints entity movement and zone change information.
+- grimreach_census prints roaming summaries and updated distributions.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic entity roaming.
+

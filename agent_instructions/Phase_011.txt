@@ -1,0 +1,105 @@
+TITLE: Grimreach Workspace – Phase 011: Deterministic Entity Spawning Rules
+
+INTENT
+Introduce deterministic, rule-based entity spawning on the server.
+This phase adds:
+- a minimal spawn rule system
+- zone-aware spawn tables
+- server-side periodic spawning
+- inclusion of spawned entities in WorldState
+- client acknowledgement of spawn counts
+- census tracking of spawn density
+
+No movement.  
+No AI.  
+No combat.  
+No rendering.  
+Only deterministic spawning and propagation.
+
+============================================================
+SECTION 1 — Define Server-Side Spawn Rules
+============================================================
+
+1. Create a minimal spawn rule structure on the server that:
+   - defines which EntityTypes may spawn in each Zone
+   - defines a maximum number of entities per zone
+   - defines a spawn interval (e.g., every N ticks)
+
+2. Spawn rules must be:
+   - deterministic
+   - static
+   - simple (e.g., fixed lists or round-robin)
+
+3. No randomness is allowed in this phase.
+
+============================================================
+SECTION 2 — Implement Server Spawn Cycle
+============================================================
+
+1. Integrate a spawn cycle into the server tick loop.
+2. On each spawn interval:
+   - evaluate spawn rules
+   - determine which zones need additional entities
+   - create new entities as needed
+   - assign each new entity:
+     - a unique id
+     - a zone
+     - a type (from Phase 010)
+3. Ensure spawned entities persist across ticks.
+4. Ensure entities do not exceed the per-zone maximum.
+
+============================================================
+SECTION 3 — Include Spawned Entities in WorldState
+============================================================
+
+1. Ensure all spawned entities are included in the WorldState broadcast.
+2. Ensure entity zone and type information is preserved.
+3. Ensure entity lists grow only according to spawn rules.
+
+============================================================
+SECTION 4 — grimreach_client: Acknowledge Spawn Activity
+============================================================
+
+1. When receiving a WorldState message:
+   - count total entities
+   - count entities per zone
+   - count entities per type
+   - print summary information
+
+2. Do not render entities.
+3. Do not store entities beyond printing summary information.
+
+============================================================
+SECTION 5 — grimreach_census: Track Spawn Density
+============================================================
+
+1. When receiving a WorldState message:
+   - count entities per zone
+   - count entities per type
+   - print the distribution
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce movement, AI, or combat.
+- Do not introduce rendering.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic spawn rules.
+- Server spawns entities according to those rules.
+- Spawned entities persist across ticks.
+- grimreach_client prints spawn-related summary information.
+- grimreach_census prints spawn density information.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or movement is introduced.
+- The entire workspace runs cleanly with deterministic spawning.
+

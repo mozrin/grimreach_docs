@@ -1,0 +1,134 @@
+TITLE: Grimreach Workspace – Phase 036: Deterministic World Inertia + Systemic Resistance Layer
+
+INTENT
+Introduce deterministic “world inertia,” a global stabilizing force that resists rapid
+changes in mood, harmonics, memory, and other long-cycle systems.
+This phase adds:
+- a global inertia value
+- deterministic inertia update rules
+- inertia-based dampening modifiers
+- world updates reflecting inertia state
+- client acknowledgement of inertia shifts
+- census tracking of inertia vs. volatility
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic resistance propagation.
+
+============================================================
+SECTION 1 — Define World Inertia Rules
+============================================================
+
+1. Introduce a minimal inertia structure that defines:
+   - a global inertia value
+   - deterministic accumulation rules
+   - deterministic decay rules
+   - no randomness
+
+2. Inertia may:
+   - increase when systems remain stable
+   - decrease when systems shift frequently
+
+3. Inertia rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Inertia Evaluation
+============================================================
+
+1. Integrate inertia updates into the server tick loop.
+2. On each tick:
+   - read world mood (Phase 034)
+   - read harmonics (Phase 033)
+   - read world memory (Phase 035)
+   - detect recent systemic changes
+   - apply deterministic inertia gain/decay rules
+   - clamp inertia to valid bounds
+
+3. Inertia evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Inertia-Based Dampening
+============================================================
+
+1. Introduce minimal inertia modifiers that:
+   - slow mood transitions when inertia is high
+   - slow harmonic transitions when inertia is high
+   - reduce memory accumulation when inertia is high
+   - accelerate decay of volatility when inertia is high
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Inertia modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Inertia Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current inertia value
+   - optional “inertia dampening active” flags
+
+2. Inertia summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Inertia Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read inertia summaries
+   - detect inertia drift
+   - print simple information (e.g., “World inertia rising: 0.61 → 0.67”)
+
+2. Do not render inertia.
+3. Do not store inertia data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Inertia vs. Volatility
+============================================================
+
+1. When receiving a WorldState message:
+   - read inertia summaries
+   - correlate inertia with mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “High inertia suppressing harmonic volatility”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic inertia rules.
+- Inertia updates every tick.
+- Inertia dampens global systemic volatility deterministically.
+- WorldState includes inertia summaries.
+- grimreach_client prints inertia change information.
+- grimreach_census prints inertia–volatility summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with inertia-driven systemic stability.
+

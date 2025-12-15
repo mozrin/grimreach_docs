@@ -1,0 +1,107 @@
+TITLE: Grimreach Workspace – Phase 016: Deterministic Player–Entity Proximity Detection
+
+INTENT
+Introduce deterministic proximity detection between players and entities.
+This phase adds:
+- server-side proximity evaluation
+- distance thresholds
+- zone-aware proximity summaries
+- client acknowledgement of proximity events
+- census tracking of proximity patterns
+
+No AI.  
+No combat.  
+No interactions.  
+No rendering.  
+Only deterministic proximity detection and propagation.
+
+============================================================
+SECTION 1 — Define Proximity Rules
+============================================================
+
+1. Introduce a minimal proximity rule structure that defines:
+   - a fixed proximity radius (e.g., distance threshold)
+   - deterministic distance evaluation (no randomness)
+   - no physics or collision logic
+
+2. Proximity rules must:
+   - apply equally to all players and entities
+   - be simple and predictable
+   - evaluate every tick
+
+3. Distance must be computed using:
+   - a simple metric (e.g., Euclidean or Manhattan)
+   - no optimization or spatial partitioning
+
+============================================================
+SECTION 2 — Implement Server Proximity Evaluation
+============================================================
+
+1. Integrate proximity evaluation into the server tick loop.
+2. On each tick:
+   - compute distance between each player and each entity
+   - determine whether the distance is within the proximity radius
+   - record proximity results for the current tick
+
+3. Proximity evaluation must:
+   - be deterministic
+   - not modify player or entity behavior
+   - not trigger any gameplay effects
+
+============================================================
+SECTION 3 — Include Proximity Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - a minimal proximity summary (e.g., counts or boolean flags)
+   - no detailed lists or per-entity breakdowns
+
+2. Proximity summaries must:
+   - not introduce new complex structures
+   - remain lightweight and easy to serialize
+
+============================================================
+SECTION 4 — grimreach_client: Acknowledge Proximity Events
+============================================================
+
+1. When receiving a WorldState message:
+   - read the proximity summary
+   - print simple proximity information (e.g., “Player near 2 entities”)
+
+2. Do not render proximity.
+3. Do not store proximity data beyond printing summary information.
+
+============================================================
+SECTION 5 — grimreach_census: Track Proximity Patterns
+============================================================
+
+1. When receiving a WorldState message:
+   - read the proximity summary
+   - print aggregated proximity information (e.g., “Total proximities this tick: 7”)
+   - optionally print zone-based proximity counts
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce interactions or physics.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic proximity rules.
+- Server evaluates player–entity proximity every tick.
+- WorldState includes minimal proximity summaries.
+- grimreach_client prints proximity information.
+- grimreach_census prints aggregated proximity patterns.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic proximity detection.
+

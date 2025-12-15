@@ -1,0 +1,136 @@
+TITLE: Grimreach Workspace – Phase 040: Deterministic World Cadence + Global Temporal Rhythm
+
+INTENT
+Introduce deterministic “world cadence,” a global timing rhythm that modulates the tempo
+of all long-cycle systems (mood, harmonics, memory, inertia, entropy, equilibrium,
+resonance). Cadence does not change system values directly; it changes how quickly they
+update.
+
+This phase adds:
+- a global cadence value
+- deterministic cadence transitions
+- cadence-based tempo modifiers
+- world updates reflecting cadence state
+- client acknowledgement of cadence shifts
+- census tracking of cadence–resonance interactions
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic temporal propagation.
+
+============================================================
+SECTION 1 — Define World Cadence Rules
+============================================================
+
+1. Introduce a minimal cadence structure that defines:
+   - a global cadence value or state
+   - deterministic transitions between cadence states
+   - no randomness
+
+2. Cadence states may include:
+   - slow
+   - steady
+   - quick
+   - surge
+
+3. Cadence rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Cadence Evaluation
+============================================================
+
+1. Integrate cadence updates into the server tick loop.
+2. On each tick:
+   - evaluate long-cycle conditions (mood, harmonics, resonance, etc.)
+   - update cadence state deterministically
+   - apply simple cycle logic (e.g., slow → steady → quick → surge → slow)
+
+3. Cadence evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Cadence-Based Tempo Modifiers
+============================================================
+
+1. Introduce minimal cadence modifiers that:
+   - slow or accelerate mood transitions
+   - slow or accelerate harmonic transitions
+   - slow or accelerate memory accumulation
+   - slow or accelerate inertia and entropy drift
+   - slow or accelerate resonance formation or decay
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Cadence modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Cadence Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current cadence state or value
+   - optional “tempo up” or “tempo down” flags
+
+2. Cadence summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Cadence Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read cadence summaries
+   - detect cadence transitions
+   - print simple information (e.g., “World cadence rising: steady → quick”)
+
+2. Do not render cadence.
+3. Do not store cadence data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Cadence–Resonance Interactions
+============================================================
+
+1. When receiving a WorldState message:
+   - read cadence summaries
+   - correlate cadence with resonance, equilibrium, inertia, entropy, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Quick cadence accelerating resonance buildup”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic cadence rules.
+- Cadence updates every tick.
+- Cadence modulates global system tempo deterministically.
+- WorldState includes cadence summaries.
+- grimreach_client prints cadence change information.
+- grimreach_census prints cadence–resonance summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with cadence-driven systemic timing behavior.
+

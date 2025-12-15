@@ -1,0 +1,105 @@
+TITLE: Grimreach Workspace – Phase 007 Supplemental: Deterministic .gitignore Audit + Cache Cleanup
+
+INTENT
+Ensure all Grimreach projects have correct .gitignore rules and that no ephemeral files
+(logs, temp files, build artifacts, generated content) are currently tracked in Git.
+This phase adds:
+- a workspace-wide .gitignore audit
+- deterministic ignore rules
+- detection and removal of already-tracked ephemeral files
+- verification of a clean repository state
+
+No code changes beyond .gitignore files.
+No logic changes.
+No new systems.
+
+============================================================
+SECTION 1 — Audit All .gitignore Files
+============================================================
+
+1. Review .gitignore files for:
+   - grimreach_api
+   - grimreach_server
+   - grimreach_client
+   - grimreach_census
+   - any shared workspace folders
+
+2. Identify missing ignore patterns for:
+   - logs
+   - temp files
+   - build artifacts
+   - generated files
+   - IDE metadata
+   - OS metadata
+   - Dart/Flutter build output
+
+============================================================
+SECTION 2 — Apply Deterministic Ignore Rules
+============================================================
+
+1. Add ignore patterns for:
+   - /build/
+   - /dist/
+   - /out/
+   - /logs/
+   - *.log
+   - *.tmp
+   - *.cache
+   - .DS_Store
+   - .idea/
+   - .vscode/
+   - generated/
+   - coverage/
+   - .dart_tool/
+   - pubspec.lock (for libraries only)
+
+2. Ensure no project tracks:
+   - runtime output
+   - generated assets
+   - temporary caches
+   - local development artifacts
+
+============================================================
+SECTION 3 — Detect Already-Tracked Ephemeral Files
+============================================================
+
+1. After updating .gitignore files:
+   - scan the repository for files that match new ignore patterns
+   - identify any such files currently tracked by Git
+
+2. Mark these files for removal from Git’s index (tracking cache) without deleting them from disk.
+
+============================================================
+SECTION 4 — Remove Ephemeral Files from Git Tracking Cache
+============================================================
+
+1. Remove all identified ephemeral files from Git’s index.
+2. Ensure the working directory retains the files (no deletion).
+3. Verify that Git now ignores these files going forward.
+
+============================================================
+SECTION 5 — Verify Clean Git State
+============================================================
+
+1. Confirm no ignored files remain staged or committed.
+2. Remove any previously committed ephemeral files from history if necessary.
+3. Ensure all repositories are clean and stable.
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not modify source code.
+- Do not modify logic.
+- Do not modify configuration beyond .gitignore and Git index cleanup.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- All .gitignore files contain deterministic ignore rules.
+- No project tracks logs, temp files, build artifacts, or generated artifacts.
+- All previously tracked ephemeral files are removed from Git’s index.
+- All repositories are clean and stable.
+- Workspace is ready for long-term deterministic development.
+

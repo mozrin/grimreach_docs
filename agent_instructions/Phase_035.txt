@@ -1,0 +1,135 @@
+TITLE: Grimreach Workspace – Phase 035: Deterministic World Memory + Historical Drift Accumulator
+
+INTENT
+Introduce a deterministic “world memory” that accumulates long-term historical patterns.
+This phase adds:
+- a global memory accumulator
+- deterministic memory update rules
+- memory-based systemic modifiers
+- world updates reflecting memory state
+- client acknowledgement of memory drift
+- census tracking of long-term historical trends
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic historical propagation.
+
+============================================================
+SECTION 1 — Define World Memory Rules
+============================================================
+
+1. Introduce a minimal world memory structure that defines:
+   - a global memory value or vector
+   - deterministic accumulation rules
+   - deterministic decay rules
+   - no randomness
+
+2. Memory may track:
+   - long-term faction dominance
+   - long-term environmental intensity
+   - long-term harmonic patterns
+   - long-term migration pressure
+
+3. Memory rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Memory Accumulation
+============================================================
+
+1. Integrate memory updates into the server tick loop.
+2. On each tick:
+   - read global mood (Phase 034)
+   - read harmonics (Phase 033)
+   - read seasons, lunar phases, constellations (Phases 030–032)
+   - apply deterministic accumulation rules
+   - apply deterministic decay rules
+   - clamp memory values to valid bounds
+
+3. Memory accumulation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Memory-Based Modifiers
+============================================================
+
+1. Introduce minimal memory modifiers that affect:
+   - global influence gain (e.g., high memory amplifies influence)
+   - global pressure (e.g., low memory increases baseline pressure)
+   - environmental intensity (e.g., memory reinforces hazard cycles)
+   - migration pressure (e.g., memory biases flow direction)
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Memory modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Memory Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current world memory value(s)
+   - optional “memory modifier active” flags
+
+2. Memory summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Memory Drift
+============================================================
+
+1. When receiving a WorldState message:
+   - read memory summaries
+   - detect memory drift
+   - print simple information (e.g., “World memory rising: 0.42 → 0.47”)
+
+2. Do not render memory.
+3. Do not store memory data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Historical Drift
+============================================================
+
+1. When receiving a WorldState message:
+   - read memory summaries
+   - correlate memory with mood, harmonics, seasons, lunar phases, constellations, hazards, influence, and pressure
+   - print aggregated information (e.g., “Long-term memory reinforcing harmonic resonance”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic world memory rules.
+- Memory accumulates and decays every tick.
+- Memory modifiers affect global systems deterministically.
+- WorldState includes memory summaries.
+- grimreach_client prints memory drift information.
+- grimreach_census prints historical drift summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with memory-driven systemic behavior.
+

@@ -1,0 +1,125 @@
+TITLE: Grimreach Workspace – Phase 023: Deterministic Faction Morale + Morale Trends
+
+INTENT
+Introduce deterministic morale values for each faction.
+This phase adds:
+- faction morale scores
+- deterministic morale gain/decay rules
+- morale reactions to territory and influence
+- world updates reflecting morale levels
+- client acknowledgement of morale changes
+- census tracking of morale trends
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic morale propagation.
+
+============================================================
+SECTION 1 — Define Faction Morale Rules
+============================================================
+
+1. Introduce a minimal morale rule structure that defines:
+   - a morale score per faction (global, not per zone)
+   - deterministic morale gain (e.g., from territory control)
+   - deterministic morale decay (e.g., fixed decay per tick)
+   - no randomness
+
+2. Morale rules must:
+   - be simple
+   - be deterministic
+   - not involve combat or diplomacy
+
+3. Morale values must:
+   - be numeric
+   - be bounded (e.g., 0–100)
+   - be updated every tick
+
+============================================================
+SECTION 2 — Implement Server Morale Evaluation
+============================================================
+
+1. Integrate morale evaluation into the server tick loop.
+2. On each tick:
+   - read current territory ownership (Phase 020)
+   - read current influence values (Phase 021)
+   - apply deterministic morale gain rules
+   - apply deterministic morale decay rules
+   - clamp morale values to valid bounds
+
+3. Morale evaluation must:
+   - not modify entity or player behavior
+   - not trigger territory changes (handled in Phase 022)
+   - not introduce diplomacy or interactions
+
+============================================================
+SECTION 3 — Maintain Morale State
+============================================================
+
+1. Maintain a simple morale structure:
+   - faction → morale_value
+
+2. Morale must:
+   - be updated every tick
+   - be deterministic
+   - not require historical tracking beyond the current value
+
+============================================================
+SECTION 4 — Include Morale Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - morale values per faction
+   - optional “trend” flags (e.g., rising/falling)
+
+2. Morale summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Morale Changes
+============================================================
+
+1. When receiving a WorldState message:
+   - read morale summaries
+   - print simple morale information (e.g., “Order morale rising: 68 → 72”)
+   - detect increases or decreases
+
+2. Do not render morale.
+3. Do not store morale data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Morale Trends
+============================================================
+
+1. When receiving a WorldState message:
+   - read morale summaries
+   - print aggregated morale information (e.g., “Chaos morale declining for 3 ticks”)
+   - optionally print correlations with territory or influence
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic morale rules.
+- Server updates morale values every tick.
+- WorldState includes morale summaries.
+- grimreach_client prints morale change information.
+- grimreach_census prints morale trend summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic morale propagation.
+

@@ -1,0 +1,123 @@
+TITLE: Grimreach Workspace – Phase 017: Deterministic Entity–Entity Proximity + Clustering
+
+INTENT
+Extend proximity detection to include entity–entity relationships.
+This phase adds:
+- deterministic entity–entity proximity evaluation
+- cluster detection based on distance thresholds
+- zone-aware cluster summaries
+- client acknowledgement of cluster changes
+- census tracking of cluster density
+
+No AI.  
+No combat.  
+No interactions.  
+No rendering.  
+Only deterministic clustering and propagation.
+
+============================================================
+SECTION 1 — Define Entity–Entity Proximity Rules
+============================================================
+
+1. Introduce a minimal proximity rule structure for entities that defines:
+   - a fixed proximity radius (may reuse the radius from Phase 016)
+   - deterministic distance evaluation (no randomness)
+   - no physics or collision logic
+
+2. Proximity rules must:
+   - apply equally to all entities
+   - be simple and predictable
+   - evaluate every tick
+
+3. Distance must be computed using:
+   - a simple metric (e.g., Euclidean or Manhattan)
+   - no optimization or spatial partitioning
+
+============================================================
+SECTION 2 — Implement Server Entity–Entity Proximity Evaluation
+============================================================
+
+1. Integrate entity–entity proximity evaluation into the server tick loop.
+2. On each tick:
+   - compute distance between each pair of entities
+   - determine whether the distance is within the proximity radius
+   - record proximity relationships for the current tick
+
+3. Proximity evaluation must:
+   - be deterministic
+   - not modify entity behavior
+   - not trigger any gameplay effects
+
+============================================================
+SECTION 3 — Implement Cluster Detection
+============================================================
+
+1. Define a “cluster” as:
+   - a group of two or more entities within proximity radius of each other
+
+2. On each tick:
+   - identify clusters
+   - count cluster sizes
+   - group clusters by zone
+
+3. Clustering must:
+   - be deterministic
+   - not introduce new data structures beyond simple summaries
+
+============================================================
+SECTION 4 — Include Cluster Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - minimal cluster summaries (e.g., number of clusters per zone, largest cluster size)
+   - no detailed lists of cluster members
+
+2. Cluster summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Cluster Activity
+============================================================
+
+1. When receiving a WorldState message:
+   - read the cluster summary
+   - print simple cluster information (e.g., “3 clusters detected in wilderness”)
+
+2. Do not render clusters.
+3. Do not store cluster data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Cluster Density
+============================================================
+
+1. When receiving a WorldState message:
+   - read the cluster summary
+   - print aggregated cluster information (e.g., “Largest cluster: 5 entities”)
+   - optionally print zone-based cluster counts
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce interactions or physics.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic entity–entity proximity rules.
+- Server identifies clusters every tick.
+- WorldState includes minimal cluster summaries.
+- grimreach_client prints cluster information.
+- grimreach_census prints cluster density and distribution.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with deterministic clustering.
+

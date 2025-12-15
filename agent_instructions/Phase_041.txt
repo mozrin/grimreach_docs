@@ -1,0 +1,138 @@
+TITLE: Grimreach Workspace – Phase 041: Deterministic World Drift Vectors + Multi-Axis Global Bias
+
+INTENT
+Introduce deterministic “world drift vectors,” a multi-axis directional bias derived from
+all long-cycle systems. Drift vectors do not move entities; they describe the world’s
+systemic directional lean.
+
+This phase adds:
+- global drift vectors
+- deterministic drift computation rules
+- drift-based systemic bias modifiers
+- world updates reflecting drift direction
+- client acknowledgement of drift shifts
+- census tracking of drift–cadence interactions
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic directional propagation.
+
+============================================================
+SECTION 1 — Define World Drift Vector Rules
+============================================================
+
+1. Introduce a minimal drift structure that defines:
+   - a global drift vector (e.g., {stability, volatility, growth, decay})
+   - deterministic computation rules
+   - no randomness
+
+2. Drift vectors are influenced by:
+   - mood (Phase 034)
+   - harmonics (Phase 033)
+   - memory (Phase 035)
+   - inertia (Phase 036)
+   - entropy (Phase 037)
+   - equilibrium (Phase 038)
+   - resonance (Phase 039)
+   - cadence (Phase 040)
+
+3. Drift rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Drift Vector Evaluation
+============================================================
+
+1. Integrate drift updates into the server tick loop.
+2. On each tick:
+   - read all global cycle states
+   - compute drift vector components deterministically
+   - normalize or clamp vector values to valid bounds
+
+3. Drift evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Drift-Based Systemic Bias Modifiers
+============================================================
+
+1. Introduce minimal drift modifiers that:
+   - bias influence gain toward stability or volatility
+   - bias pressure toward growth or decay
+   - bias environmental intensity toward amplification or suppression
+   - bias migration pressure toward inward or outward flow
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Drift modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Drift Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current drift vector
+   - optional “drift direction” flags (e.g., leaning_stable, leaning_volatile)
+
+2. Drift summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Drift Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read drift summaries
+   - detect drift direction changes
+   - print simple information (e.g., “World drift shifting toward volatility”)
+
+2. Do not render drift.
+3. Do not store drift data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Drift–Cadence Interactions
+============================================================
+
+1. When receiving a WorldState message:
+   - read drift summaries
+   - correlate drift with cadence, resonance, equilibrium, inertia, entropy, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Drift toward growth aligning with quick cadence”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic drift vector rules.
+- Drift vectors update every tick.
+- Drift vectors bias global systems deterministically.
+- WorldState includes drift summaries.
+- grimreach_client prints drift change information.
+- grimreach_census prints drift–cadence summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with drift-driven systemic directional behavior.
+

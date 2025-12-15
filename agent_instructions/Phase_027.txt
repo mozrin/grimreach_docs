@@ -1,0 +1,150 @@
+TITLE: Grimreach Workspace – Phase 027: Deterministic Migration Pressure + Zone Flow Modeling
+
+INTENT
+Introduce deterministic migration pressure that influences zone-to-zone movement.
+This phase adds:
+- migration pressure values
+- deterministic migration flow rules
+- zone-level migration forces
+- server-side evaluation of migration pressure
+- world updates reflecting migration flow
+- client acknowledgement of migration waves
+- census tracking of migration dynamics
+
+No AI.  
+No combat.  
+No diplomacy.  
+No rendering.  
+Only deterministic migration propagation.
+
+============================================================
+SECTION 1 — Define Migration Pressure Rules
+============================================================
+
+1. Introduce a minimal migration pressure structure that defines:
+   - a migration pressure score per zone
+   - deterministic pressure gain (e.g., from overcrowding or faction pressure)
+   - deterministic pressure decay (e.g., fixed decay per tick)
+   - no randomness
+
+2. Migration pressure rules must:
+   - be simple
+   - be deterministic
+   - not involve AI or decision-making
+
+3. Migration pressure values must:
+   - be numeric
+   - be bounded (e.g., 0–100)
+   - be updated every tick
+
+============================================================
+SECTION 2 — Implement Server Migration Pressure Evaluation
+============================================================
+
+1. Integrate migration pressure evaluation into the server tick loop.
+2. On each tick:
+   - read saturation states (Phase 026)
+   - read faction pressure (Phase 025)
+   - apply deterministic migration pressure gain rules
+   - apply deterministic migration pressure decay rules
+   - clamp values to valid bounds
+
+3. Migration pressure evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Define Zone Flow Rules
+============================================================
+
+1. Introduce a minimal flow rule structure that defines:
+   - which zones flow into which other zones
+   - deterministic flow direction (e.g., safe → wilderness → frontier)
+   - deterministic flow strength based on migration pressure
+
+2. Flow rules must:
+   - be static
+   - be deterministic
+   - not involve pathfinding or AI
+
+============================================================
+SECTION 4 — Apply Migration Pressure to Movement
+============================================================
+
+1. Modify movement rules (Phase 014/015) so that:
+   - migration pressure influences zone transitions
+   - high-pressure zones push entities/players outward
+   - low-pressure zones pull entities/players inward
+   - movement remains deterministic
+
+2. Migration adjustments must:
+   - be clamped
+   - not override movement patterns entirely
+   - not introduce randomness
+
+3. Migration must:
+   - not introduce new movement types
+   - not introduce physics or collisions
+
+============================================================
+SECTION 5 — Include Migration Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - migration pressure per zone
+   - optional “migration wave” flags (boolean)
+   - no detailed movement logs
+
+2. Migration summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 6 — grimreach_client: Acknowledge Migration Waves
+============================================================
+
+1. When receiving a WorldState message:
+   - read migration summaries
+   - detect migration waves
+   - print simple information (e.g., “Migration wave from wilderness → frontier”)
+
+2. Do not render migration.
+3. Do not store migration data beyond printing summary information.
+
+============================================================
+SECTION 7 — grimreach_census: Track Migration Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read migration summaries
+   - correlate migration with saturation and pressure
+   - print aggregated information (e.g., “Safe zone pushing entities outward for 3 ticks”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 8 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic migration pressure rules.
+- Migration pressure updates every tick.
+- Zone flow rules determine deterministic migration direction.
+- Movement is modified by migration pressure.
+- WorldState includes migration summaries.
+- grimreach_client prints migration wave information.
+- grimreach_census prints migration dynamics.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with migration-driven movement.
+

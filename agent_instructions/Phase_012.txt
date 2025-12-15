@@ -1,0 +1,105 @@
+TITLE: Grimreach Workspace – Phase 012: Deterministic Entity Despawn Rules
+
+INTENT
+Extend the entity lifecycle by introducing deterministic despawn rules.
+This phase adds:
+- entity lifetimes
+- deterministic despawn conditions
+- server-side cleanup of expired entities
+- world updates reflecting entity removal
+- client acknowledgement of despawn events
+- census tracking of despawn counts
+
+No movement.  
+No AI.  
+No combat.  
+No rendering.  
+Only deterministic despawning and propagation.
+
+============================================================
+SECTION 1 — Define Server-Side Despawn Rules
+============================================================
+
+1. Introduce a minimal despawn rule structure on the server that defines:
+   - a fixed lifetime for each entity (e.g., number of ticks)
+   - a deterministic expiration condition
+   - no randomness
+
+2. Entity lifetime must:
+   - be tracked per entity
+   - decrement each tick
+   - trigger removal when it reaches zero
+
+3. No partial lifetimes, cooldowns, or complex logic.
+
+============================================================
+SECTION 2 — Implement Server Despawn Cycle
+============================================================
+
+1. Integrate despawn evaluation into the server tick loop.
+2. On each tick:
+   - update the lifetime of each entity
+   - identify entities whose lifetime has expired
+   - remove expired entities from the server’s entity list
+
+3. Ensure:
+   - despawning is deterministic
+   - despawned entities never reappear
+   - entity ids are never reused in this phase
+
+============================================================
+SECTION 3 — Include Despawn Events in WorldState
+============================================================
+
+1. Ensure the WorldState broadcast reflects:
+   - only currently active entities
+   - no references to despawned entities
+
+2. No explicit “despawn message” is required; removal from the list is sufficient.
+
+============================================================
+SECTION 4 — grimreach_client: Acknowledge Despawn Activity
+============================================================
+
+1. When receiving a WorldState message:
+   - compare the current entity count to the previous tick
+   - detect when entities disappear
+   - print a summary of despawn activity (e.g., “3 entities despawned”)
+
+2. Do not store full entity lists beyond what is needed to detect count changes.
+3. Do not render entities.
+
+============================================================
+SECTION 5 — grimreach_census: Track Despawn Counts
+============================================================
+
+1. When receiving a WorldState message:
+   - detect how many entities were removed since the last update
+   - print the despawn count
+   - print updated zone/type distributions
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce movement, AI, or combat.
+- Do not introduce rendering.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic despawn rules.
+- Server removes expired entities according to those rules.
+- WorldState broadcasts reflect only active entities.
+- grimreach_client prints despawn-related summary information.
+- grimreach_census prints despawn counts and updated distributions.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or movement is introduced.
+- The entire workspace runs cleanly with deterministic despawning.
+
