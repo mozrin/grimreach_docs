@@ -1,0 +1,176 @@
+TITLE: Grimreach Workspace – Phase 061: Region Flow Visualization
+
+INTENT
+Add a visual layer that shows how semantic regions influence each other across the
+world-space grid. This is NOT simulation, NOT physics, and NOT gameplay. It is a
+visual interpretation of existing region relationships defined in earlier phases.
+
+This phase adds:
+- region flow visualization
+- region influence arrows/gradients
+- region boundary flow hints
+- region-to-region interaction overlays
+- census summaries of region flow
+- README update for Phase_061
+
+No animation.
+No smoothing.
+No interpolation.
+No physics.
+No gameplay.
+
+============================================================
+SECTION 1 — Region Flow Definition
+============================================================
+
+Region flow is a visual-only representation of how regions relate to each other.
+
+Examples:
+- stability region → harmony region (gentle outward flow)
+- drift region → structural region (directional flow)
+- resonance region → harmony region (cyclic flow)
+- celestial region → all regions (broad influence)
+
+Rules:
+1. Flow is derived from region type only.
+2. Flow does NOT depend on gameplay, entities, or physics.
+3. Flow is static per frame.
+4. Flow updates only when region identity changes.
+
+============================================================
+SECTION 2 — Flow Visualization Types
+============================================================
+
+Introduce three visual forms:
+
+1. **Boundary Flow Arrows**  
+   - small arrows along region borders  
+   - direction shows influence direction  
+   - magnitude shows influence strength (low/medium/high)
+
+2. **Region Gradient Hints**  
+   - subtle shading inside region interiors  
+   - indicates inward/outward influence
+
+3. **Region Interaction Lines**  
+   - thin lines connecting adjacent regions  
+   - shows region-to-region relationships
+
+All forms must:
+- be discrete  
+- use fixed direction buckets  
+- never animate  
+- never blend smoothly  
+
+============================================================
+SECTION 3 — Flow Sampling Rules
+============================================================
+
+1. Flow is computed per region, not per cell.
+2. Adjacent regions determine flow direction.
+3. Region type determines flow magnitude.
+4. No interpolation between regions.
+5. No smoothing across boundaries.
+
+============================================================
+SECTION 4 — Rendering Rules
+============================================================
+
+Region flow overlays must:
+- appear above scalar fields (059)
+- appear above vector fields (059)
+- appear below volumetric fields (058)
+- never obscure structural markers
+- remain readable at all times
+
+Depth order update:
+
+1. Base Tint  
+2. Scalar Fields  
+3. Vector Fields  
+4. Region Flow Visualization (new)  
+5. Volumetric Fields  
+6. Structural Markers  
+
+============================================================
+SECTION 5 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Compute region flow from region identities.
+2. Render boundary arrows, gradients, and interaction lines.
+3. Respect depth ordering.
+4. Ensure flow overlays do not obscure essential markers.
+5. Print debug output:
+   - “Region flow: stability → harmony”
+   - “Boundary flow: drift → structural (medium)”
+   - “Region interaction lines updated: 12 pairs”
+
+The client must NOT:
+- animate flow
+- interpolate flow
+- simulate flow
+- introduce smoothing
+
+============================================================
+SECTION 6 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- remain unaware of region flow
+- continue producing region identity only
+- not compute or send flow data
+
+============================================================
+SECTION 7 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe region flow patterns
+- correlate flow with world dynamics
+- print summaries (e.g., “Harmony region receiving strong drift influence”)
+
+The census must NOT:
+- render flow
+- simulate flow
+- store long-term analytics
+
+============================================================
+SECTION 8 — Documentation Update Requirements
+============================================================
+
+The agent must update:
+
+**grimreach_docs/README.md**
+
+Specifically:
+1. Replace the placeholder entry for Phase_061 with:  
+   `| 061 | Region Flow Visualization |`
+2. Ensure the Phase Map reflects this finalized title.
+3. Ensure Phase_061 is no longer marked as “future” or “TBD.”
+
+No other README entries should be modified.
+
+============================================================
+SECTION 9 — No Other Files Modified
+============================================================
+
+- No gameplay systems added.
+- No physics systems added.
+- No animation systems added.
+- Only add region flow visualization to grimreach_client.
+- Only update README as described above.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Region flow overlays render correctly.
+- Flow respects depth ordering.
+- README updated with correct Phase_061 entry.
+- No animation or smoothing exists.
+- Server remains unchanged.
+- Census prints region flow summaries.
+- Workspace compiles and runs with region flow visualization.
+

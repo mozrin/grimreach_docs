@@ -1,0 +1,169 @@
+TITLE: Grimreach Workspace – Phase 062: Fog-of-Meaning
+
+INTENT
+Introduce a visual layer called “Fog-of-Meaning” that obscures or softens regions of
+the world that lack semantic clarity. This is not fog of war, not visibility, and not
+gameplay. It is a visual metaphor for ambiguity, undefined meaning, and low semantic
+density.
+
+This phase adds:
+- fog-of-meaning overlays
+- semantic density sampling
+- region-level fog rendering
+- fog layering rules
+- census summaries of semantic clarity
+- README update for Phase_062
+
+No animation.
+No smoothing.
+No gameplay.
+No simulation.
+
+============================================================
+SECTION 1 — Semantic Density Definition
+============================================================
+
+Define semantic density as a measure of how “meaningful” a region is.
+
+Examples of low semantic density:
+- regions with undefined type
+- regions with unstable identity
+- regions with conflicting overlays
+- regions with no harmonic or memory imprint
+
+Examples of high semantic density:
+- regions with stable identity
+- regions with strong harmonic/memory imprint
+- regions with clear long-cycle influence
+
+Semantic density is computed per region, not per cell.
+
+============================================================
+SECTION 2 — Fog-of-Meaning Visualization
+============================================================
+
+Introduce a visual overlay called “Fog-of-Meaning”:
+
+- rendered as soft halos, haze, or translucent veils
+- applied to regions with low semantic density
+- must remain readable and non-destructive
+- must not obscure structural markers
+
+Fog must:
+- use discrete opacity buckets (none, light, medium, heavy)
+- never animate
+- never pulse or fade
+- never interpolate across regions
+
+============================================================
+SECTION 3 — Sampling Rules
+============================================================
+
+1. Each region computes semantic density once per tick.
+2. Density is derived from region identity, overlays, and harmonic/memory imprint.
+3. No smoothing or averaging across regions.
+4. No interpolation between cells.
+5. Fog updates only when semantic density changes.
+
+============================================================
+SECTION 4 — Rendering Rules
+============================================================
+
+Fog-of-Meaning overlays must:
+- appear above scalar/vector fields
+- appear below volumetric fields
+- never obscure structural markers
+- adapt to region shape and boundaries
+
+Depth order update:
+
+1. Base Tint  
+2. Scalar Fields  
+3. Vector Fields  
+4. Region Flow Visualization  
+5. Fog-of-Meaning (new)  
+6. Volumetric Fields  
+7. Structural Markers
+
+============================================================
+SECTION 5 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Compute semantic density per region.
+2. Render fog overlays based on density.
+3. Respect depth ordering.
+4. Ensure fog does not obscure essential markers.
+5. Print debug output:
+   - “Region (x,y): semantic density = 0.42”
+   - “Fog applied: medium”
+   - “Fog-of-Meaning updated for 8 regions”
+
+The client must NOT:
+- animate fog
+- interpolate fog
+- simulate fog
+- introduce smoothing
+
+============================================================
+SECTION 6 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- remain unaware of fog
+- continue producing region identity and overlays
+- not compute or send fog data
+
+============================================================
+SECTION 7 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe semantic density patterns
+- correlate fog with world dynamics
+- print summaries (e.g., “High ambiguity in SW quadrant”)
+
+The census must NOT:
+- render fog
+- simulate fog
+- store long-term analytics
+
+============================================================
+SECTION 8 — Documentation Update Requirements
+============================================================
+
+The agent must update:
+
+**grimreach_docs/README.md**
+
+Specifically:
+1. Replace the placeholder entry for Phase_062 with:  
+   `| 062 | Fog-of-Meaning |`
+2. Ensure the Phase Map reflects this finalized title.
+3. Ensure Phase_062 is no longer marked as “future” or “TBD.”
+
+No other README entries should be modified.
+
+============================================================
+SECTION 9 — No Other Files Modified
+============================================================
+
+- No gameplay systems added.
+- No physics systems added.
+- No animation systems added.
+- Only add fog-of-meaning logic to grimreach_client.
+- Only update README as described above.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Fog-of-Meaning overlays render correctly.
+- Fog respects depth ordering.
+- README updated with correct Phase_062 entry.
+- No animation or smoothing exists.
+- Server remains unchanged.
+- Census prints semantic density summaries.
+- Workspace compiles and runs with fog-of-meaning overlays.
+
