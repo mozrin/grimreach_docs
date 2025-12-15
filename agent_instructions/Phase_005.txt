@@ -1,0 +1,96 @@
+TITLE: Grimreach Workspace – Phase 005: Server Tick Loop + WorldState Broadcast
+
+INTENT
+Introduce a minimal world tick loop on grimreach_server that:
+- runs at a fixed interval
+- constructs an empty WorldState
+- broadcasts it to all connected clients
+
+Update grimreach_client and grimreach_census so they:
+- connect to the server
+- receive WorldState messages
+- print confirmation output
+
+No gameplay logic.  
+No movement.  
+No systems.  
+Only a heartbeat broadcast.
+
+============================================================
+SECTION 1 — grimreach_server: Tick Loop + Broadcast
+============================================================
+
+1. Modify the server entrypoint so that it:
+   - starts an HTTP server
+   - upgrades WebSocket connections on the `/ws` path
+   - stores each connected WebSocket in a list of active sessions
+   - logs when clients connect and disconnect
+
+2. Add a periodic tick loop that:
+   - runs at a fixed interval (e.g., 10 times per second)
+   - constructs an empty WorldState instance
+   - wraps it in a Message of type `Protocol.state`
+   - serializes it using MessageCodec
+   - sends the serialized message to all connected WebSocket sessions
+
+3. Ensure the tick loop starts automatically when the server starts.
+
+4. Ensure the server prints:
+   - when it starts
+   - when the tick loop begins
+   - when clients connect or disconnect
+   - when messages are received from clients
+
+============================================================
+SECTION 2 — grimreach_client: Receive WorldState
+============================================================
+
+1. Update the client entrypoint so that it:
+   - connects to the server via WebSocket
+   - sends a handshake message using grimreach_api
+   - listens for incoming messages
+
+2. When a message of type `Protocol.state` is received:
+   - deserialize the WorldState
+   - print a summary of the world update (e.g., number of players and entities)
+
+3. Ensure the client still launches a minimal root widget (from Phase 003 or Phase 006).
+
+4. No rendering or Flame integration is required in this phase.
+
+============================================================
+SECTION 3 — grimreach_census: Receive WorldState
+============================================================
+
+1. Update the census service entrypoint so that it:
+   - connects to the server via WebSocket
+   - sends a handshake message using grimreach_api
+   - listens for incoming messages
+
+2. When a message of type `Protocol.state` is received:
+   - deserialize the WorldState
+   - print a summary of the world update (e.g., number of players and entities)
+
+3. Ensure the census service prints a confirmation message when it connects.
+
+============================================================
+SECTION 4 — No Other Files Modified
+============================================================
+
+- Do not modify any Flame components.
+- Do not modify any UI files.
+- Do not modify any server systems.
+- Do not introduce gameplay logic.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_server starts, accepts connections, and logs tick loop startup.
+- grimreach_client connects, receives WorldState messages, and prints summary output.
+- grimreach_census connects, receives WorldState messages, and prints summary output.
+- All three projects compile with no errors.
+- No gameplay logic exists.
+- No systems run.
+- The entire workspace runs cleanly with a heartbeat world broadcast.
+
