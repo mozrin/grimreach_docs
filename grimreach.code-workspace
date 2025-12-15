@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../grimreach_server"
+		},
+		{
+			"path": "../grimreach_api"
+		},
+		{
+			"path": "../grimreach_census"
+		},
+		{
+			"path": "../grimreach_client"
+		}
+	],
+	"settings": {}
+}
