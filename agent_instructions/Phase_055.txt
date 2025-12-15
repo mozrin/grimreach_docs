@@ -1,0 +1,166 @@
+TITLE: Grimreach Workspace – Phase 055: Deterministic Cell-Level Encoding + Expressive Grid Visualization
+
+INTENT
+Enhance the world-space grid (Phase 054) with deterministic cell-level visual encoding.
+This encoding is NOT gameplay, NOT terrain, and NOT simulation. It is a visual
+representation of systemic state projected onto the grid.
+
+This phase adds:
+- cell-level encoding rules
+- deterministic glyphs, gradients, and density fields
+- multi-layer overlays per cell
+- expressive but non-animated rendering
+- census correlation of cell patterns
+
+No gameplay.
+No physics.
+No interactions.
+No entities.
+No animation.
+
+============================================================
+SECTION 1 — Define Cell-Level Encoding Rules
+============================================================
+
+Each grid cell must receive a deterministic encoding derived from VisualState:
+
+1. Base Tint  
+   - derived from Background Layer  
+   - season/lunar/constellation → color families
+
+2. Atmosphere Overlay  
+   - derived from mood/harmonics/memory  
+   - translucent overlays or patterns
+
+3. Systemic Markers  
+   - derived from inertia/entropy/equilibrium  
+   - small glyphs or bars inside the cell
+
+4. Rhythm Indicators  
+   - derived from cadence/resonance  
+   - horizontal or vertical micro-bands
+
+5. Directional Hints  
+   - derived from drift/polarity  
+   - tiny arrows or orientation markers
+
+6. Structural Markers  
+   - derived from phase-space, attractors, metastability, hysteresis, bifurcation,
+     convergence, coherence  
+   - geometric shapes placed in deterministic positions within the cell
+
+============================================================
+SECTION 2 — Multi-Layer Cell Composition
+============================================================
+
+Each cell must render layers in this order:
+
+1. Base Tint  
+2. Atmosphere Overlay  
+3. Systemic Markers  
+4. Rhythm Indicators  
+5. Directional Hints  
+6. Structural Markers  
+
+Rules:
+- no blending beyond simple alpha
+- no animation
+- no interpolation
+- no smoothing
+- no per-cell transitions beyond discrete updates
+
+============================================================
+SECTION 3 — Deterministic Density Fields
+============================================================
+
+Introduce optional density fields:
+
+1. Compute density values from:
+   - entropy
+   - resonance
+   - drift magnitude
+   - attractor strength
+
+2. Density fields must:
+   - be deterministic
+   - be static per frame
+   - be rendered as subtle shading or dot patterns
+   - never animate or pulse
+
+============================================================
+SECTION 4 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. For each frame:
+   - read VisualState
+   - classify each grid cell
+   - compute cell-level overlays
+   - render all layers in correct order
+
+2. Maintain deterministic placement and appearance.
+
+3. Print debug output:
+   - “Cell (x,y): structural=attractor_stable”
+   - “Cell (x,y): density=0.42”
+   - “Cell (x,y): drift_hint=NE”
+
+The client must NOT:
+- animate
+- interpolate
+- scroll
+- zoom
+- simulate physics
+- allow user input to affect rendering
+
+============================================================
+SECTION 5 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState
+- remain unaware of cell-level encoding
+- remain fully headless
+
+The server must NOT:
+- send coordinates
+- send cell instructions
+- send density hints
+
+============================================================
+SECTION 6 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe cell-level patterns
+- correlate them with systemic states
+- print summaries (e.g., “High entropy density in lower-right quadrant”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not introduce gameplay.
+- Do not introduce entities.
+- Do not introduce physics.
+- Do not introduce animation.
+- Only add deterministic cell-level encoding to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client renders expressive cell-level visuals.
+- All encoding is deterministic and derived from VisualState.
+- Grid cells show layered systemic information.
+- No animation or gameplay exists.
+- grimreach_server unchanged.
+- grimreach_census prints cell-level correlation summaries.
+- Workspace compiles and runs with expressive, structured output.
+

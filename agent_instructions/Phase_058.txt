@@ -1,0 +1,194 @@
+TITLE: Grimreach Workspace – Phase 058: Deterministic Volumetric Fields + Layered Semantic Volumes
+
+INTENT
+Introduce volumetric rendering concepts into Grimreach. These volumes are NOT 3D geometry,
+NOT gameplay elevation, and NOT physical simulation. They are stacked semantic fields
+derived from VisualState that occupy vertical slices of the world-space grid.
+
+This phase adds:
+- deterministic volumetric fields
+- vertical semantic volumes
+- multi-depth region halos
+- volumetric overlays per grid cell
+- census correlation of volumetric patterns
+
+No gameplay.
+No physics.
+No interactions.
+No entities.
+No animation.
+No 3D perspective.
+
+============================================================
+SECTION 1 — Define Volumetric Fields
+============================================================
+
+Introduce deterministic volumetric fields derived from VisualState:
+
+1. Stability Volume  
+   - derived from equilibrium, inertia, entropy  
+   - occupies mid-depth slices
+
+2. Harmony Volume  
+   - derived from mood, harmonics, memory  
+   - occupies shallow-depth slices
+
+3. Drift Volume  
+   - derived from drift vectors and polarity  
+   - occupies directional vertical slices
+
+4. Rhythm Volume  
+   - derived from cadence and resonance  
+   - occupies banded vertical slices
+
+5. Structural Volume  
+   - derived from phase-space, attractors, metastability, hysteresis,
+     bifurcation, convergence, coherence  
+   - occupies top-depth slices
+
+6. Celestial Volume  
+   - derived from season, lunar, constellation cycles  
+   - occupies deep or shallow slices depending on cycle
+
+Volumes must:
+- be deterministic
+- be static per frame
+- not animate or pulse
+
+============================================================
+SECTION 2 — Vertical Volume Slicing Rules
+============================================================
+
+Define a fixed set of vertical slices:
+
+- Slice 0: Deep  
+- Slice 1: Lower  
+- Slice 2: Mid  
+- Slice 3: Upper  
+- Slice 4: High  
+
+Assign volumes to slices:
+
+- Stability → Slice 2  
+- Harmony → Slice 3  
+- Drift → Slice 1–3 depending on magnitude  
+- Rhythm → Slice 1 or 2  
+- Structural → Slice 4  
+- Celestial → Slice 0 or 4 depending on cycle
+
+Rules:
+- deterministic only
+- no interpolation
+- no transitions beyond discrete updates
+
+============================================================
+SECTION 3 — Volumetric Rendering in Grid Cells
+============================================================
+
+Each grid cell must render volumetric overlays:
+
+1. Base Tint (Phase 055)  
+2. Atmosphere Overlay  
+3. Systemic Markers  
+4. Rhythm Indicators  
+5. Directional Hints  
+6. Structural Markers  
+7. Volumetric Overlays (new)
+
+Volumetric overlays must:
+- be drawn as translucent vertical stacks
+- respect depth ordering (Phase 057)
+- never animate
+- never blend beyond alpha
+
+============================================================
+SECTION 4 — Region-Level Volumetric Halos
+============================================================
+
+Each semantic region (Phase 056) must now include a volumetric halo:
+
+1. Stability Region → mid-depth halo  
+2. Harmony Region → shallow halo  
+3. Drift Region → directional halo  
+4. Rhythm Region → banded halo  
+5. Structural Region → top-depth halo  
+6. Celestial Region → deep or high halo
+
+Halos must:
+- be deterministic
+- be static per frame
+- not animate or pulse
+
+============================================================
+SECTION 5 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Compute volumetric fields from VisualState.
+2. Assign volumes to vertical slices.
+3. Render volumetric overlays in each grid cell.
+4. Render region-level volumetric halos.
+5. Maintain deterministic depth ordering.
+6. Print debug output:
+   - “Volumetric: structural volume in slice 4”
+   - “Volumetric: harmony volume in slice 3”
+   - “Cell (x,y): drift volume spans slices 1–3”
+
+The client must NOT:
+- animate
+- interpolate
+- simulate physics
+- apply perspective
+- allow user input to affect rendering
+
+============================================================
+SECTION 6 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState
+- remain unaware of volumetric fields
+- remain fully headless
+
+The server must NOT:
+- send slice definitions
+- send volumetric hints
+- send rendering instructions
+
+============================================================
+SECTION 7 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe volumetric patterns
+- correlate volumes with systemic state
+- print summaries (e.g., “Structural volume dominance indicates high coherence”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 8 — No Other Files Modified
+============================================================
+
+- Do not introduce gameplay.
+- Do not introduce entities.
+- Do not introduce physics.
+- Do not introduce animation.
+- Only add deterministic volumetric logic to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client renders volumetric overlays.
+- Semantic regions include volumetric halos.
+- Depth-aware rendering includes vertical slices.
+- No animation or gameplay exists.
+- grimreach_server unchanged.
+- grimreach_census prints volumetric correlation summaries.
+- Workspace compiles and runs with volumetric world-space output.
+

@@ -1,0 +1,184 @@
+TITLE: Grimreach Workspace – Phase 057: Deterministic Depth Model + Vertical Layer Semantics
+
+INTENT
+Introduce a deterministic depth model to the renderer. This depth model is NOT 3D
+rendering, NOT perspective projection, and NOT gameplay elevation. It is a vertical
+semantic stack that allows visual layers, regions, and cell encodings to occupy
+different depths in a consistent, deterministic z-order.
+
+This phase adds:
+- a deterministic depth axis (z-axis)
+- vertical semantic layers
+- depth-aware rendering order
+- depth-aware region overlays
+- census correlation of depth patterns
+
+No gameplay.
+No physics.
+No interactions.
+No entities.
+No animation.
+No 3D.
+
+============================================================
+SECTION 1 — Define the Depth Axis
+============================================================
+
+1. Introduce a fixed, deterministic z-axis:
+   - z = 0.0 → base plane
+   - z > 0.0 → higher semantic layers
+   - z < 0.0 → deeper systemic layers
+
+2. Depth axis must:
+   - be static
+   - be deterministic
+   - not depend on time
+   - not depend on user input
+   - not scroll, zoom, or rotate
+
+3. Depth axis must NOT:
+   - represent height
+   - represent terrain
+   - represent gameplay elevation
+
+============================================================
+SECTION 2 — Assign Depth to Visual Layers
+============================================================
+
+Assign deterministic depth values:
+
+1. Background Layer  
+   - z = -1.0  
+   - deepest layer
+
+2. Atmosphere Layer  
+   - z = -0.5
+
+3. Systemic Layer  
+   - z = 0.0  
+   - base plane
+
+4. Rhythm Layer  
+   - z = +0.25
+
+5. Directional Layer  
+   - z = +0.5
+
+6. Structural Layer  
+   - z = +1.0  
+   - highest layer
+
+Depth values must:
+- be fixed constants
+- never animate
+- never interpolate
+
+============================================================
+SECTION 3 — Depth-Aware Region Semantics
+============================================================
+
+Each semantic region (Phase 056) must now include a vertical meaning:
+
+1. Stability Region → mid-depth emphasis  
+2. Harmony Region → shallow-depth emphasis  
+3. Drift Region → directional overlays at mid-high depth  
+4. Rhythm Region → band overlays at mid-low depth  
+5. Structural Region → top-depth markers  
+6. Celestial Region → deep or shallow depending on cycle
+
+Rules:
+- deterministic only
+- no animation
+- no transitions beyond discrete updates
+
+============================================================
+SECTION 4 — Depth-Aware Cell Rendering
+============================================================
+
+Each grid cell (Phase 054–055) must now render its layers in depth order:
+
+1. Base Tint (z = -1.0)
+2. Atmosphere Overlay (z = -0.5)
+3. Systemic Markers (z = 0.0)
+4. Rhythm Indicators (z = +0.25)
+5. Directional Hints (z = +0.5)
+6. Structural Markers (z = +1.0)
+
+Rules:
+- no blending beyond alpha
+- no parallax
+- no perspective
+- no animation
+
+============================================================
+SECTION 5 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Implement the deterministic depth model.
+2. Sort all visual primitives by depth.
+3. Render primitives in correct z-order.
+4. Apply region-level depth semantics.
+5. Print debug output:
+   - “Depth: structural markers at z=1.0”
+   - “Depth: atmosphere overlay at z=-0.5”
+   - “Depth ordering applied for 64 cells”
+
+The client must NOT:
+- animate
+- interpolate
+- simulate physics
+- apply perspective
+- allow user input to affect rendering
+
+============================================================
+SECTION 6 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState
+- remain unaware of depth
+- remain fully headless
+
+The server must NOT:
+- send depth values
+- send z-order hints
+- send rendering instructions
+
+============================================================
+SECTION 7 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe depth-aware rendering patterns
+- correlate depth with systemic state
+- print summaries (e.g., “Structural depth dominance indicates high coherence”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 8 — No Other Files Modified
+============================================================
+
+- Do not introduce gameplay.
+- Do not introduce entities.
+- Do not introduce physics.
+- Do not introduce animation.
+- Only add deterministic depth logic to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client renders depth-ordered layers.
+- Depth axis is deterministic and stable.
+- Semantic regions include vertical meaning.
+- No animation or gameplay exists.
+- grimreach_server unchanged.
+- grimreach_census prints depth correlation summaries.
+- Workspace compiles and runs with visible depth-aware output.
+

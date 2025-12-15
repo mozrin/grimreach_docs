@@ -1,0 +1,203 @@
+TITLE: Grimreach Workspace – Phase 060: Field Interaction Rules
+
+INTENT
+Define how scalar fields, vector fields, volumetric fields, and existing cell/region
+layers interact visually. This phase does NOT introduce simulation, physics, gameplay,
+or dynamic field behavior. It only establishes clear, predictable rules for how
+multiple field types coexist in the renderer.
+
+This phase adds:
+- field interaction rules
+- field priority rules
+- field conflict resolution
+- field blending constraints (non-animated, non-smooth)
+- updated layer ordering
+- census summaries of field interactions
+
+No animation.
+No smoothing.
+No physics.
+No gameplay.
+No dynamic field evolution.
+
+============================================================
+SECTION 1 — Field Interaction Categories
+============================================================
+
+Define four categories of visual fields:
+
+1. Scalar Fields  
+   - entropy, stability, harmony, resonance
+
+2. Vector Fields  
+   - drift, polarity, flow
+
+3. Volumetric Fields  
+   - stability volume, harmony volume, drift volume, etc.
+
+4. Cell/Region Layers  
+   - cell encoding (Phase 055)
+   - semantic regions (Phase 056)
+   - depth layers (Phase 057)
+
+Each category must remain visually distinct.
+
+============================================================
+SECTION 2 — Field Priority Rules
+============================================================
+
+When multiple fields overlap:
+
+1. Cell Encoding (055)  
+   - always visible  
+   - never obscured by fields
+
+2. Scalar Fields (059)  
+   - lowest priority among fields  
+   - rendered as subtle shading
+
+3. Vector Fields (059)  
+   - drawn above scalar fields  
+   - arrows/chevrons must remain readable
+
+4. Volumetric Fields (058)  
+   - drawn above vector fields  
+   - must not fully obscure them
+
+5. Structural Markers (055)  
+   - highest priority  
+   - always drawn last
+
+============================================================
+SECTION 3 — Conflict Resolution Rules
+============================================================
+
+When two fields attempt to occupy the same visual space:
+
+1. No blending beyond simple alpha.  
+2. No smoothing or interpolation.  
+3. No dynamic resolution (no animation).  
+4. Use discrete priority ordering only.  
+5. If two fields share the same priority, the renderer must:
+   - draw them in a fixed, documented order  
+   - never alternate or randomize  
+
+============================================================
+SECTION 4 — Field Coexistence Rules
+============================================================
+
+1. Scalar + Vector  
+   - scalar shading must not hide vector arrows  
+   - vector arrows must not erase scalar shading
+
+2. Vector + Volumetric  
+   - volumetric overlays must remain translucent  
+   - vector arrows must remain readable
+
+3. Scalar + Volumetric  
+   - scalar shading may appear beneath volumetric halos  
+   - volumetric halos must not flatten scalar patterns
+
+4. Region Halos + Fields  
+   - region halos must remain visible  
+   - fields must adapt their tint/opacity to avoid overpowering halos
+
+============================================================
+SECTION 5 — Layer Ordering Update
+============================================================
+
+Update the depth model (Phase 057) with field layers:
+
+1. Base Tint (055)  
+2. Scalar Fields (059)  
+3. Atmosphere Overlay (055)  
+4. Systemic Markers (055)  
+5. Vector Fields (059)  
+6. Rhythm Indicators (055)  
+7. Directional Hints (055)  
+8. Volumetric Fields (058)  
+9. Structural Markers (055)
+
+No new depth values introduced.
+
+============================================================
+SECTION 6 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Apply field interaction rules consistently.
+2. Render fields in the correct priority order.
+3. Ensure no field obscures essential markers.
+4. Print debug output:
+   - “Field interaction: scalar under vector”
+   - “Field interaction: volumetric halo applied”
+   - “Layer order resolved for 64 cells”
+
+The client must NOT:
+- animate fields
+- blend fields dynamically
+- interpolate values
+- introduce smoothing
+
+============================================================
+SECTION 7 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- remain unaware of field interactions
+- continue producing world state only
+- not compute or send field interaction data
+
+============================================================
+SECTION 8 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe field interactions
+- correlate field overlaps with world patterns
+- print summaries (e.g., “Vector dominance over scalar in NW quadrant”)
+
+The census must NOT:
+- render fields
+- simulate fields
+- store long-term analytics
+
+============================================================
+SECTION 9 — Documentation Update Requirements
+============================================================
+
+The agent must update:
+
+**grimreach_docs/README.md**
+
+Specifically:
+1. Replace the placeholder entry for Phase_060 with:  
+   `| 060 | Field Interaction Rules |`
+2. Ensure the Phase Map reflects this finalized title.
+3. Ensure Phase_060 is no longer marked as “future” or “TBD.”
+
+No other README entries should be modified.
+
+============================================================
+SECTION 10 — No Other Files Modified
+============================================================
+
+- No gameplay systems added.
+- No physics systems added.
+- No animation systems added.
+- Only add field interaction logic to grimreach_client.
+- Only update README as described above.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Field interactions behave predictably.
+- Layer ordering is correct and stable.
+- README updated with correct Phase_060 entry.
+- No animation or smoothing exists.
+- Server remains unchanged.
+- Census prints field interaction summaries.
+- Workspace compiles and runs with correct field layering.
+

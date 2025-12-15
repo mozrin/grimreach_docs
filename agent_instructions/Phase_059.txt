@@ -1,0 +1,177 @@
+TITLE: Grimreach Workspace – Phase 059: Scalar & Vector Fields
+
+INTENT
+Add scalar and vector field visualization to the client. These fields are visual-only
+interpretations of existing world data. They do not introduce physics, simulation,
+movement, or gameplay mechanics. They simply provide a new way to see how world
+systems influence space.
+
+This phase adds:
+- scalar field rendering
+- vector field rendering
+- field sampling rules
+- field layering rules
+- field overlays in the client
+- field summaries in the census
+- README update to reflect the finalized Phase_059 title and description
+
+No animation.
+No smoothing.
+No interpolation.
+No physics.
+No gameplay.
+
+============================================================
+SECTION 1 — Scalar Fields
+============================================================
+
+Introduce scalar fields derived from existing world state:
+
+1. Entropy Field  
+2. Stability Field  
+3. Harmony Field  
+4. Resonance Field  
+
+Rules:
+- computed per cell
+- discrete values only
+- no interpolation between cells
+- no temporal smoothing
+- no animation
+
+============================================================
+SECTION 2 — Vector Fields
+============================================================
+
+Introduce vector fields derived from directional world state:
+
+1. Drift Field  
+2. Polarity Field  
+3. Flow Field  
+
+Rules:
+- direction buckets: N, NE, E, SE, S, SW, W, NW
+- magnitude buckets: low, medium, high
+- no smooth rotation
+- no animation
+
+============================================================
+SECTION 3 — Field Sampling Rules
+============================================================
+
+1. Each cell samples world state directly.
+2. No interpolation between cells.
+3. No smoothing or blending.
+4. No temporal averaging.
+5. Fields update only when world state changes.
+
+============================================================
+SECTION 4 — Field Rendering Rules
+============================================================
+
+Scalar fields:
+- rendered as color tints, dot densities, or shading patterns
+- must remain subtle and readable
+- must not override existing cell encoding
+
+Vector fields:
+- rendered as arrows, chevrons, or line segments
+- placed at cell centers or edges
+- must respect depth ordering (Phase 057)
+
+============================================================
+SECTION 5 — Layer Integration
+============================================================
+
+Fields must integrate with existing layers:
+
+1. Scalar fields → mid-depth overlays  
+2. Vector fields → upper-mid overlays  
+3. Volumetric fields (Phase 058) remain above scalar fields  
+4. Structural markers remain above vector fields  
+
+No layer may animate or blend.
+
+============================================================
+SECTION 6 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Compute scalar and vector fields from world state.
+2. Render fields according to depth rules.
+3. Ensure fields do not obscure essential markers.
+4. Print debug output:
+   - “Cell (x,y): entropy=0.62”
+   - “Cell (x,y): drift=NE (medium)”
+   - “Flow field updated: 64 vectors”
+
+The client must NOT:
+- animate fields
+- interpolate values
+- simulate physics
+- introduce smoothing
+
+============================================================
+SECTION 7 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing world state
+- remain unaware of fields
+- not compute or send field data
+
+============================================================
+SECTION 8 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe field patterns
+- correlate fields with world dynamics
+- print summaries (e.g., “High entropy gradient across NE quadrant”)
+
+The census must NOT:
+- render fields
+- simulate fields
+- store long-term analytics
+
+============================================================
+SECTION 9 — Documentation Update Requirements
+============================================================
+
+As part of this phase, the agent must update:
+
+**grimreach_docs/README.md**
+
+Specifically:
+1. Replace the placeholder entry for Phase_059 with:  
+   `| 059 | Scalar & Vector Fields |`
+2. Ensure the Phase Map section reflects this finalized title.
+3. Ensure no references describe Phase_059 as “future” or “TBD.”
+4. Do not modify any other phase entries.
+
+This ensures the documentation remains synchronized with the actual phase progression.
+
+============================================================
+SECTION 10 — No Other Files Modified
+============================================================
+
+- No gameplay systems added.
+- No physics systems added.
+- No animation systems added.
+- Only add scalar/vector field logic to grimreach_client.
+- Only update README as described above.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Scalar fields render correctly per cell.
+- Vector fields render correctly per cell.
+- Fields respect depth ordering.
+- README updated with correct Phase_059 entry.
+- No animation or smoothing exists.
+- Server remains unchanged.
+- Census prints field summaries.
+- Workspace compiles and runs with visible field overlays.
+

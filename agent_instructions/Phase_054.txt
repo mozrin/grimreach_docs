@@ -1,0 +1,158 @@
+TITLE: Grimreach Workspace – Phase 054: Deterministic World-Space Grid + Structured Spatial Framework
+
+INTENT
+Introduce the first structured world-space grid for Grimreach. This grid is NOT a game
+map, NOT terrain, and NOT a simulation layer. It is a deterministic spatial scaffold
+used by the renderer to organize visual layers in a consistent, structured layout.
+
+This phase adds:
+- a deterministic world-space grid
+- grid cell classification rules
+- spatial anchoring for visual layers
+- grid-aware rendering in grimreach_client
+- census correlation of grid patterns
+
+No gameplay.
+No physics.
+No interactions.
+No entities.
+No animation.
+
+============================================================
+SECTION 1 — Define the World-Space Grid
+============================================================
+
+1. Introduce a fixed-size grid (e.g., 8×8, 10×10, or 12×12).
+2. Grid must:
+   - be deterministic
+   - be static
+   - not scroll
+   - not zoom
+   - not rotate
+   - not depend on user input
+
+3. Grid coordinates must:
+   - map directly into the projection space (Phase 053)
+   - remain stable across frames
+   - be independent of window size
+
+4. Grid cells must NOT:
+   - represent terrain
+   - represent gameplay tiles
+   - represent world simulation
+
+============================================================
+SECTION 2 — Grid Cell Classification Rules
+============================================================
+
+Each grid cell receives a deterministic classification derived from VisualState:
+
+1. Background Layer → base cell tint  
+2. Atmosphere Layer → overlay classification  
+3. Systemic Layer → cell-level systemic markers  
+4. Rhythm Layer → rhythmic band alignment  
+5. Directional Layer → drift/polarity directional hints  
+6. Structural Layer → attractor/phase-space markers
+
+Classification must:
+- be deterministic
+- be derived solely from VisualState
+- not simulate or infer missing data
+
+============================================================
+SECTION 3 — Spatial Anchoring Rules
+============================================================
+
+Visual layers must anchor to the grid as follows:
+
+1. Background Layer  
+   - fills entire grid
+
+2. Atmosphere Layer  
+   - overlays entire grid with cell-level variation allowed
+
+3. Systemic Layer  
+   - place systemic markers in specific grid cells (deterministic mapping)
+
+4. Rhythm Layer  
+   - place rhythm indicators along grid rows or columns
+
+5. Directional Layer  
+   - place drift/polarity arrows at grid edges or corners
+
+6. Structural Layer  
+   - place structural markers in a deterministic pattern (radial, quadrant, or cluster)
+
+============================================================
+SECTION 4 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Initialize the world-space grid.
+2. Map VisualState into grid classifications.
+3. Render the grid and all anchored layers.
+4. Maintain deterministic placement across frames.
+5. Print debug output:
+   - “Grid initialized”
+   - “Structural markers placed in cells: …”
+   - “Directional layer mapped to grid edges”
+   - etc.
+
+The client must NOT:
+- animate
+- interpolate
+- scroll
+- zoom
+- simulate physics
+- allow user input to affect rendering
+
+============================================================
+SECTION 5 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState
+- remain unaware of the grid
+- remain fully headless
+
+The server must NOT:
+- send coordinates
+- send grid instructions
+- send layout hints
+
+============================================================
+SECTION 6 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe grid classifications
+- correlate grid patterns with systemic states
+- print summaries (e.g., “High entropy clustering in upper-left quadrant”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not introduce gameplay.
+- Do not introduce entities.
+- Do not introduce physics.
+- Do not introduce animation.
+- Only add deterministic world-space grid logic to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client renders a structured world-space grid.
+- Visual layers anchor deterministically to grid cells.
+- Spatial output is stable and repeatable.
+- grimreach_server unchanged.
+- grimreach_census prints grid correlation summaries.
+- Workspace compiles and runs with visible structured output.
+

@@ -1,0 +1,179 @@
+TITLE: Grimreach Workspace – Phase 056: Deterministic Semantic Regions + World-Space Meaning Fields
+
+INTENT
+Introduce semantic meaning to the world-space grid (Phase 054–055). These semantics are
+NOT gameplay, NOT terrain, and NOT simulation. They are deterministic classifications
+derived from VisualState that give each region of the grid a conceptual identity.
+
+This phase adds:
+- semantic region classification
+- deterministic region boundaries
+- meaning fields derived from systemic state
+- region-level overlays in the renderer
+- census correlation of semantic regions
+
+No gameplay.
+No physics.
+No interactions.
+No entities.
+No animation.
+
+============================================================
+SECTION 1 — Define Semantic Region Types
+============================================================
+
+Introduce deterministic region types derived from VisualState:
+
+1. Stability Region  
+   - derived from equilibrium, inertia, entropy
+
+2. Harmony Region  
+   - derived from mood, harmonics, memory
+
+3. Drift Region  
+   - derived from drift vectors and polarity
+
+4. Rhythm Region  
+   - derived from cadence and resonance
+
+5. Structural Region  
+   - derived from phase-space, attractors, metastability, hysteresis,
+     bifurcation, convergence, coherence
+
+6. Celestial Region  
+   - derived from season, lunar, constellation cycles
+
+Regions must:
+- be deterministic
+- be derived solely from VisualState
+- not represent terrain or gameplay zones
+
+============================================================
+SECTION 2 — Region Boundary Rules
+============================================================
+
+1. Divide the grid into deterministic regions:
+   - quadrants
+   - radial slices
+   - bands
+   - clusters
+   - or a combination
+
+2. Region boundaries must:
+   - be static
+   - be deterministic
+   - not depend on time
+   - not depend on user input
+   - not scroll, zoom, or animate
+
+3. Regions must NOT:
+   - represent movement
+   - represent simulation
+   - represent gameplay areas
+
+============================================================
+SECTION 3 — Region-Level Meaning Fields
+============================================================
+
+Each region receives a deterministic meaning field:
+
+1. Stability Field  
+   - high/medium/low stability
+
+2. Harmony Field  
+   - calm/neutral/discordant
+
+3. Drift Field  
+   - directional bias (N, NE, E, SE, etc.)
+
+4. Rhythm Field  
+   - slow/steady/quick
+
+5. Structural Field  
+   - stable/unstable/metastable/bifurcating/converging/coherent
+
+6. Celestial Field  
+   - seasonal/lunar/constellation influence
+
+Meaning fields must:
+- be deterministic
+- be static per frame
+- not animate or pulse
+
+============================================================
+SECTION 4 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Compute semantic regions from the grid.
+2. Assign meaning fields to each region.
+3. Render region-level overlays:
+   - subtle shading
+   - borders
+   - glyphs
+   - labels (optional, non-textual)
+4. Maintain deterministic placement and appearance.
+5. Print debug output:
+   - “Region NE: structural=metastable”
+   - “Region SW: drift=SE”
+   - “Region center: harmony=calm”
+
+The client must NOT:
+- animate
+- interpolate
+- scroll
+- zoom
+- simulate physics
+- allow user input to affect rendering
+
+============================================================
+SECTION 5 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState
+- remain unaware of semantic regions
+- remain fully headless
+
+The server must NOT:
+- send region definitions
+- send meaning fields
+- send spatial hints
+
+============================================================
+SECTION 6 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe semantic regions
+- correlate region meaning with systemic state
+- print summaries (e.g., “Harmony region expanding due to mood stabilization”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not introduce gameplay.
+- Do not introduce entities.
+- Do not introduce physics.
+- Do not introduce animation.
+- Only add deterministic semantic region logic to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client renders semantic regions.
+- Regions have deterministic meaning fields.
+- Visual output shows structured, meaningful world-space.
+- No animation or gameplay exists.
+- grimreach_server unchanged.
+- grimreach_census prints semantic region summaries.
+- Workspace compiles and runs with semantic world-space output.
+
