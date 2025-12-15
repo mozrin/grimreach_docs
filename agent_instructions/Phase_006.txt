@@ -1,0 +1,90 @@
+TITLE: Grimreach Workspace – Phase 006: Minimal FlameGame Bootstrapped Client
+
+INTENT
+Upgrade grimreach_client so that it uses FlameGame as the root of the application.
+The client must:
+- compile on all supported platforms
+- initialize Flame correctly
+- run a minimal FlameGame loop
+- render nothing
+- continue connecting to the server and receiving world updates
+
+No gameplay logic.  
+No assets.  
+No scenes beyond a stub.  
+Only a minimal Flame bootstrap.
+
+============================================================
+SECTION 1 — Update grimreach_client main.dart
+============================================================
+
+1. Replace the existing main.dart file with a version that:
+   - establishes a WebSocket connection to the server
+   - sends a handshake message using grimreach_api
+   - listens for WorldState messages and prints summary information
+   - initializes a FlameGame instance
+   - uses GameWidget as the root widget instead of Directionality/SizedBox
+
+2. Ensure the file imports:
+   - Flutter widgets
+   - Flame’s GameWidget
+   - grimreach_api
+   - the GameLoop class created in this phase
+
+3. Ensure the file contains no rendering logic and no Flame components beyond GameLoop.
+
+============================================================
+SECTION 2 — Create minimal Flame GameLoop
+============================================================
+
+1. Update the file grimreach_client/lib/game/engine/game_loop.dart so that:
+   - it defines a FlameGame subclass named GameLoop
+   - it loads a single scene component during onLoad
+   - it contains no rendering logic
+   - it contains no update logic beyond the default Flame behavior
+
+2. Ensure the GameLoop class references a WorldScene component (created in Section 3).
+
+============================================================
+SECTION 3 — Create minimal WorldScene
+============================================================
+
+1. Create a new file named world_scene.dart inside:
+   grimreach_client/lib/game/engine/
+
+2. Define a minimal Flame Component class named WorldScene that:
+   - implements an empty render method (draws nothing)
+   - implements an empty update method (does nothing)
+   - contains no children, no assets, and no logic
+
+3. This component serves only as a placeholder scene.
+
+============================================================
+SECTION 4 — Remove unused Directionality root
+============================================================
+
+1. Remove the Directionality/SizedBox root widget previously used in Phase 003.
+2. Ensure the Flame GameWidget is now the sole root widget.
+3. No other UI files require modification.
+
+============================================================
+SECTION 5 — No changes to server or census
+============================================================
+
+1. grimreach_server remains exactly as implemented in Phase 005.
+2. grimreach_census remains exactly as implemented in Phase 005.
+3. No new behavior is added to either project in this phase.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client compiles successfully on all supported platforms.
+- grimreach_client launches a FlameGame instance with no rendering.
+- grimreach_client continues to connect to the server and print world updates.
+- grimreach_server continues broadcasting empty WorldState messages.
+- grimreach_census continues receiving and printing world updates.
+- No gameplay logic exists.
+- No assets are required.
+- The entire workspace runs cleanly with a Flame-powered client.
+
