@@ -1,0 +1,148 @@
+TITLE: Grimreach Workspace – Phase 052: Deterministic Visual Transitions + Temporal Rendering Rules
+
+INTENT
+Introduce deterministic visual transitions in the client renderer. These transitions are
+NOT animations, NOT interpolations, and NOT smoothing. They are discrete, rule-based
+visual state changes derived solely from server-provided VisualState.
+
+This phase adds:
+- deterministic visual transition rules
+- temporal coherence between frames
+- layer-specific transition logic
+- client-side transition state machine
+- census correlation of transition events
+
+No gameplay.
+No physics.
+No interactions.
+No AI.
+No non-deterministic rendering.
+
+============================================================
+SECTION 1 — Define Visual Transition Rules
+============================================================
+
+1. Introduce a minimal transition state machine that:
+   - tracks previous VisualState
+   - compares it to the current VisualState
+   - determines if a transition is required
+   - applies deterministic transition rules
+   - never interpolates or smooths values
+
+2. Transitions must be:
+   - discrete
+   - deterministic
+   - reversible
+   - stateless beyond the previous frame
+   - derived only from VisualState
+
+3. Transitions must NOT:
+   - animate
+   - tween
+   - fade
+   - blend over time
+   - introduce randomness
+
+============================================================
+SECTION 2 — Layer-Specific Transition Logic
+============================================================
+
+Define deterministic transitions for each layer:
+
+1. Background Layer  
+   - change color or gradient only when season/lunar/constellation changes  
+   - no gradual blending
+
+2. Atmosphere Layer  
+   - switch overlays when mood/harmonics/memory shift  
+   - no opacity fades
+
+3. Systemic Layer  
+   - update shapes/bars when inertia/entropy/equilibrium change  
+   - no animated resizing
+
+4. Rhythm Layer  
+   - update band positions or colors when cadence/resonance change  
+   - no pulsing or oscillation
+
+5. Directional Layer  
+   - update arrows/indicators when drift/polarity change  
+   - no rotation animation
+
+6. Structural Layer  
+   - update markers when attractors/metastability/hysteresis/bifurcation/convergence/coherence change  
+   - no morphing or transitions
+
+============================================================
+SECTION 3 — Client Rendering Responsibilities
+============================================================
+
+The client must:
+
+1. Maintain a “previous VisualState” snapshot.
+2. Compare previous vs current VisualState each frame.
+3. Determine which layers require transitions.
+4. Apply deterministic transition rules.
+5. Render the updated frame.
+6. Print debug output:
+   - “Transition: background changed”
+   - “Transition: structural layer updated”
+   - etc.
+
+The client must NOT:
+- animate
+- interpolate
+- smooth
+- guess missing data
+- store long-term history
+
+============================================================
+SECTION 4 — Server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState every tick
+- make no rendering decisions
+- remain fully headless
+- remain fully deterministic
+
+The server must NOT:
+- send transition instructions
+- send animation hints
+- send rendering directives
+
+============================================================
+SECTION 5 — Census Responsibilities
+============================================================
+
+The census must:
+- observe VisualState transitions
+- correlate transitions with systemic changes
+- print summaries (e.g., “Directional transition caused by drift polarity shift”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not introduce animation systems.
+- Do not introduce UI frameworks.
+- Do not modify simulation logic.
+- Only add deterministic transition logic to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client maintains previous VisualState.
+- grimreach_client detects and applies deterministic transitions.
+- grimreach_client renders updated frames with discrete changes.
+- grimreach_server remains unchanged.
+- grimreach_census prints transition correlations.
+- No animation, smoothing, or interpolation exists.
+- Workspace compiles and runs with visible, deterministic transitions.
+

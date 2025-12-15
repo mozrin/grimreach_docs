@@ -1,0 +1,163 @@
+TITLE: Grimreach Workspace – Phase 053: Deterministic Spatial Projection + Abstract World-Space Layout
+
+INTENT
+Introduce the first deterministic spatial projection system in the client renderer.
+This projection is NOT a game map, NOT a tile grid, and NOT a world simulation.
+It is an abstract spatial layout used to position visual layers in a consistent,
+deterministic coordinate space.
+
+This phase adds:
+- a deterministic 2D projection space
+- spatial placement rules for each visual layer
+- a static camera and viewport
+- no movement, no zoom, no panning
+- spatially-aware rendering of VisualState
+
+No gameplay.
+No physics.
+No interactions.
+No entities.
+No animation.
+
+============================================================
+SECTION 1 — Define the Projection Space
+============================================================
+
+1. Introduce a fixed 2D coordinate system:
+   - origin at center of screen
+   - normalized coordinates (e.g., -1.0 to +1.0)
+   - deterministic mapping from VisualState to positions
+
+2. Projection space must:
+   - be static
+   - be deterministic
+   - not depend on time
+   - not depend on client hardware
+   - not depend on user input
+
+3. Projection space must NOT:
+   - scroll
+   - zoom
+   - rotate
+   - animate
+
+============================================================
+SECTION 2 — Spatial Rules for Each Visual Layer
+============================================================
+
+Define deterministic placement rules:
+
+1. Background Layer  
+   - fills entire projection space  
+   - no spatial variation
+
+2. Atmosphere Layer  
+   - overlays entire projection space  
+   - optional radial or directional gradients based on mood/harmonics/memory
+
+3. Systemic Layer  
+   - place shapes/bars at fixed anchor positions  
+   - anchors must be deterministic and constant
+
+4. Rhythm Layer  
+   - place band indicators along fixed axes  
+   - no movement or oscillation
+
+5. Directional Layer  
+   - place drift/polarity arrows around the perimeter  
+   - arrow orientation derived from drift vector  
+   - arrow position fixed, orientation variable
+
+6. Structural Layer  
+   - place markers in a deterministic grid or radial layout  
+   - positions derived from phase-space, attractors, metastability, etc.  
+   - no movement or transitions beyond discrete updates
+
+============================================================
+SECTION 3 — Camera and Viewport Rules
+============================================================
+
+1. Camera must be:
+   - static
+   - centered
+   - orthographic
+   - deterministic
+
+2. Viewport must:
+   - be fixed size
+   - not scale with window size (letterbox if needed)
+   - not respond to input
+
+3. No camera movement, zoom, or rotation.
+
+============================================================
+SECTION 4 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Initialize a deterministic projection space.
+2. Convert VisualState into spatial primitives.
+3. Place primitives according to layer rules.
+4. Render the frame.
+5. Print debug output:
+   - “Spatial projection: structural markers placed”
+   - “Directional layer: drift vector mapped to angle”
+   - etc.
+
+The client must NOT:
+- animate
+- interpolate
+- simulate physics
+- move the camera
+- allow user input to affect rendering
+
+============================================================
+SECTION 5 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState
+- remain unaware of spatial projection
+- remain fully headless
+
+The server must NOT:
+- send coordinates
+- send rendering hints
+- send layout instructions
+
+============================================================
+SECTION 6 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe spatialized VisualState
+- correlate spatial patterns with systemic states
+- print summaries (e.g., “Structural markers cluster in high-stability region”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not introduce gameplay.
+- Do not introduce entities.
+- Do not introduce physics.
+- Do not introduce animation.
+- Only add deterministic spatial projection to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client renders spatially-positioned primitives.
+- All layers are placed deterministically in projection space.
+- Camera and viewport remain static.
+- grimreach_server unchanged.
+- grimreach_census prints spatial correlation summaries.
+- Workspace compiles and runs with visible spatial output.
+

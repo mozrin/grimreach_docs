@@ -1,0 +1,160 @@
+TITLE: Grimreach Workspace – Phase 051: First Deterministic Rendering Pass + Minimal Visual Output
+
+INTENT
+Introduce the first actual graphical rendering in Grimreach. Rendering must be:
+- deterministic
+- contract-driven
+- non-authoritative
+- minimal
+- layered according to the VisualState schema (Phase 050)
+
+This phase adds:
+- a minimal rendering engine inside grimreach_client
+- deterministic drawing of each visual layer
+- a single static camera
+- a single static viewport
+- no animation, interpolation, or smoothing
+
+============================================================
+SECTION 1 — Rendering Scope
+============================================================
+
+The client is allowed to render ONLY the following:
+
+1. Background Layer  
+   - derived from season, lunar, constellation cycles  
+   - rendered as simple color gradients or flat colors
+
+2. Atmosphere Layer  
+   - derived from mood, harmonics, memory  
+   - rendered as translucent overlays
+
+3. Systemic Layer  
+   - derived from inertia, entropy, equilibrium  
+   - rendered as subtle shapes or bars
+
+4. Rhythm Layer  
+   - derived from cadence and resonance  
+   - rendered as pulsing or shifting color bands (no animation yet)
+
+5. Directional Layer  
+   - derived from drift vectors and polarity  
+   - rendered as arrows or directional indicators
+
+6. Structural Layer  
+   - derived from phase-space, attractors, metastability, hysteresis, bifurcation, convergence, coherence  
+   - rendered as simple geometric markers
+
+No entities.  
+No world map.  
+No UI.  
+No text overlays except debug logs.
+
+============================================================
+SECTION 2 — Rendering Rules
+============================================================
+
+1. Rendering must be:
+   - deterministic
+   - stateless
+   - derived only from VisualState
+   - repeatable frame-to-frame
+
+2. The client must NOT:
+   - simulate missing data
+   - animate
+   - interpolate
+   - guess or smooth values
+   - apply physics
+   - apply camera movement
+
+3. The client must:
+   - draw a single frame per WorldState message
+   - clear the screen each frame
+   - draw layers in the correct order
+
+============================================================
+SECTION 3 — Layer Ordering
+============================================================
+
+Render layers in this exact order:
+
+1. Background Layer  
+2. Atmosphere Layer  
+3. Systemic Layer  
+4. Rhythm Layer  
+5. Directional Layer  
+6. Structural Layer  
+
+No blending rules beyond simple alpha compositing.
+
+============================================================
+SECTION 4 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Initialize a minimal rendering surface (window or canvas)
+2. Receive WorldState + VisualState
+3. Convert VisualState into drawable primitives
+4. Draw each layer deterministically
+5. Print debug output:
+   - “Frame rendered”
+   - “Layer: background=…”
+   - “Layer: atmosphere=…”
+   - etc.
+
+The client must NOT:
+- store previous frames
+- animate between frames
+- introduce smoothing or easing
+- add UI widgets
+- add input handling
+
+============================================================
+SECTION 5 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- continue producing VisualState every tick
+- make no rendering decisions
+- make no graphical assumptions
+- remain fully headless
+
+============================================================
+SECTION 6 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- read VisualState
+- correlate visual layers with systemic layers
+- print summaries (e.g., “Directional layer indicates stable drift”)
+
+The census must NOT:
+- render
+- simulate
+- store long-term analytics
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not introduce gameplay.
+- Do not introduce entities.
+- Do not introduce physics.
+- Do not introduce UI.
+- Do not modify simulation logic.
+- Only add minimal rendering to grimreach_client.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_client opens a window or canvas.
+- grimreach_client draws deterministic visual layers.
+- grimreach_client renders one frame per WorldState.
+- grimreach_server remains unchanged.
+- grimreach_census prints visual correlations.
+- No animation, gameplay, or interactions exist.
+- The workspace compiles and runs with visible output.
+
