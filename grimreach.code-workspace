@@ -14,6 +14,9 @@
 		},
 		{
 			"path": "../grimreach_client"
+		},
+		{
+			"path": "../grimreach_assets"
 		}
 	],
 	"settings": {}
