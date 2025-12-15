@@ -1,0 +1,176 @@
+TITLE: Grimreach Workspace – Phase 001: Folder Structure and File Scaffolding
+
+INTENT
+Create the full folder structure and file scaffolding for the Grimreach workspace.  
+This includes four Dart/Flutter projects:
+
+1. grimreach_client – Flutter + Flame client
+2. grimreach_server – Dart backend server
+3. grimreach_census – Dart service for player/world analytics
+4. grimreach_api – Shared Dart package for protocol, models, and message schemas
+
+No code is required in this phase.  
+All files must exist and be empty unless otherwise specified.  
+All names and paths must match exactly.
+
+WORKSPACE ROOT
+Create a folder named grimreach with the following subfolders:
+
+grimreach/
+  grimreach_client/
+  grimreach_server/
+  grimreach_census/
+  grimreach_api/
+  grimreach_docs/
+    agent_instructions/
+      Phase_001.txt
+
+============================================================
+SECTION 1 — grimreach_client (Flutter + Flame)
+============================================================
+
+Create a Flutter project named grimreach_client.
+
+Inside grimreach_client/lib:
+
+core/
+  net/
+  models/
+  utils/
+game/
+  engine/
+    systems/
+  components/
+  scenes/
+platform/
+  input/
+  tv/
+ui/
+  hud/
+  dialogs/
+main.dart
+
+Also create:
+
+assets/
+  images/
+  tiles/
+  sprites/
+  ui/
+  maps/
+
+test/
+  core/
+  game/
+  ui/
+
+README.md  
+pubspec.yaml (Flutter project default)
+
+============================================================
+SECTION 2 — grimreach_server (Dart backend)
+============================================================
+
+Create a Dart console project named grimreach_server.
+
+Inside grimreach_server/lib:
+
+core/
+  protocol.dart
+  message_codec.dart
+  world_state.dart
+  entity.dart
+  player.dart
+net/
+  websocket_server.dart
+  client_session.dart
+systems/
+  movement_system.dart
+  combat_system.dart
+  quest_system.dart
+  collection_system.dart
+  zone_system.dart
+world/
+  world.dart
+utils/
+  logger.dart
+  time.dart
+
+Also create:
+
+bin/
+  server.dart
+
+README.md  
+pubspec.yaml (Dart project default)
+
+============================================================
+SECTION 3 — grimreach_census (Dart service)
+============================================================
+
+Create a Dart console project named grimreach_census.
+
+Inside grimreach_census/lib:
+
+core/
+  census_runner.dart
+  census_models.dart
+  census_utils.dart
+net/
+  census_client.dart
+  census_protocol.dart
+storage/
+  census_store.dart
+  census_index.dart
+utils/
+  logger.dart
+  time.dart
+
+Also create:
+
+bin/
+  census.dart
+
+README.md  
+pubspec.yaml (Dart project default)
+
+============================================================
+SECTION 4 — grimreach_api (Shared Dart package)
+============================================================
+
+Create a pure Dart package named grimreach_api.
+
+Inside grimreach_api/lib:
+
+protocol.dart  
+messages.dart  
+message_codec.dart  
+entity.dart  
+player.dart  
+world_state.dart  
+constants.dart  
+types.dart
+
+README.md  
+pubspec.yaml (Dart package default)
+
+============================================================
+SECTION 5 — grimreach_docs
+============================================================
+
+Create folder grimreach_docs/agent_instructions/
+
+Place this file as:
+
+grimreach_docs/agent_instructions/Phase_001.txt
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- All folders and files exist as described.
+- No code is present in any file.
+- All pubspec.yaml files are default for their project type.
+- All README.md files are empty.
+- All .dart files exist and are empty.
+- No additional files, folders, or logic beyond this contract.
