@@ -1,0 +1,136 @@
+TITLE: Grimreach Workspace – Phase 050: Deterministic Rendering Contract + Visual State Schema
+
+INTENT
+Introduce the first deterministic rendering contract for Grimreach. This contract defines
+what the client is allowed to draw, how visual state is derived from WorldState, and how
+visual layers must remain strictly non-authoritative.
+
+This phase adds:
+- a rendering contract (schema only)
+- deterministic visual layers
+- visual state derivation rules
+- world updates including visual summaries
+- client-side interpretation rules
+- census-side visual correlation rules
+
+No gameplay.
+No physics.
+No interactions.
+No AI.
+No actual rendering yet.
+
+============================================================
+SECTION 1 — Define the Rendering Contract
+============================================================
+
+1. Introduce a minimal rendering contract that defines:
+   - what visual layers exist
+   - what data each layer consumes
+   - how each layer derives its visual state deterministically
+   - no randomness
+   - no client-side authority
+
+2. Required visual layers:
+   - Background Layer (global cycles: season, lunar, constellation)
+   - Atmosphere Layer (mood, harmonics, memory)
+   - Systemic Layer (inertia, entropy, equilibrium)
+   - Rhythm Layer (cadence, resonance)
+   - Directional Layer (drift vectors, polarity)
+   - Structural Layer (phase-space, attractors, metastability, hysteresis, bifurcation, convergence, coherence)
+
+3. Each layer must:
+   - be derived solely from server WorldState
+   - be deterministic
+   - be stateless on the client
+   - not infer or simulate missing data
+
+============================================================
+SECTION 2 — Define Visual State Schema
+============================================================
+
+1. Introduce a “VisualState” structure containing:
+   - background_state
+   - atmosphere_state
+   - systemic_state
+   - rhythm_state
+   - directional_state
+   - structural_state
+
+2. Each field must:
+   - be a simple, serializable summary
+   - contain no simulation logic
+   - contain no gameplay logic
+   - contain no rendering instructions (client decides how to draw)
+
+3. VisualState must be included in WorldState.
+
+============================================================
+SECTION 3 — Derive VisualState Deterministically
+============================================================
+
+1. On each server tick:
+   - read all global systems
+   - compute each visual layer’s summary deterministically
+   - populate VisualState
+   - attach VisualState to WorldState
+
+2. VisualState must:
+   - never override simulation data
+   - never introduce new systems
+   - never contain randomness
+
+============================================================
+SECTION 4 — grimreach_client: Visual Interpretation Rules
+============================================================
+
+1. The client must:
+   - read VisualState from WorldState
+   - interpret each layer deterministically
+   - prepare to render (Phase 051)
+   - print simple debug output (e.g., “VisualState updated: rhythm=quick, structural=stable”)
+
+2. The client must not:
+   - simulate missing data
+   - interpolate
+   - animate
+   - guess
+   - override server authority
+
+3. No actual rendering occurs in this phase.
+
+============================================================
+SECTION 5 — grimreach_census: Visual Correlation Rules
+============================================================
+
+1. The census must:
+   - read VisualState
+   - correlate visual layers with systemic layers
+   - print aggregated summaries (e.g., “Atmosphere layer correlates with mood stability”)
+
+2. The census must not:
+   - render
+   - simulate
+   - store long-term analytics
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not add rendering engines.
+- Do not add UI frameworks.
+- Do not add textures, sprites, or assets.
+- Do not modify simulation logic.
+- Only add the rendering contract and VisualState schema.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Rendering contract defined.
+- VisualState schema defined.
+- Server produces VisualState every tick.
+- Client reads and prints VisualState summaries.
+- Census correlates VisualState with systemic layers.
+- No rendering yet.
+- Workspace compiles and runs unchanged.
+

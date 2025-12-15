@@ -1,0 +1,146 @@
+TITLE: Grimreach Workspace – Phase 049: Deterministic World Coherence + Global System Unification
+
+INTENT
+Introduce deterministic “world coherence,” the global unifying layer that ensures all
+long-cycle systems remain internally consistent. Coherence does not override systems; it
+validates and harmonizes them.
+
+This phase adds:
+- coherence evaluation
+- deterministic coherence rules
+- coherence-based correction modifiers
+- world updates reflecting coherence state
+- client acknowledgement of coherence shifts
+- census tracking of coherence dynamics
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic coherence propagation.
+
+============================================================
+SECTION 1 — Define Coherence Rules
+============================================================
+
+1. Introduce a minimal coherence structure that defines:
+   - a coherence value or flag
+   - deterministic conditions for coherence validation
+   - deterministic conditions for coherence correction
+   - no randomness
+
+2. Coherence is influenced by:
+   - convergence (Phase 048)
+   - bifurcation (Phase 047)
+   - hysteresis (Phase 046)
+   - metastability (Phase 045)
+   - attractor basins (Phase 044)
+   - phase-space coordinates (Phase 043)
+   - polarity (Phase 042)
+   - drift vectors (Phase 041)
+   - cadence and resonance (Phases 040–039)
+   - equilibrium, inertia, entropy (Phases 038–036)
+   - memory, harmonics, mood (Phases 035–033)
+   - seasonal, lunar, and constellation cycles (Phases 030–032)
+
+3. Coherence rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Coherence Evaluation
+============================================================
+
+1. Integrate coherence updates into the server tick loop.
+2. On each tick:
+   - read all global system states
+   - evaluate deterministic coherence conditions
+   - detect contradictions or misalignments
+   - update coherence state accordingly
+   - clamp coherence values to valid bounds
+
+3. Coherence evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Coherence-Based Correction Modifiers
+============================================================
+
+1. Introduce minimal coherence modifiers that:
+   - reduce contradictions between drift and polarity
+   - reduce contradictions between attractors and phase-space
+   - reduce contradictions between cadence and resonance
+   - reduce contradictions between inertia, entropy, and equilibrium
+   - reduce contradictions between mood, harmonics, and memory
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Coherence modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Coherence Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current coherence value or flag
+   - optional “coherence restored” or “coherence degraded” indicators
+
+2. Coherence summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Coherence Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read coherence summaries
+   - detect coherence improvements or degradations
+   - print simple information (e.g., “World coherence improving”)
+
+2. Do not render coherence.
+3. Do not store coherence data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Coherence Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read coherence summaries
+   - correlate coherence with all global systems
+   - print aggregated information (e.g., “Coherence degraded: drift and polarity misaligned”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic coherence rules.
+- Coherence updates every tick.
+- Coherence stabilizes global systems deterministically.
+- WorldState includes coherence summaries.
+- grimreach_client prints coherence change information.
+- grimreach_census prints coherence dynamic summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with coherence-driven systemic unification behavior.
+

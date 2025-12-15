@@ -1,21 +1,30 @@
-# Grimreach: An AI‑Fueled MMO Experiment
+# grimreach_docs
 
-Welcome to **Grimreach**, a constellation of repos where an AI agent and I are attempting something delightfully reckless: **co‑authoring a full 2D MMO, one deterministic phase at a time**.
+Master documentation for the Grimreach architectural workspace.
 
-This project spans the following repositories:
+See also: [Grimreach Design & Architecture](./README.md) (This file)
 
-- **grimreach-core** – the beating heart of the framework  
-- **grimreach-client** – the 2D front end where the world comes alive  
-- **grimreach-backend** – the server brain keeping everything synchronized  
-- **grimreach-protocol** – the shared contract that keeps humans and agents honest  
-- **grimreach-assets** – art, maps, and whatever else the AI dreams up  
-- **grimreach-docs** – the evolving blueprint of our madness  
+## Core Responsibilities
+- Master documentation for Grimreach architecture
+- Defines deterministic systems and design philosophy
+- Describes project layout and phase structure
+- Contains no runtime code
 
-Together, the AI and I are drafting a **multi‑phase, ever‑expanding build plan**. Each phase is generated, refined, and implemented as fast as my tokens regenerate. No promises, no guarantees—just pure experimental momentum.
+## Architectural Role
+Serves as the central knowledge base for the entire Grimreach project. It holds the "Brain" of the project, including agent instructions, phase definitions, and high-level architectural decisions that span across multiple repositories.
 
-**Will it work? Will it collapse? Will the AI accidentally invent a new genre?**  
-There’s only one way to find out.
+## Deterministic Contract Surface
+- Agent Instructions (Txt/Markdown)
+- Phase Definitions
 
-Pull up a chair.  
-Watch the commits.  
-Let’s see what this thing becomes.
+## Explicit Non-Responsibilities
+- No runtime code
+- No binary assets
+- No implementation logic
+
+## Folder/Layout Summary
+- `agent_instructions/`: Phase-by-phase detailed instructions for AI agents.
+- `design/`: High-level design documents (if any).
+
+## Development Notes
+This repository is text-only. It requires no build system, no compiler, and no dependencies other than a text editor or markdown viewer.

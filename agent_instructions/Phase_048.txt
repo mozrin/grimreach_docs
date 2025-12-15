@@ -1,0 +1,148 @@
+TITLE: Grimreach Workspace – Phase 048: Deterministic World Convergence + Systemic Path Reunification
+
+INTENT
+Introduce deterministic “world convergence,” the systemic force that reunifies divergent
+paths created by bifurcation (Phase 047). Convergence is not randomness; it is a
+deterministic pull toward coherent global trajectories.
+
+This phase adds:
+- convergence detection
+- deterministic convergence rules
+- convergence-based systemic stabilization
+- world updates reflecting convergence events
+- client acknowledgement of convergence cycles
+- census tracking of convergence dynamics
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic reunification propagation.
+
+============================================================
+SECTION 1 — Define Convergence Rules
+============================================================
+
+1. Introduce a minimal convergence structure that defines:
+   - a convergence flag or value
+   - deterministic conditions for convergence activation
+   - deterministic conditions for convergence completion
+   - no randomness
+
+2. Convergence is influenced by:
+   - bifurcation state (Phase 047)
+   - hysteresis thresholds (Phase 046)
+   - metastability (Phase 045)
+   - attractor basins (Phase 044)
+   - phase-space drift (Phase 043)
+   - polarity alignment (Phase 042)
+   - drift vectors (Phase 041)
+   - cadence and resonance (Phases 040–039)
+   - equilibrium, inertia, entropy (Phases 038–036)
+   - memory, harmonics, mood (Phases 035–033)
+
+3. Convergence rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Convergence Evaluation
+============================================================
+
+1. Integrate convergence updates into the server tick loop.
+2. On each tick:
+   - read bifurcation state (Phase 047)
+   - read hysteresis memory (Phase 046)
+   - read metastability state (Phase 045)
+   - evaluate deterministic conditions for convergence
+   - update convergence state accordingly
+   - clamp transitions to valid rules
+
+3. Convergence evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Convergence-Based Stabilization
+============================================================
+
+1. Introduce minimal convergence modifiers that:
+   - reduce volatility created by bifurcation
+   - stabilize polarity axes
+   - stabilize drift vectors
+   - stabilize cadence and resonance
+   - reinforce equilibrium
+   - reduce entropy accumulation
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Convergence modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Convergence Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current convergence state or value
+   - optional “convergence active” or “convergence complete” flags
+
+2. Convergence summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Convergence Cycles
+============================================================
+
+1. When receiving a WorldState message:
+   - read convergence summaries
+   - detect convergence activation or completion
+   - print simple information (e.g., “World convergence cycle active”)
+
+2. Do not render convergence.
+3. Do not store convergence data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Convergence Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read convergence summaries
+   - correlate convergence with bifurcation, hysteresis, metastability, attractors,
+     phase-space, drift, cadence, resonance, equilibrium, inertia, entropy, mood,
+     harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Convergence stabilizing post-bifurcation drift”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic convergence rules.
+- Convergence updates every tick.
+- Convergence stabilizes global systems deterministically.
+- WorldState includes convergence summaries.
+- grimreach_client prints convergence cycle information.
+- grimreach_census prints convergence dynamic summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with convergence-driven systemic reunification behavior.
+

@@ -1,0 +1,146 @@
+TITLE: Grimreach Workspace – Phase 008 Supplemental: README.md Generation for Existing Repos
+
+INTENT
+Create GitHub-compatible README.md files for each actual Grimreach repository:
+- grimreach_docs
+- grimreach_client
+- grimreach_census
+- grimreach_api
+- grimreach_server
+
+Each README must:
+- reference grimreach_docs/README.md as the canonical overview
+- describe the core responsibilities of the repo
+- describe its architectural role in Grimreach
+- list its deterministic contract surface (inputs/outputs/messages)
+- explicitly state what it does NOT do
+- summarize its folder layout
+- include minimal development notes
+
+No code is added.
+No logic is changed.
+No new repos are invented.
+
+============================================================
+SECTION 1 — Canonical Reference
+============================================================
+
+Every README.md must include a “See also” reference to:
+
+`grimreach_docs/README.md`
+
+This file is the authoritative source for:
+- Grimreach architecture and goals
+- deterministic systems model
+- client/server separation
+- agent-ready contracts
+- genre-neutral MMO framework
+
+============================================================
+SECTION 2 — Repositories Requiring README.md
+============================================================
+
+Create README.md files for:
+
+1. grimreach_docs
+2. grimreach_client
+3. grimreach_census
+4. grimreach_api
+5. grimreach_server
+
+No other projects exist or are referenced.
+
+============================================================
+SECTION 3 — README.md Structure (All Repos)
+============================================================
+
+Each README.md must include:
+
+1. Project Title  
+2. One-sentence summary  
+3. Link to grimreach_docs/README.md  
+4. Core Responsibilities (bullet list)  
+5. Architectural Role (short paragraph)  
+6. Deterministic Contract Surface (bullet list)  
+7. Explicit Non-Responsibilities (bullet list)  
+8. Folder/Layout Summary (bullet list)  
+9. Development Notes (short paragraph)
+
+No code samples.
+No implementation details.
+No duplication of grimreach_docs.
+
+============================================================
+SECTION 4 — Core Responsibilities Per Repo
+============================================================
+
+------------------------------------------------------------
+grimreach_docs
+------------------------------------------------------------
+- Master documentation for Grimreach architecture
+- Defines deterministic systems and design philosophy
+- Describes project layout and phase structure
+- Contains no runtime code
+
+------------------------------------------------------------
+grimreach_client
+------------------------------------------------------------
+- Connects to server and receives WorldState messages
+- Prints systemic transitions and summaries
+- Demonstrates minimal deterministic client behavior
+- Contains no simulation logic or authority
+
+------------------------------------------------------------
+grimreach_census
+------------------------------------------------------------
+- Observes WorldState broadcasts
+- Aggregates and prints systemic summaries
+- Tracks long-cycle correlations
+- Contains no simulation or gameplay logic
+
+------------------------------------------------------------
+grimreach_api
+------------------------------------------------------------
+- Defines public API surface for external agents
+- Exposes deterministic endpoints for client and census
+- Enforces contract boundaries and serialization
+- Contains no simulation or rendering
+
+------------------------------------------------------------
+grimreach_server
+------------------------------------------------------------
+- Owns deterministic world simulation and tick loop
+- Maintains global systems and long-cycle state
+- Produces authoritative WorldState messages
+- Enforces server-side contracts and invariants
+
+============================================================
+SECTION 5 — README.md Content Rules
+============================================================
+
+Each README.md must:
+- use GitHub-compatible Markdown
+- include headings, bullet lists, and short paragraphs
+- avoid code blocks except for file paths
+- avoid implementation details
+- defer all global explanations to grimreach_docs
+
+============================================================
+SECTION 6 — No Other Files Modified
+============================================================
+
+- Do not modify simulation logic
+- Do not modify contracts or protocols
+- Do not introduce new folders or repos
+- Only create README.md files as described
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Each listed repo has a README.md
+- Each README references grimreach_docs/README.md
+- Each README describes responsibilities, role, contracts, and boundaries
+- No logic, systems, or runtime behavior are changed
+- Workspace remains fully deterministic and unmodified
+
