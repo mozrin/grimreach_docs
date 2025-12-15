@@ -1,0 +1,144 @@
+TITLE: Grimreach Workspace – Phase 046: Deterministic World Hysteresis + Memory-Dependent Transition Lag
+
+INTENT
+Introduce deterministic “world hysteresis,” a memory-dependent transition mechanism that
+creates lag between systemic states. Hysteresis prevents immediate switching between
+attractor basins, metastable states, or polarity alignments unless deterministic
+conditions are met.
+
+This phase adds:
+- hysteresis thresholds
+- deterministic hysteresis memory
+- hysteresis-based transition modulation
+- world updates reflecting hysteresis state
+- client acknowledgement of hysteresis behavior
+- census tracking of hysteresis loops
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic lag propagation.
+
+============================================================
+SECTION 1 — Define Hysteresis Rules
+============================================================
+
+1. Introduce a minimal hysteresis structure that defines:
+   - a hysteresis memory value
+   - deterministic upper and lower thresholds
+   - deterministic conditions for switching states
+   - no randomness
+
+2. Hysteresis is influenced by:
+   - metastability (Phase 045)
+   - attractor basins (Phase 044)
+   - phase-space position (Phase 043)
+   - polarity (Phase 042)
+   - drift vectors (Phase 041)
+   - cadence and resonance (Phases 040–039)
+   - equilibrium, inertia, entropy (Phases 038–036)
+   - memory, harmonics, mood (Phases 035–033)
+
+3. Hysteresis rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Hysteresis Evaluation
+============================================================
+
+1. Integrate hysteresis updates into the server tick loop.
+2. On each tick:
+   - read metastability state (Phase 045)
+   - read attractor state (Phase 044)
+   - read phase-space coordinates (Phase 043)
+   - update hysteresis memory deterministically
+   - apply upper/lower threshold logic
+   - clamp hysteresis values to valid bounds
+
+3. Hysteresis evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Hysteresis-Based Transition Modulation
+============================================================
+
+1. Introduce minimal hysteresis modifiers that:
+   - delay attractor transitions until hysteresis thresholds are crossed
+   - delay metastability exit or entry
+   - delay polarity flips
+   - delay drift vector reorientation
+   - delay cadence or resonance shifts
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Hysteresis modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Hysteresis Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current hysteresis memory value
+   - optional “transition delayed” flags
+
+2. Hysteresis summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Hysteresis Behavior
+============================================================
+
+1. When receiving a WorldState message:
+   - read hysteresis summaries
+   - detect when transitions are delayed or released
+   - print simple information (e.g., “Hysteresis delaying attractor transition”)
+
+2. Do not render hysteresis.
+3. Do not store hysteresis data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Hysteresis Loops
+============================================================
+
+1. When receiving a WorldState message:
+   - read hysteresis summaries
+   - correlate hysteresis with metastability, attractors, phase-space, drift, cadence, resonance, equilibrium, inertia, entropy, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Hysteresis loop detected: transition pending until threshold crossed”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic hysteresis rules.
+- Hysteresis memory updates every tick.
+- Hysteresis delays or releases transitions deterministically.
+- WorldState includes hysteresis summaries.
+- grimreach_client prints hysteresis behavior information.
+- grimreach_census prints hysteresis loop summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with hysteresis-driven systemic lag behavior.
+

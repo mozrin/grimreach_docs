@@ -1,0 +1,134 @@
+TITLE: Grimreach Workspace – Phase 043: Deterministic World Phase-Space Mapping + Global State Classification
+
+INTENT
+Introduce deterministic “world phase-space mapping,” a multi-dimensional classification
+layer that interprets all long-cycle systems as coordinates within a global phase-space.
+This phase adds:
+- a global phase-space coordinate
+- deterministic mapping rules
+- phase-space-based systemic interpretation modifiers
+- world updates reflecting phase-space position
+- client acknowledgement of phase-space transitions
+- census tracking of phase-space dynamics
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic classification propagation.
+
+============================================================
+SECTION 1 — Define Phase-Space Rules
+============================================================
+
+1. Introduce a minimal phase-space structure that defines:
+   - a multi-dimensional coordinate (e.g., 4D or 6D)
+   - deterministic mapping rules from all global systems
+   - no randomness
+
+2. Phase-space axes may include:
+   - stability/volatility
+   - order/chaos
+   - growth/decay
+   - harmony/dissonance
+   - inertia/entropy balance
+   - cadence/resonance interaction
+
+3. Phase-space rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Phase-Space Evaluation
+============================================================
+
+1. Integrate phase-space updates into the server tick loop.
+2. On each tick:
+   - read all global cycle states (Phases 030–042)
+   - compute phase-space coordinates deterministically
+   - normalize or clamp values to valid bounds
+
+3. Phase-space evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Phase-Space Interpretation Modifiers
+============================================================
+
+1. Introduce minimal interpretation modifiers that:
+   - bias influence gain based on phase-space quadrant
+   - bias pressure based on phase-space region
+   - bias environmental intensity based on phase-space cluster
+   - bias migration pressure based on phase-space drift direction
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Phase-space modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Phase-Space Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current phase-space coordinate
+   - optional “phase-space region” or “phase-space cluster” flags
+
+2. Phase-space summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Phase-Space Transitions
+============================================================
+
+1. When receiving a WorldState message:
+   - read phase-space summaries
+   - detect transitions between regions or clusters
+   - print simple information (e.g., “World entering high-stability / low-entropy region”)
+
+2. Do not render phase-space.
+3. Do not store phase-space data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Phase-Space Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read phase-space summaries
+   - correlate phase-space position with all global cycles and modifiers
+   - print aggregated information (e.g., “Phase-space drift toward harmonic stability detected”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic phase-space rules.
+- Phase-space coordinates update every tick.
+- Phase-space interpretation biases global systems deterministically.
+- WorldState includes phase-space summaries.
+- grimreach_client prints phase-space transition information.
+- grimreach_census prints phase-space dynamic summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with phase-space-driven systemic classification behavior.
+

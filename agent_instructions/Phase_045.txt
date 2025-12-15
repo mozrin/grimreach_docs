@@ -1,0 +1,141 @@
+TITLE: Grimreach Workspace – Phase 045: Deterministic World Metastability + Basin Transition Thresholds
+
+INTENT
+Introduce deterministic “world metastability,” the transitional behavior that occurs when
+the global state approaches or crosses thresholds between stable and unstable attractor
+basins. Metastability does not introduce randomness; it defines deterministic switching
+conditions.
+
+This phase adds:
+- metastability detection
+- deterministic basin transition thresholds
+- metastability-based systemic modulation
+- world updates reflecting metastable states
+- client acknowledgement of metastable transitions
+- census tracking of metastability dynamics
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic threshold propagation.
+
+============================================================
+SECTION 1 — Define Metastability Rules
+============================================================
+
+1. Introduce a minimal metastability structure that defines:
+   - a metastable flag or state
+   - deterministic conditions for entering metastability
+   - deterministic conditions for exiting metastability
+   - no randomness
+
+2. Metastability is influenced by:
+   - attractor proximity (Phase 044)
+   - phase-space drift (Phase 043)
+   - polarity alignment (Phase 042)
+   - drift vectors (Phase 041)
+   - cadence and resonance (Phases 040–039)
+   - equilibrium, inertia, entropy (Phases 038–036)
+   - memory, harmonics, mood (Phases 035–033)
+
+3. Metastability rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Metastability Evaluation
+============================================================
+
+1. Integrate metastability updates into the server tick loop.
+2. On each tick:
+   - read attractor state (Phase 044)
+   - read phase-space coordinates (Phase 043)
+   - evaluate deterministic thresholds for metastability
+   - update metastable state accordingly
+   - clamp transitions to valid rules
+
+3. Metastability evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Metastability-Based Modulation
+============================================================
+
+1. Introduce minimal metastability modifiers that:
+   - temporarily weaken attractor influence during metastability
+   - temporarily amplify drift vector influence
+   - temporarily increase cadence sensitivity
+   - temporarily increase resonance volatility
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Metastability modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Metastability Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current metastability state
+   - optional “approaching basin transition” flags
+
+2. Metastability summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Metastable Transitions
+============================================================
+
+1. When receiving a WorldState message:
+   - read metastability summaries
+   - detect transitions into or out of metastability
+   - print simple information (e.g., “World entering metastable state”)
+
+2. Do not render metastability.
+3. Do not store metastability data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Metastability Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read metastability summaries
+   - correlate metastability with attractors, phase-space, drift, cadence, resonance, equilibrium, inertia, entropy, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Metastability detected: attractor transition likely”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic metastability rules.
+- Metastability updates every tick.
+- Metastability modulates global systems deterministically.
+- WorldState includes metastability summaries.
+- grimreach_client prints metastability change information.
+- grimreach_census prints metastability dynamic summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with metastability-driven systemic transition behavior.
+

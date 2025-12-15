@@ -1,0 +1,140 @@
+TITLE: Grimreach Workspace – Phase 042: Deterministic World Polarity + Dual-Axis Global Alignment
+
+INTENT
+Introduce deterministic “world polarity,” a dual-axis global alignment derived from all
+long-cycle systems. Polarity expresses the world’s current orientation between opposing
+systemic poles (e.g., order/chaos, growth/decay).
+
+This phase adds:
+- a global polarity vector (two axes)
+- deterministic polarity computation rules
+- polarity-based systemic alignment modifiers
+- world updates reflecting polarity shifts
+- client acknowledgement of polarity changes
+- census tracking of polarity–drift interactions
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic alignment propagation.
+
+============================================================
+SECTION 1 — Define World Polarity Rules
+============================================================
+
+1. Introduce a minimal polarity structure that defines:
+   - a dual-axis polarity vector (e.g., {order_chaos, growth_decay})
+   - deterministic computation rules
+   - no randomness
+
+2. Polarity axes are influenced by:
+   - mood (Phase 034)
+   - harmonics (Phase 033)
+   - memory (Phase 035)
+   - inertia (Phase 036)
+   - entropy (Phase 037)
+   - equilibrium (Phase 038)
+   - resonance (Phase 039)
+   - cadence (Phase 040)
+   - drift vectors (Phase 041)
+
+3. Polarity rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Polarity Evaluation
+============================================================
+
+1. Integrate polarity updates into the server tick loop.
+2. On each tick:
+   - read all global cycle states
+   - compute polarity axes deterministically
+   - normalize or clamp polarity values to valid bounds
+
+3. Polarity evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Polarity-Based Alignment Modifiers
+============================================================
+
+1. Introduce minimal polarity modifiers that:
+   - bias influence gain toward order or chaos
+   - bias pressure toward growth or decay
+   - bias environmental intensity toward stability or volatility
+   - bias migration pressure toward inward or outward flow
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Polarity modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Polarity Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current polarity vector
+   - optional “leaning toward order/chaos” flags
+   - optional “leaning toward growth/decay” flags
+
+2. Polarity summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Polarity Shifts
+============================================================
+
+1. When receiving a WorldState message:
+   - read polarity summaries
+   - detect polarity drift
+   - print simple information (e.g., “World polarity shifting toward growth”)
+
+2. Do not render polarity.
+3. Do not store polarity data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Polarity–Drift Interactions
+============================================================
+
+1. When receiving a WorldState message:
+   - read polarity summaries
+   - correlate polarity with drift vectors, cadence, resonance, equilibrium, inertia, entropy, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Polarity leaning toward chaos aligning with volatile drift”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic polarity rules.
+- Polarity updates every tick.
+- Polarity biases global systems deterministically.
+- WorldState includes polarity summaries.
+- grimreach_client prints polarity change information.
+- grimreach_census prints polarity–drift summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with polarity-driven systemic alignment behavior.
+

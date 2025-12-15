@@ -1,0 +1,146 @@
+TITLE: Grimreach Workspace – Phase 047: Deterministic World Bifurcation + Branching Systemic Paths
+
+INTENT
+Introduce deterministic “world bifurcation,” the branching of global systemic evolution
+paths when hysteresis, metastability, and attractor basins align in specific threshold
+configurations. Bifurcation does not introduce randomness; it defines deterministic
+branch points.
+
+This phase adds:
+- bifurcation detection
+- deterministic branch path rules
+- bifurcation-based systemic modulation
+- world updates reflecting branch selection
+- client acknowledgement of bifurcation events
+- census tracking of bifurcation dynamics
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic branching propagation.
+
+============================================================
+SECTION 1 — Define Bifurcation Rules
+============================================================
+
+1. Introduce a minimal bifurcation structure that defines:
+   - a bifurcation flag or state
+   - deterministic conditions for branch creation
+   - deterministic conditions for branch resolution
+   - no randomness
+
+2. Bifurcation is influenced by:
+   - hysteresis thresholds (Phase 046)
+   - metastability (Phase 045)
+   - attractor basins (Phase 044)
+   - phase-space position (Phase 043)
+   - polarity (Phase 042)
+   - drift vectors (Phase 041)
+   - cadence and resonance (Phases 040–039)
+   - equilibrium, inertia, entropy (Phases 038–036)
+   - memory, harmonics, mood (Phases 035–033)
+
+3. Bifurcation rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Bifurcation Evaluation
+============================================================
+
+1. Integrate bifurcation updates into the server tick loop.
+2. On each tick:
+   - read hysteresis memory (Phase 046)
+   - read metastability state (Phase 045)
+   - read attractor state (Phase 044)
+   - read phase-space coordinates (Phase 043)
+   - evaluate deterministic branch conditions
+   - update bifurcation state accordingly
+   - clamp transitions to valid rules
+
+3. Bifurcation evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Bifurcation-Based Systemic Modulation
+============================================================
+
+1. Introduce minimal bifurcation modifiers that:
+   - temporarily amplify or suppress attractor influence
+   - temporarily accelerate or delay metastability transitions
+   - temporarily shift polarity weighting
+   - temporarily bias drift vectors toward one branch or another
+   - temporarily alter cadence sensitivity
+
+2. Modifiers must:
+   - be deterministic
+   - be clamped
+   - not override existing systems entirely
+
+3. Bifurcation modifiers must:
+   - not introduce new entity types
+   - not introduce physics or interactions
+
+============================================================
+SECTION 4 — Include Bifurcation Summaries in WorldState
+============================================================
+
+1. Extend the WorldState broadcast to include:
+   - current bifurcation state
+   - optional “branch point reached” or “branch resolved” flags
+
+2. Bifurcation summaries must:
+   - remain lightweight
+   - not introduce complex serialization
+
+============================================================
+SECTION 5 — grimreach_client: Acknowledge Bifurcation Events
+============================================================
+
+1. When receiving a WorldState message:
+   - read bifurcation summaries
+   - detect branch creation or resolution
+   - print simple information (e.g., “World bifurcation event: branch point reached”)
+
+2. Do not render bifurcation.
+3. Do not store bifurcation data beyond printing summary information.
+
+============================================================
+SECTION 6 — grimreach_census: Track Bifurcation Dynamics
+============================================================
+
+1. When receiving a WorldState message:
+   - read bifurcation summaries
+   - correlate bifurcation with hysteresis, metastability, attractors, phase-space, drift, cadence, resonance, equilibrium, inertia, entropy, mood, harmonics, memory, hazards, influence, and pressure
+   - print aggregated information (e.g., “Bifurcation detected: systemic path diverging toward chaotic basin”)
+
+2. No storage, indexing, or analytics logic is required.
+
+============================================================
+SECTION 7 — No Other Files Modified
+============================================================
+
+- Do not modify Flame components.
+- Do not modify UI files.
+- Do not introduce AI, combat, or rendering.
+- Do not introduce diplomacy or interactions.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- Server defines deterministic bifurcation rules.
+- Bifurcation state updates every tick.
+- Bifurcation modulates global systems deterministically.
+- WorldState includes bifurcation summaries.
+- grimreach_client prints bifurcation event information.
+- grimreach_census prints bifurcation dynamic summaries.
+- All projects compile and run with no errors.
+- No gameplay logic exists.
+- No rendering or input is introduced.
+- The entire workspace runs cleanly with bifurcation-driven systemic branching behavior.
+

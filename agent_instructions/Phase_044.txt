@@ -1,0 +1,68 @@
+TITLE: Grimreach Workspace – Phase 044: Deterministic World Attractors + Stable/Unstable Systemic Basins
+
+INTENT
+Introduce deterministic “world attractors,” stable and unstable systemic basins that the
+global state gravitates toward based on long-cycle systems. Attractors do not override
+systems; they describe the basin of behavior the world is currently falling into.
+
+This phase adds:
+- global attractor identification
+- deterministic attractor mapping rules
+- attractor-based systemic influence modifiers
+- world updates reflecting attractor transitions
+- client acknowledgement of attractor shifts
+- census tracking of attractor dynamics
+
+No AI.
+No combat.
+No diplomacy.
+No rendering.
+Only deterministic basin propagation.
+
+============================================================
+SECTION 1 — Define World Attractor Rules
+============================================================
+
+1. Introduce a minimal attractor structure that defines:
+   - a global attractor state (e.g., stable_basin, chaotic_basin, growth_basin, decay_basin)
+   - deterministic mapping rules from phase-space (Phase 043)
+   - no randomness
+
+2. Attractors are influenced by:
+   - polarity (Phase 042)
+   - drift vectors (Phase 041)
+   - cadence (Phase 040)
+   - resonance (Phase 039)
+   - equilibrium (Phase 038)
+   - inertia/entropy balance (Phases 036–037)
+   - memory (Phase 035)
+   - harmonics (Phase 033)
+   - seasons/lunar/constellation cycles (Phases 030–032)
+
+3. Attractor rules must:
+   - be static
+   - be deterministic
+   - not involve AI or decision-making
+
+============================================================
+SECTION 2 — Implement Attractor Evaluation
+============================================================
+
+1. Integrate attractor updates into the server tick loop.
+2. On each tick:
+   - read phase-space coordinates (Phase 043)
+   - determine which attractor basin the world falls into
+   - update attractor state deterministically
+   - clamp attractor transitions to valid rules
+
+3. Attractor evaluation must:
+   - not modify entity or player behavior directly
+   - not introduce randomness
+   - not trigger territory changes
+
+============================================================
+SECTION 3 — Apply Attractor-Based Systemic Influence Modifiers
+============================================================
+
+1. Introduce minimal attractor modifiers that:
+   - bias influence gain based
