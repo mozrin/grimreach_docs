@@ -1,0 +1,101 @@
+TITLE: Grimreach Workspace – Phase 004: Minimal WebSocket Handshake Using grimreach_api
+
+INTENT
+Introduce a minimal, compilable WebSocket handshake between:
+- grimreach_client
+- grimreach_server
+- grimreach_census
+
+All three projects must:
+- import grimreach_api
+- connect to the server via WebSocket
+- send a handshake message
+- receive an echo response from the server
+- compile and run with no additional logic
+
+No world state.  
+No systems.  
+No gameplay.  
+Only a minimal handshake.
+
+============================================================
+SECTION 1 — grimreach_api (No Changes Required)
+============================================================
+
+1. Confirm that grimreach_api already contains:
+   - Protocol
+   - Message
+   - MessageCodec
+
+2. No files in grimreach_api should be modified in this phase.
+
+============================================================
+SECTION 2 — grimreach_server: Minimal WebSocket Echo Server
+============================================================
+
+1. Update the server entrypoint so that it:
+   - starts an HTTP server
+   - upgrades WebSocket connections on the `/ws` path
+   - logs when a client connects
+
+2. When a WebSocket message is received:
+   - decode it using MessageCodec
+   - log the message type
+   - immediately send back an identical Message (echo)
+
+3. If the request path is not `/ws`, return a 404 response.
+
+4. No tick loop, world state, or systems should be added in this phase.
+
+============================================================
+SECTION 3 — grimreach_client: Minimal WebSocket Handshake
+============================================================
+
+1. Update the client entrypoint so that it:
+   - connects to the server via WebSocket
+   - sends a handshake Message using grimreach_api
+   - listens for incoming messages
+
+2. When a message is received:
+   - decode it using MessageCodec
+   - print the message type to confirm the echo was received
+
+3. Use a minimal root widget (e.g., an empty widget) to satisfy Flutter’s requirements.
+
+4. Do not initialize Flame in this phase.
+
+============================================================
+SECTION 4 — grimreach_census: Minimal WebSocket Handshake
+============================================================
+
+1. Update the census service entrypoint so that it:
+   - connects to the server via WebSocket
+   - sends a handshake Message using grimreach_api
+   - listens for incoming messages
+
+2. When a message is received:
+   - decode it using MessageCodec
+   - print the message type to confirm the echo was received
+
+3. Print a confirmation message when the census service starts.
+
+============================================================
+SECTION 5 — No Other Files Modified
+============================================================
+
+- Do not modify any Flame components.
+- Do not modify any UI files.
+- Do not modify any server systems.
+- Do not introduce world state or gameplay logic.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- grimreach_server starts and listens on ws://localhost:8080/ws
+- grimreach_client connects, sends a handshake, and receives an echo
+- grimreach_census connects, sends a handshake, and receives an echo
+- All three projects compile with no errors
+- No gameplay logic exists
+- No world state or systems are introduced in this phase
+
