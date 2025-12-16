@@ -1,0 +1,207 @@
+TITLE: Grimreach Workspace – Phase 063: Layered Overlays
+
+INTENT
+Unify all existing visual overlays into a single, deterministic, rule-driven layering
+system. This phase does not introduce new visual content. Instead, it formalizes how
+all overlays—scalar, vector, volumetric, region flow, fog-of-meaning, and future
+systems—coexist without conflict.
+
+This phase adds:
+- unified overlay layer model
+- overlay registration rules
+- overlay priority and conflict resolution
+- deterministic ordering contract
+- census summaries of overlay composition
+- README update for Phase_063
+
+No animation.
+No smoothing.
+No blending.
+No simulation.
+No gameplay.
+
+============================================================
+SECTION 1 — Overlay Categories
+============================================================
+
+Define the following overlay categories:
+
+1. Scalar Overlays  
+   - entropy, stability, harmony, resonance
+
+2. Vector Overlays  
+   - drift, polarity, flow
+
+3. Region Flow Overlays  
+   - boundary arrows, gradients, interaction lines
+
+4. Fog-of-Meaning Overlays  
+   - semantic density haze
+
+5. Volumetric Overlays  
+   - halos, depth volumes, atmospheric volumes
+
+6. Structural Overlays  
+   - markers, glyphs, region boundaries
+
+Each category must remain visually distinct.
+
+============================================================
+SECTION 2 — Overlay Registration Rules
+============================================================
+
+Each overlay type must register itself with the renderer using:
+
+- overlay category
+- overlay priority
+- overlay depth band
+- overlay opacity bucket (if applicable)
+- overlay conflict rules
+
+Registration must be static and deterministic.
+
+No dynamic registration.
+No runtime reordering.
+No animation.
+
+============================================================
+SECTION 3 — Unified Layer Ordering
+============================================================
+
+Define the canonical overlay order:
+
+1. Base Tint  
+2. Scalar Overlays  
+3. Vector Overlays  
+4. Region Flow Overlays  
+5. Fog-of-Meaning  
+6. Volumetric Overlays  
+7. Structural Overlays  
+
+This order is final unless modified by future phases.
+
+============================================================
+SECTION 4 — Conflict Resolution Rules
+============================================================
+
+When overlays overlap:
+
+1. Higher-priority overlays always win.
+2. No blending beyond fixed alpha.
+3. No smoothing or interpolation.
+4. No dynamic transitions.
+5. If two overlays share the same category:
+   - use fixed sub-order defined in this phase
+   - never alternate or randomize
+
+============================================================
+SECTION 5 — Sub-Order Within Categories
+============================================================
+
+Scalar Overlays:
+1. entropy  
+2. stability  
+3. harmony  
+4. resonance  
+
+Vector Overlays:
+1. drift  
+2. polarity  
+3. flow  
+
+Region Flow:
+1. boundary arrows  
+2. gradients  
+3. interaction lines  
+
+Volumetric:
+1. low-depth halos  
+2. mid-depth volumes  
+3. high-depth volumes  
+
+Structural:
+1. region boundaries  
+2. markers  
+3. glyphs  
+
+============================================================
+SECTION 6 — grimreach_client Responsibilities
+============================================================
+
+The client must:
+
+1. Implement the unified overlay system.
+2. Enforce deterministic ordering.
+3. Ensure overlays never obscure structural markers.
+4. Print debug output:
+   - “Overlay registered: scalar/entropy”
+   - “Overlay order resolved for 64 cells”
+   - “Conflict resolved: vector > scalar”
+
+The client must NOT:
+- animate overlays
+- blend overlays dynamically
+- reorder overlays at runtime
+- introduce smoothing
+
+============================================================
+SECTION 7 — grimreach_server Responsibilities
+============================================================
+
+The server must:
+- remain unaware of overlay layering
+- continue producing world state only
+- not compute or send overlay metadata
+
+============================================================
+SECTION 8 — grimreach_census Responsibilities
+============================================================
+
+The census must:
+- observe overlay composition
+- correlate overlay density with world dynamics
+- print summaries (e.g., “High overlay complexity in NE quadrant”)
+
+The census must NOT:
+- render overlays
+- simulate overlays
+- store long-term analytics
+
+============================================================
+SECTION 9 — Documentation Update Requirements
+============================================================
+
+The agent must update:
+
+**grimreach_docs/README.md**
+
+Specifically:
+1. Replace the placeholder entry for Phase_063 with:  
+   `| 063 | Layered Overlays |`
+2. Ensure the Phase Map reflects this finalized title.
+3. Ensure Phase_063 is no longer marked as “future” or “TBD.”
+
+No other README entries should be modified.
+
+============================================================
+SECTION 10 — No Other Files Modified
+============================================================
+
+- No gameplay systems added.
+- No physics systems added.
+- No animation systems added.
+- Only add unified overlay logic to grimreach_client.
+- Only update README as described above.
+
+============================================================
+COMPLETION CRITERIA
+============================================================
+
+- All overlays register correctly.
+- Unified ordering is deterministic.
+- README updated with correct Phase_063 entry.
+- No animation or smoothing exists.
+- Server remains unchanged.
+- Census prints overlay composition summaries.
+- Workspace compiles and runs with unified overlay layering.
+
